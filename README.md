@@ -3,7 +3,7 @@ The goal of this code sample repository is to provide completely self-contained 
 
 ## Set Up
 Clone this repository.
-Run "composer update" in the root directory
+Run "composer update" in the root directory.
 Run the individual samples e.g. 
 ````
 php VisaCheckout/visacheckout-decrypt.php

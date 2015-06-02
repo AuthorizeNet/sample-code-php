@@ -10,6 +10,7 @@
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
   $merchantAuthentication->setName("5KP3u95bQpv");
   $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+  print_r($merchantAuthentiction);
   $refId = 'ref' . time();
 
   // Create the payment data from a Visa Checkout blob

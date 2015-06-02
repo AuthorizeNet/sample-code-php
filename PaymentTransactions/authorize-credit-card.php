@@ -2,10 +2,12 @@
   require 'vendor/autoload.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
+  define("AUTHORIZENET_TRANSACTION_KEY", "9ac2932kQ7kN2Wzq" );
+  define("AUTHORIZENET_SANDBOX", true);
   define("AUTHORIZENET_LOG_FILE", "phplog");
   // Common setup for API credentials
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName("556KThWQ6vf2");
+  $merchantAuthentication->setName(" 556KThWQ6vf2");
   $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
   $refId = 'ref' . time();
 

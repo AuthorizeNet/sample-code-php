@@ -12,3 +12,5 @@ php VisaCheckout/visacheckout-decrypt.php
 ## API Reference
 The code samples are organized just like our API reference which you can access here http://developer.authorize.net/api/reference
 
+
+06/02/2015 Greg White - Added code for charge-credit-cartd.php  Tested. Getting Error code E00027

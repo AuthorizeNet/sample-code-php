@@ -1,0 +1,460 @@
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=5.99&x_card_num=6011000000000012&x_exp_date=04%2F15&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|8|,|The credit card has expired.|,||,|P|,|0|,||,||,|5.99|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|A99B99398E23ADD0B7DD107E3660A4BB|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=5.99&x_card_num=6011000000000012&x_exp_date=04%2F15&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|8|,|The credit card has expired.|,||,|P|,|0|,||,||,|5.99|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|A99B99398E23ADD0B7DD107E3660A4BB|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=5.99&x_card_num=6011000000000012&x_exp_date=07%2F30&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|PPXGWS|,|Y|,|2234526750|,||,||,|5.99|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|1F68C1AFE3091ADDD056C570D5B05EEC|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=52&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_ONLY&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|MUSDQY|,|Y|,|2234526790|,||,||,|52.00|,|CC|,|auth_only|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|1362067155775C87781DB2BA6CDE3690|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=35&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_ONLY&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|I525S3|,|Y|,|2234526807|,||,||,|35.00|,|CC|,|auth_only|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|7275EE1C78E5F21C32479BBE4F7BB71E|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=675&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_ONLY&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|012OB6|,|Y|,|2234526829|,||,||,|675.00|,|CC|,|auth_only|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|7A426DE68270B7480838D64546EA971D|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=200&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_ONLY&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|1P1EVJ|,|Y|,|2234527003|,||,||,|200.00|,|CC|,|auth_only|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D7009D32C2AD90590E9EF139B898B737|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=200&x_card_num=6011000000000012&x_exp_date=0730&x_trans_id=&x_type=PRIOR_AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|2|,|33|,|A valid referenced transaction ID is required.|,||,|P|,|0|,||,||,|200.00|,|CC|,|prior_auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|A5CC1652FC812D2E043DDFAAB1C90EDE|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=43&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_ONLY&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|70QMHD|,|Y|,|2234527136|,||,||,|43.00|,|CC|,|auth_only|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|B83C6256C0BAE751100CFEA0AC83F88A|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=43&x_card_num=6011000000000012&x_exp_date=0730&x_trans_id=&x_type=PRIOR_AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|2|,|33|,|A valid referenced transaction ID is required.|,||,|P|,|0|,||,||,|43.00|,|CC|,|prior_auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|8DB007F262D64BBF2701C8DA8C855B3F|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=178&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_ONLY&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|TGV3B6|,|Y|,|2234527241|,||,||,|178.00|,|CC|,|auth_only|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|81CDDFCFB11913C58F83ABD13154D2D0|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=178&x_card_num=6011000000000012&x_exp_date=0730&x_trans_id=2234527241&x_type=PRIOR_AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|TGV3B6|,|P|,|2234527241|,||,||,|178.00|,|CC|,|prior_auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|81CDDFCFB11913C58F83ABD13154D2D0|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=&x_card_num=4222222222222&x_zip=46225&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,|46225|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX2222|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=&x_card_num=4222222222222&x_zip=46225&x_exp_date=04%2F20&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,|46225|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX2222|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=&x_card_num=6011000000000012&x_zip=46225&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,|46225|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|DX181P|,|Y|,|2234528558|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|8E288577BAC56B38CCA0347771FD2C51|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=4222222222222&x_zip=46225&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,|46225|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX2222|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|X05L03|,|Y|,|2234528647|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|A77BA2B15B3F89262561C9D1155750CA|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=4222222222222&x_zip=46225&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,|46225|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX2222|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|ZOVLS0|,|Y|,|2234528761|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|C480A852DAF26F28B7326A7F40B49F4A|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=4222222222222&x_zip=46225&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,|46225|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX2222|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|8O5MFK|,|Y|,|2234528832|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|8937BF1BD6A9F8879E46380E7CC294D7|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=4222222222222&x_zip=46225&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,|46225|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX2222|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|2FU4ZO|,|Y|,|2234529000|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|EB95D6AB9DB660F19372F98AFEA7D1E9|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=6011000000000012&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_zip=46225&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|4|,|1|,|295|,|The amount of this request was only partially approved on the given prepaid card. An additional payment is required to fulfill the balance of this transaction.|,|VNSJHL|,|Y|,|2234529039|,||,||,|1.23|,|CC|,|auth_capture|,||,||,||,||,||,||,||,|46225|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|CA63C80A615EAEF0735D8B720F4AD6A2|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,|114611|,|3.69|,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_zip=46225&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,|46225|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|QPC7ZG|,|Y|,|2234529099|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|368E951AC3BEE06A6A1C348E4769B34D|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=6011000000000012&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|PX9X46|,|Y|,|2234529157|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|E3F72C9541CA934F0B2F161C2880F98B|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=4007000000027&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0027|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|WHKFJ6|,|Y|,|2234529247|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|5010584401A18137701FD182D876DA27|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=4007000000027&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0027|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|BISD3C|,|Y|,|2234529398|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|E2600304677F98F7B04C8411E2CE1030|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=4007000000027&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0027|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|1S625E|,|Y|,|2234529538|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|72381A1AEA061C181C8DE5525D2D7BFD|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=6011000000000012&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|11|,|A duplicate transaction has been submitted.|,||,|P|,|0|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|42647775990BCF9DDFE4B6C036284A06|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=3.69&x_card_num=6011000000000012&x_exp_date=07%2F30&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|8YZ1EQ|,|Y|,|2234529632|,||,||,|3.69|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|A68C0759CC703219B691AC78537974C6|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=0&x_card_num=370000000000002&x_exp_date=07%2F30&x_split_tender_id=&x_allow_partial_auth=1&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|1|,|5|,|A valid amount is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D190F38E2AD4298B6823824EE70A0C97|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0002|,|American Express|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=55&x_card_num=6011000000000012&x_description=Sale+description&x_first_name=Jane&x_last_name=Smith&x_company=Jane+Smith+Enterprises+Inc.&x_address=20+Main+Street&x_city=San+Francisco&x_state=CA&x_zip=94110&x_country=US&x_phone=415-555-5557&x_fax=415-555-5556&x_email=foo%40example.com&x_cust_id=55&x_customer_ip=98.5.5.5&x_invoice_num=123&x_ship_to_first_name=John&x_ship_to_last_name=Smith&x_ship_to_company=Smith+Enterprises+Inc.&x_ship_to_address=10+Main+Street&x_ship_to_city=San+Francisco&x_ship_to_state=CA&x_ship_to_zip=94110&x_ship_to_country=US&x_tax=0.00&x_freight=Freight%3C%7C%3Eground+overnight%3C%7C%3E12.95&x_duty=Duty1%3C%7C%3Eexport%3C%7C%3E15.00&x_tax_exempt=FALSE&x_po_num=12&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|3|,|2|,|33|,|Expiration date is required.|,||,|P|,|0|,|123|,|Sale description|,|55.00|,|CC|,|auth_capture|,|55|,|Jane|,|Smith|,|Jane Smith Enterprises Inc.|,|20 Main Street|,|San Francisco|,|CA|,|94110|,|US|,|415-555-5557|,|415-555-5556|,|foo@example.com|,|John|,|Smith|,|Smith Enterprises Inc.|,|10 Main Street|,|San Francisco|,|CA|,|94110|,|US|,|0.00|,|15.00|,|12.95|,|FALSE|,|12|,|42FF211F35D50285727946734665C22C|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=56&x_card_num=6011000000000012&x_exp_date=12%2F31&x_description=Sale+description&x_first_name=Jane&x_last_name=Smith&x_company=Jane+Smith+Enterprises+Inc.&x_address=20+Main+Street&x_city=San+Francisco&x_state=CA&x_zip=94110&x_country=US&x_phone=415-555-5557&x_fax=415-555-5556&x_email=foo%40example.com&x_cust_id=55&x_customer_ip=98.5.5.5&x_invoice_num=123&x_ship_to_first_name=John&x_ship_to_last_name=Smith&x_ship_to_company=Smith+Enterprises+Inc.&x_ship_to_address=10+Main+Street&x_ship_to_city=San+Francisco&x_ship_to_state=CA&x_ship_to_zip=94110&x_ship_to_country=US&x_tax=0.00&x_freight=Freight%3C%7C%3Eground+overnight%3C%7C%3E12.95&x_duty=Duty1%3C%7C%3Eexport%3C%7C%3E15.00&x_tax_exempt=FALSE&x_po_num=12&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|VT81JY|,|Y|,|2234529893|,|123|,|Sale description|,|56.00|,|CC|,|auth_capture|,|55|,|Jane|,|Smith|,|Jane Smith Enterprises Inc.|,|20 Main Street|,|San Francisco|,|CA|,|94110|,|US|,|415-555-5557|,|415-555-5556|,|foo@example.com|,|John|,|Smith|,|Smith Enterprises Inc.|,|10 Main Street|,|San Francisco|,|CA|,|94110|,|US|,|0.00|,|15.00|,|12.95|,|FALSE|,|12|,|B3E8ECFF8D2D5C52EA86F1359F457722|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=619&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_ONLY&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|3NO3OX|,|Y|,|2234529930|,||,||,|619.00|,|CC|,|auth_only|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|B3FBA5E8D64F95E1E6943C200C7C03D7|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=619&x_card_num=6011000000000012&x_exp_date=0730&x_trans_id=2234529930&x_type=PRIOR_AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|3NO3OX|,|P|,|2234529930|,||,||,|619.00|,|CC|,|prior_auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|B3FBA5E8D64F95E1E6943C200C7C03D7|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=85&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|JKVENL|,|Y|,|2234580433|,||,||,|85.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|3899FC40AC4DCFFB1D92E62693B7733F|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=795&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|ZF3YDR|,|Y|,|2234581264|,||,||,|795.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|8CF5BB135F7F5985C9083E371F7D7E78|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=&x_card_num=6011000000000012&x_trans_id=2234581264&x_type=VOID&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|ZF3YDR|,|P|,|2234581264|,||,||,|0.00|,|CC|,|void|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|4EF4101B6CE94267AAFC18CAB71171BC|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=497&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|VJ7YZ3|,|Y|,|2234581473|,||,||,|497.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|CB5BD8F7E3EAD745A0089F6BBBE37BC9|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=&x_card_num=6011000000000012&x_trans_id=2234581473&x_type=VOID&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|VJ7YZ3|,|P|,|2234581473|,||,||,|0.00|,|CC|,|void|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|07A0E37CC006E5EF77BF8D3AA890073B|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=503&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|AT83ZJ|,|Y|,|2234581537|,||,||,|503.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|9AD38A8A686E7C02197874F18D4EE97D|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=&x_card_num=6011000000000012&x_trans_id=2234581537&x_type=VOID&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|AT83ZJ|,|P|,|2234581537|,||,||,|0.00|,|CC|,|void|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|626FC7C542D69B83E1C8A3E37824E9E9|,||,||,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+
+Wed, 03 Jun 2015 18:41:55 +0000: Request Serialization Begin
+Wed, 03 Jun 2015 18:41:55 +0000: Request  Serialization End
+Wed, 03 Jun 2015 18:41:55 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Wed, 03 Jun 2015 18:41:55 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433356915]]></refId>
+  <transactionRequest>
+    <transactionType><![CDATA[authCaptureTransaction]]></transactionType>
+    <amount>151</amount>
+    <payment>
+      <opaqueData>
+        <dataDescriptor><![CDATA[COMMON.VCO.ONLINE.PAYMENT]]></dataDescriptor>
+        <dataValue><![CDATA[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]]></dataValue>
+        <dataKey><![CDATA[JxAB39A9yUsf6wMD0jwGKCuY7mmzWaeEj85MH02AfKGUxOkJ00JK+o8vGG55cUF9voYU4QQ1Jec4p6nKmsxXmTREEaJwmQErotD4fpcFOyoqWTLMZfslrkHgiqbwru/V]]></dataKey>
+      </opaqueData>
+    </payment>
+    <callId><![CDATA[9004180129978687101]]></callId>
+  </transactionRequest>
+</createTransactionRequest>
+
+Sending 'XML' Request type
+Wed, 03 Jun 2015 18:41:55 +0000:Sending http request via Curl
+Wed, 03 Jun 2015 18:41:56 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433356915</refId><messages><resultCode>Error</resultCode><message><code>E00027</code><text>The transaction was unsuccessful.</text></message></messages><transactionResponse><responseCode>3</responseCode><authCode /><avsResultCode>P</avsResultCode><cvvResultCode /><cavvResultCode /><transId>0</transId><refTransID /><transHash>919D815A07D8170B7577EB13A2378897</transHash><testRequest>0</testRequest><accountNumber /><accountType /><errors><error><errorCode>153</errorCode><errorText>There was an error processing the payment data.</errorText></error></errors></transactionResponse></createTransactionResponse>
+
+Wed, 03 Jun 2015 18:41:56 +0000: Response De-Serialization Begin
+Wed, 03 Jun 2015 18:41:57 +0000: Response De-Serialization End
+Wed, 03 Jun 2015 18:48:04 +0000: Request Serialization Begin
+Wed, 03 Jun 2015 18:48:04 +0000: Request  Serialization End
+Wed, 03 Jun 2015 18:48:04 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Wed, 03 Jun 2015 18:48:04 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433357284]]></refId>
+  <transactionRequest>
+    <transactionType><![CDATA[authCaptureTransaction]]></transactionType>
+    <amount>151</amount>
+    <payment>
+      <opaqueData>
+        <dataDescriptor><![CDATA[COMMON.VCO.ONLINE.PAYMENT]]></dataDescriptor>
+        <dataValue><![CDATA[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]]></dataValue>
+        <dataKey><![CDATA[JxAB39A9yUsf6wMD0jwGKCuY7mmzWaeEj85MH02AfKGUxOkJ00JK+o8vGG55cUF9voYU4QQ1Jec4p6nKmsxXmTREEaJwmQErotD4fpcFOyoqWTLMZfslrkHgiqbwru/V]]></dataKey>
+      </opaqueData>
+    </payment>
+    <callId><![CDATA[9004180129978687101]]></callId>
+  </transactionRequest>
+</createTransactionRequest>
+
+Sending 'XML' Request type
+Wed, 03 Jun 2015 18:48:04 +0000:Sending http request via Curl
+Wed, 03 Jun 2015 18:48:05 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433357284</refId><messages><resultCode>Error</resultCode><message><code>E00027</code><text>The transaction was unsuccessful.</text></message></messages><transactionResponse><responseCode>3</responseCode><authCode /><avsResultCode>P</avsResultCode><cvvResultCode /><cavvResultCode /><transId>0</transId><refTransID /><transHash>919D815A07D8170B7577EB13A2378897</transHash><testRequest>0</testRequest><accountNumber /><accountType /><errors><error><errorCode>153</errorCode><errorText>There was an error processing the payment data.</errorText></error></errors></transactionResponse></createTransactionResponse>
+
+Wed, 03 Jun 2015 18:48:05 +0000: Response De-Serialization Begin
+Wed, 03 Jun 2015 18:48:05 +0000: Response De-Serialization End

@@ -1,17 +1,18 @@
 <?php
   require 'vendor/autoload.php';
-
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
-
+  define("AUTHORIZENET_API_LOGIN_ID", "556KThWQ6vf2");
+  define("AUTHORIZENET_TRANSACTION_KEY", "9ac2932kQ7kN2Wzq" );
+  define("AUTHORIZENET_SANDBOX", true);
   define("AUTHORIZENET_LOG_FILE", "phplog");
-
   // Common setup for API credentials
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName("5KP3u95bQpv");
-  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-  print_r($merchantAuthentiction);
+  $merchantAuthentication->setName("556KThWQ6vf2");
+  $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
   $refId = 'ref' . time();
+  // Testing 
+  print_r($merchantAuthentication);
 
   // Create the payment data from a Visa Checkout blob
   $op = new AnetAPI\OpaqueDataType();
@@ -47,7 +48,8 @@
     }
     else
     {
-        echo  "BAD NEWS : " . $tresponse->getResponseCode() . "\n";
+        print_r($response);
+        echo  "FAILED " . $tresponse->getResponseCode() . "\n";
     }
     
   }
@@ -55,5 +57,4 @@
   {
     echo  "REALLY BAD NEWS : ";
   }
-
 ?>

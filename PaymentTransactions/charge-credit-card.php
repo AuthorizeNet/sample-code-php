@@ -48,6 +48,7 @@
     }
     else
     {
+        print_r($response);
         echo  "FAILED " . $tresponse->getResponseCode() . "\n";
     }
     

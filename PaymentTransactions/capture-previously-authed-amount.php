@@ -8,41 +8,39 @@
   $merchantAuthentication->setName("556KThWQ6vf2");
   $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
   $refId = 'ref' . time();
-
-  $amount = rand(1, 1000);
-  $auth = new AuthorizeNetAIM;
-  // Testing 
-  print_r($auth);
-
-  $auth->setFields(
-            array(
-            'amount' => $amount,
-            'card_num' => '6011000000000012',
-            'exp_date' => '0420'
-            )
-  );
-  $response = $auth->authorizeOnly();
-
-  if ($response->approved) {
-      echo 'Authorization Transaction Approved';
-      $auth_code = $response->transaction_id;
-   // Now capture.
-      $capture = new AuthorizeNetAIM;
-      $capture->setFields(
-      array(
-           'amount' => $amount,
-           'card_num' => '6011000000000012',
-           'exp_date' => '0420',
-           'trans_id' => $auth_response->transaction_id,
-           )
-      );
-      $capture_response = $capture->priorAuthCapture();
-      if ($capture_response->approved) {
-         echo 'Capture Response Approved';
-      } else {
-         echo "Capture Response Rejected\n";
-      }          
-  } else {
-      echo "Authorization Transaction Rejected\n";
-  }          
-?>  
+  // Create the payment data for a credit card
+  $creditCard = new AnetAPI\CreditCardType();
+  $creditCard->setCardNumber( "4111111111111111" );
+  $creditCard->setExpirationDate( "2038-12");
+  $paymentOne = new AnetAPI\PaymentType();
+  $paymentOne->setCreditCard($creditCard);
+  //create a transaction
+  $transactionRequestType = new AnetAPI\TransactionRequestType();
+  $transactionRequestType->setTransactionType( "priorAuthCapture"); 
+  $transactionRequestType->setAmount(151.21);
+  $transactionRequestType->setPayment($paymentOne);
+  $request = new AnetAPI\CreateTransactionRequest();
+  $request->setMerchantAuthentication($merchantAuthentication);
+  $request->setRefId( $refId);
+  $request->setTransactionRequest( $transactionRequestType);
+  $controller = new AnetController\CreateTransactionController($request);
+  $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+  if ($response != null)
+  {
+    $tresponse = $response->getTransactionResponse();
+    if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
+    {
+      echo " AUTH CODE : " . $tresponse->getAuthCode() . "\n";
+      echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
+    }
+    else
+    {
+        echo  "ERROR : " . $tresponse->getResponseCode() . "\n";
+    }
+    
+  }
+  else
+  {
+    echo  "No response returned";
+  }
+?>

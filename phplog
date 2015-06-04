@@ -54,3 +54,39 @@ x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_
 ----Response----
 |3|,|2|,|13|,|The merchant login ID or password is invalid or the account is inactive.|,||,|P|,|0|,||,||,|374.00|,||,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|AE31EC0E1688E8687332CAFD713CC638|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
 
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_amount=154&x_card_num=6011000000000012&x_exp_date=0730&x_type=AUTH_CAPTURE&x_login=556KThWQ6vf2&x_tran_key=9ac2932kQ7kN2Wzq
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|94R2VG|,|Y|,|2234637051|,||,||,|154.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|F7BEC15BE02DADF75BB94A54A12F4805|,||,|2|,||,||,||,||,||,||,||,||,||,||,|XXXX0012|,|Discover|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+
+Thu, 04 Jun 2015 16:45:05 +0000: Request Serialization Begin
+Thu, 04 Jun 2015 16:45:05 +0000: Request  Serialization End
+Thu, 04 Jun 2015 16:45:05 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Thu, 04 Jun 2015 16:45:05 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[5KP3u95bQpv]]></name>
+    <transactionKey><![CDATA[4Ktq966gC55GAX7S]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433436304]]></refId>
+  <transactionRequest>
+    <transactionType><![CDATA[authOnlyTransaction]]></transactionType>
+    <amount>151</amount>
+    <payment>
+      <creditCard>
+        <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+        <expirationDate><![CDATA[2038-12]]></expirationDate>
+      </creditCard>
+    </payment>
+  </transactionRequest>
+</createTransactionRequest>
+
+Sending 'XML' Request type
+Thu, 04 Jun 2015 16:45:05 +0000:Sending http request via Curl
+Thu, 04 Jun 2015 16:45:06 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433436304</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>1</responseCode><authCode>KNY6CT</authCode><avsResultCode>Y</avsResultCode><cvvResultCode /><cavvResultCode>2</cavvResultCode><transId>2234638282</transId><refTransID /><transHash>067D322EC220639F53EDBBB38B45C31A</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><messages><message><code>1</code><description>This transaction has been approved.</description></message></messages></transactionResponse></createTransactionResponse>
+
+Thu, 04 Jun 2015 16:45:06 +0000: Response De-Serialization Begin
+Thu, 04 Jun 2015 16:45:06 +0000: Response De-Serialization End

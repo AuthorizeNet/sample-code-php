@@ -29,17 +29,17 @@
     $tresponse = $response->getTransactionResponse();
     if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
     {
-      echo "Void Success : " . $tresponse->getAuthCode() . "\n";
-      echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
+      echo "void transaction Success  AUTH CODE: " . $tresponse->getAuthCode() . "\n";
+      echo "void transaction TRANS ID  : " . $tresponse->getTransId() . "\n";
     }
     else
     {
-        echo  "ERROR : " . $tresponse->getResponseCode() . "\n";
+        echo  "void transaction ERROR : " . $tresponse->getResponseCode() . "\n";
     }
     
   }
   else
   {
-    echo  "No response returned";
+    echo  "void transaction No response returned";
   }
 ?>

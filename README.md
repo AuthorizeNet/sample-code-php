@@ -12,3 +12,5 @@ php VisaCheckout/visacheckout-decrypt.php
 ## API Reference
 The code samples are organized just like our API reference which you can access here http://developer.authorize.net/api/reference
 
+06-04-2014 Greg White - Added charge-credit-card, refund-transaction, void-transaction, debit-bank-account, credit-bank-account, authorize-credit-card using new model
+

@@ -30,11 +30,11 @@
     $tresponse = $response->getTransactionResponse();
     if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
     {
-      echo "Refund Success : " . $tresponse->getTransId() . "\n";
+      echo "Refund SUCCESS: " . $tresponse->getTransId() . "\n";
     }
     else
     {
-        echo  "ERROR : " . $tresponse->getResponseCode() . "\n";
+      echo  "ERROR : " . $tresponse->getResponseCode() . "\n";
     }
     
   }

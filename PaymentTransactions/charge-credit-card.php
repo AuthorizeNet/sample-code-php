@@ -76,7 +76,7 @@
   $transactionRequestType->setBillTo($billto);
   $transactionRequestType->setShipTo($shipto);
 
-  $request = new AnetAPI\CreateTransactionRequest();
+  $request = new AnetAPI\CreateCustomerProfileTransactionRequest();
   $request->setMerchantAuthentication($merchantAuthentication);
   $request->setRefId( $refId);
   $request->setTransactionRequest( $transactionRequestType);
@@ -89,8 +89,8 @@
     print_r($tresponse);
     if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
     {
-      echo " charge credit card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-      echo " charge credit card TRANS ID  : " . $tresponse->getTransId() . "\n";
+      echo "AUTH CODE : " . $tresponse->getAuthCode() . "\n";
+      echo "TRANS ID  : " . $tresponse->getTransId() . "\n";
     }
     else
     {

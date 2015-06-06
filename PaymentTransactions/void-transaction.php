@@ -29,8 +29,8 @@
     $tresponse = $response->getTransactionResponse();
     if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
     {
-      echo "void transaction Success  AUTH CODE: " . $tresponse->getAuthCode() . "\n";
-      echo "void transaction TRANS ID  : " . $tresponse->getTransId() . "\n";
+      echo "void transaction SUCCESS AUTH CODE: " . $tresponse->getAuthCode() . "\n";
+      echo "void transaction SUCCESS TRANS ID  : " . $tresponse->getTransId() . "\n";
     }
     else
     {

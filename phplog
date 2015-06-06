@@ -1,0 +1,881 @@
+
+Fri, 05 Jun 2015 23:57:36 +0000: Request Serialization Begin
+Fri, 05 Jun 2015 23:57:36 +0000: Request  Serialization End
+Fri, 05 Jun 2015 23:57:36 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Fri, 05 Jun 2015 23:57:36 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433548656]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[1433548656138]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Fri, 05 Jun 2015 23:57:36 +0000:Sending http request via Curl
+Fri, 05 Jun 2015 23:57:37 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433548656</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704713</customerProfileId><customerPaymentProfileIdList><numericString>32254557</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Fri, 05 Jun 2015 23:57:37 +0000: Response De-Serialization Begin
+Fri, 05 Jun 2015 23:57:37 +0000: Response De-Serialization End
+Fri, 05 Jun 2015 23:58:34 +0000: Request Serialization Begin
+Fri, 05 Jun 2015 23:58:34 +0000: Request  Serialization End
+Fri, 05 Jun 2015 23:58:34 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Fri, 05 Jun 2015 23:58:34 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433548714]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[1433548714126]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Fri, 05 Jun 2015 23:58:34 +0000:Sending http request via Curl
+Fri, 05 Jun 2015 23:58:35 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433548714</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704738</customerProfileId><customerPaymentProfileIdList><numericString>32254582</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Fri, 05 Jun 2015 23:58:35 +0000: Response De-Serialization Begin
+Fri, 05 Jun 2015 23:58:35 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:00:26 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:00:26 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:00:26 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:00:26 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433548826]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[143354882670]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:00:26 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:00:27 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433548826</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704748</customerProfileId><customerPaymentProfileIdList><numericString>32254596</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:00:27 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:00:27 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:12:02 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:12:02 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:12:02 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:12:02 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433549511]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[1433549511138]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:12:02 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:12:03 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433549511</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704808</customerProfileId><customerPaymentProfileIdList><numericString>32254657</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:12:03 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:12:03 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:22:53 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:22:53 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:22:53 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:22:53 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433550173]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[1433550173144]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:22:53 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:22:54 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433550173</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704886</customerProfileId><customerPaymentProfileIdList><numericString>32254740</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:22:54 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:22:55 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:23:54 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:23:54 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:23:54 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:23:54 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433550234]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[143355023484]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:23:54 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:23:55 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433550234</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704889</customerProfileId><customerPaymentProfileIdList><numericString>32254743</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:23:55 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:23:55 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:27:18 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:27:18 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:27:18 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:27:18 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433550438]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[143355043862]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:27:18 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:27:19 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433550438</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704898</customerProfileId><customerPaymentProfileIdList><numericString>32254752</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:27:19 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:27:19 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:28:02 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:28:02 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:28:02 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:28:02 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433550482]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[1433550482109]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:28:02 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:28:03 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433550482</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704899</customerProfileId><customerPaymentProfileIdList><numericString>32254753</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:28:03 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:28:03 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:29:49 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:29:49 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:29:49 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:29:49 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433550589]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[1433550589112]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:29:49 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:29:50 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433550589</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704901</customerProfileId><customerPaymentProfileIdList><numericString>32254755</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:29:50 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:29:50 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:38:20 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:38:21 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:38:21 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:38:21 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433551100]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[143355110048]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:38:21 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:38:21 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433551100</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704922</customerProfileId><customerPaymentProfileIdList><numericString>32254782</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:38:21 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:38:21 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:39:53 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:39:53 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:39:53 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:39:53 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433551193]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[143355119349]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:39:53 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:39:54 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433551193</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704925</customerProfileId><customerPaymentProfileIdList><numericString>32254786</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:39:54 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:39:54 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:52:24 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:52:24 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:52:24 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:52:24 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433551944]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[14335519445]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:52:24 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:52:26 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433551944</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704961</customerProfileId><customerPaymentProfileIdList><numericString>32254823</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:52:26 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:52:26 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:53:06 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:53:06 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:53:06 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:53:06 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433551986]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[143355198660]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:53:06 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:53:07 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433551986</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35704966</customerProfileId><customerPaymentProfileIdList><numericString>32254828</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:53:07 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:53:07 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:57:20 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:57:20 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:57:20 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:57:20 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433552240]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[143355224073]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:57:20 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:57:21 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433552240</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35705029</customerProfileId><customerPaymentProfileIdList><numericString>32254896</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:57:21 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:57:21 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 00:59:11 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 00:59:11 +0000: Request  Serialization End
+Sat, 06 Jun 2015 00:59:11 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 00:59:11 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433552351]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[1433552351144]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 00:59:11 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 00:59:12 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433552351</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35705046</customerProfileId><customerPaymentProfileIdList><numericString>32254912</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 00:59:12 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 00:59:12 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 01:00:29 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 01:00:29 +0000: Request  Serialization End
+Sat, 06 Jun 2015 01:00:29 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 01:00:29 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433552429]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[1433552429109]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 01:00:29 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 01:00:30 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433552429</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35705054</customerProfileId><customerPaymentProfileIdList><numericString>32254923</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 01:00:30 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 01:00:30 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 01:01:06 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 01:01:06 +0000: Request  Serialization End
+Sat, 06 Jun 2015 01:01:06 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 01:01:06 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433552466]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[1433552466108]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 01:01:06 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 01:01:07 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433552466</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35705060</customerProfileId><customerPaymentProfileIdList><numericString>32254929</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 01:01:07 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 01:01:07 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 01:02:03 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 01:02:03 +0000: Request  Serialization End
+Sat, 06 Jun 2015 01:02:03 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 01:02:03 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433552523]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[1433552523106]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 01:02:03 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 01:02:04 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433552523</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35705067</customerProfileId><customerPaymentProfileIdList><numericString>32254936</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 01:02:04 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 01:02:04 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 01:08:32 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 01:08:32 +0000: Request  Serialization End
+Sat, 06 Jun 2015 01:08:32 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 01:08:32 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433552912]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[143355291217]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 01:08:32 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 01:08:33 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433552912</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35705088</customerProfileId><customerPaymentProfileIdList><numericString>32254959</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 01:08:33 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 01:08:33 +0000: Response De-Serialization End
+Sat, 06 Jun 2015 01:11:00 +0000: Request Serialization Begin
+Sat, 06 Jun 2015 01:11:00 +0000: Request  Serialization End
+Sat, 06 Jun 2015 01:11:00 +0000: Url: https://apitest.authorize.net/xml/v1/request.api
+Sat, 06 Jun 2015 01:11:00 +0000:Request to AnetApi: 
+<?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name><![CDATA[556KThWQ6vf2]]></name>
+    <transactionKey><![CDATA[9ac2932kQ7kN2Wzq]]></transactionKey>
+  </merchantAuthentication>
+  <refId><![CDATA[ref1433553060]]></refId>
+  <profile>
+    <merchantCustomerId><![CDATA[143355306098]]></merchantCustomerId>
+    <description><![CDATA[Customer 2 Test PHP]]></description>
+    <email><![CDATA[test2@domain.com]]></email>
+    <paymentProfiles>
+      <customerType><![CDATA[individual]]></customerType>
+      <billTo>
+        <firstName><![CDATA[Ellen]]></firstName>
+        <lastName><![CDATA[Johnson]]></lastName>
+        <company><![CDATA[Souveniropolis]]></company>
+        <address><![CDATA[14 Main Street]]></address>
+        <city><![CDATA[Pecan Springs]]></city>
+        <state><![CDATA[TX]]></state>
+        <zip><![CDATA[44628]]></zip>
+        <country><![CDATA[USA]]></country>
+      </billTo>
+      <payment>
+        <creditCard>
+          <cardNumber><![CDATA[4111111111111111]]></cardNumber>
+          <expirationDate><![CDATA[2038-12]]></expirationDate>
+        </creditCard>
+      </payment>
+    </paymentProfiles>
+  </profile>
+</createCustomerProfileRequest>
+
+Sending 'XML' Request type
+Sat, 06 Jun 2015 01:11:00 +0000:Sending http request via Curl
+Sat, 06 Jun 2015 01:11:01 +0000:Response from AnetApi: 
+﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><refId>ref1433553060</refId><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>35705090</customerProfileId><customerPaymentProfileIdList><numericString>32254964</numericString></customerPaymentProfileIdList><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+
+Sat, 06 Jun 2015 01:11:01 +0000: Response De-Serialization Begin
+Sat, 06 Jun 2015 01:11:01 +0000: Response De-Serialization End

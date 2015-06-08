@@ -15,3 +15,5 @@ The code samples are organized just like our API reference which you can access 
 06-04-2015 Greg White - Added charge-credit-card, refund-transaction, void-transaction, debit-bank-account, credit-bank-account, authorize-credit-card using new model
 
 06-05-2015 Greg White - Added create-customer-profile.php to test CreateCustomerProfile Transaction with capture-previously-authed-amount and other API’s that use a customer profile. Testing capture-previously-authed.
+
+06-08-2015 Greg White - Additional testing charge-customer-profile.php and charge-tokenized-credit-card.php. Removed .idea and phplog from project directory 

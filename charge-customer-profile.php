@@ -9,6 +9,13 @@
   $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
   $refId = 'ref' . time();
 
+  // Create the payment data for a credit card
+  $creditCard = new AnetAPI\CreditCardType();
+  $creditCard->setCardNumber( "4111111111111111" );
+  $creditCard->setExpirationDate( "2038-12");
+  $paymentOne = new AnetAPI\PaymentType();
+  $paymentOne->setCreditCard($creditCard);
+
   // Bill To
   $billto = new AnetAPI\CustomerAddressType();
   $billto->setFirstName("Ellen");
@@ -20,20 +27,10 @@
   $billto->setZip("44628");
   $billto->setCountry("USA");
 
-   // Ship To
-  $shipto = new AnetAPI\CustomerAddressType();
-  $shipto->setFirstName("Ellen");
-  $shipto->setLastName("Johnson");
-  $shipto->setCompany("Souveniropolis");
-  $shipto->setAddress("14 Main Street");
-  $shipto->setCity("Pecan Springs");
-  $shipto->setState("TX");
-  $shipto->setZip("44628");
-  $shipto->setCountry("USA");
 
 // Create a Customer Profile Request
  //  1. create a Payment Profile
- //  2. create a Customer Profile   
+ //  2. create a Customer Profile
  //  3. Submit a CreateCustomerProfile Request
  //  4. Validate Profiiel ID returned
 
@@ -41,8 +38,7 @@
 
   $paymentprofile->setCustomerType('individual');
   $paymentprofile->setBillTo($billto);
-  $paymentprofile->setShipToList($shipto);
-  $paymentprofile->setPayment($paymentCreditCard);
+  $paymentprofile->setPayment($paymentOne);
   $paymentprofiles[] = $paymentprofile;
   $customerprofile = new AnetAPI\CustomerProfileType();
   $customerprofile->setDescription("Customer 2 Test PHP");
@@ -55,6 +51,7 @@
   $request->setMerchantAuthentication($merchantAuthentication);
   $request->setRefId( $refId);
   $request->setProfile($customerprofile);
+
   $controller = new AnetController\CreateCustomerProfileController($request);
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
@@ -101,7 +98,8 @@
   $transactionRequestType = new AnetAPI\TransactionRequestType();
   $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
   $transactionRequestType->setAmount(100.50);
-  $transactionRequestType->setProfile($profileId);
+  $paymentprofile = $customerprofile->getPaymentProfiles($paymentprofiles);
+  $transactionRequestType->setProfile($paymentprofile[0]);
   //$transactionRequestType->setPayment($paymentBank);
   $transactionRequestType->setOrder($order);
   $transactionRequestType->addToLineItems($lineitem);
@@ -139,4 +137,3 @@
     echo "no response returned";
   }
 ?>
-

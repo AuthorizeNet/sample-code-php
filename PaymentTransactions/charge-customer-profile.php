@@ -9,6 +9,13 @@
   $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
   $refId = 'ref' . time();
 
+  // Create the payment data for a credit card
+  $creditCard = new AnetAPI\CreditCardType();
+  $creditCard->setCardNumber( "4111111111111111" );
+  $creditCard->setExpirationDate( "2038-12");
+  $paymentOne = new AnetAPI\PaymentType();
+  $paymentOne->setCreditCard($creditCard);
+
   // Bill To
   $billto = new AnetAPI\CustomerAddressType();
   $billto->setFirstName("Ellen");
@@ -20,30 +27,20 @@
   $billto->setZip("44628");
   $billto->setCountry("USA");
 
-   // Ship To
-  $shipto = new AnetAPI\CustomerAddressType();
-  $shipto->setFirstName("Ellen");
-  $shipto->setLastName("Johnson");
-  $shipto->setCompany("Souveniropolis");
-  $shipto->setAddress("14 Main Street");
-  $shipto->setCity("Pecan Springs");
-  $shipto->setState("TX");
-  $shipto->setZip("44628");
-  $shipto->setCountry("USA");
 
 // Create a Customer Profile Request
- //  1. create a Payment Profile
- //  2. create a Customer Profile   
+ //  1. create a Customer Payment Profile
+ //  2. create a Customer Profile
  //  3. Submit a CreateCustomerProfile Request
- //  4. Validate Profiiel ID returned
+ //  4. Validate the profile id returned
 
   $paymentprofile = new AnetAPI\CustomerPaymentProfileType();
 
   $paymentprofile->setCustomerType('individual');
   $paymentprofile->setBillTo($billto);
-  $paymentprofile->setShipToList($shipto);
-  $paymentprofile->setPayment($paymentCreditCard);
+  $paymentprofile->setPayment($paymentOne);
   $paymentprofiles[] = $paymentprofile;
+
   $customerprofile = new AnetAPI\CustomerProfileType();
   $customerprofile->setDescription("Customer 2 Test PHP");
   $merchantCustomerId = time().rand(1,150);
@@ -59,20 +56,19 @@
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {
-      echo "Create Profile SUCCESS: PROFILE ID : " . $response->getCustomerProfileId() . "\n";
-      $profileId = $response->getCustomerProfileId(); 
-   }
+    echo "CreateCustomerProfileRequest SUCCESS: PROFILE ID : " . $response->getCustomerProfileId() . "\n";
+    $customerProfileId = $response->getCustomerProfileId();
+  }
   else
   {
-      echo "Create Profile ERROR :  Invalid response\n";
+    echo "CreateCustomerProfileRequest ERROR :  Invalid response\n";
   }
-
-  // Order info
+  // Create a new order
   $order = new AnetAPI\OrderType();
   $order->setInvoiceNumber("102");
   $order->setDescription("Tennis Shirts");
 
-  // Line Item Info
+  // Add line items
   $lineitem = new AnetAPI\LineItemType();
   $lineitem->setItemId("Shirts");
   $lineitem->setName("item2");
@@ -81,34 +77,75 @@
   $lineitem->setUnitPrice(22.89);
   $lineitem->setTaxable("Y");
 
-  // Tax info 
+  // Add new tax info
   $tax =  new AnetAPI\ExtendedAmountType();
   $tax->setName("level 2 tax name");
   $tax->setAmount(6.50);
   $tax->setDescription("level 2 tax");
 
-  // Ship To
+  // New Ship To
   $shipto = new AnetAPI\CustomerAddressType();
   $shipto->setFirstName("Mary");
   $shipto->setLastName("Smith");
-  $shipto->setCompany("Tenis Shirts Are Us");
+  $shipto->setCompany("Tennis Shirts Are Us");
   $shipto->setAddress("588 Willis Court");
   $shipto->setCity("Pecan Springs");
   $shipto->setState("TX");
   $shipto->setZip("44628");
   $shipto->setCountry("USA");
 
+  // Set a new bill to address
+  $billto = new AnetAPI\CustomerAddressType();
+  $billto->setFirstName("Mary");
+  $billto->setLastName("Smith");
+  $billto->setCompany("Tennis Shirts Are Us");
+  $billto->setAddress("588 Willis Court");
+  $billto->setCity("Pecan Springs");
+  $billto->setState("TX");
+  $billto->setZip("44628");
+  $billto->setCountry("USA");
+
+  // Create additional payment data and add a new credit card
+  $creditCard = new AnetAPI\CreditCardType();
+  $creditCard->setCardNumber( "4007000000027" );
+  $creditCard->setExpirationDate( "2038-12");
+  $paymentTwo = new AnetAPI\PaymentType();
+  $paymentTwo->setCreditCard($creditCard);
+
+  $request = new AnetAPI\CreateCustomerPaymentProfileRequest();
+  $request->setMerchantAuthentication($merchantAuthentication);
+  $request->setRefId( $refId);
+  $request->setCustomerProfileId($customerProfileId);
+
+  $paymentprofile2 = new AnetAPI\CustomerPaymentProfileType();
+  $paymentprofile2->setCustomerType('business');
+  $paymentprofile2->setBillTo($billto);
+  $paymentprofile2->setPayment($paymentTwo);
+  $paymentprofiles2[] = $paymentprofile2;
+
+  $request->setPaymentProfile($paymentprofile2);
+  $controller = new AnetController\CreateCustomerPaymentProfileController($request);
+  $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+  if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
+  {
+     echo "CreateCustomerPaymentProfileRequest SUCCESS: PROFILE ID : " . $response->getCustomerPaymentProfileId() . "\n";
+     $customerProfileId =  $response->getCustomerPaymentProfileId();
+  }
+  else
+  {
+    echo "CreateCustomerPaymentProfileRequest ERROR :  Invalid response\n";
+  }
+
   $transactionRequestType = new AnetAPI\TransactionRequestType();
   $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
   $transactionRequestType->setAmount(100.50);
-  $transactionRequestType->setProfile($profileId);
-  //$transactionRequestType->setPayment($paymentBank);
+  $transactionRequestType->setPayment($paymentprofile2->getPayment());
   $transactionRequestType->setOrder($order);
   $transactionRequestType->addToLineItems($lineitem);
   $transactionRequestType->setTax($tax);
   //$transactionRequestType->setPoNumber($ponumber);
   //$transactionRequestType->setCustomer($customer);
-  //$transactionRequestType->setBillTo($billto);
+  $transactionRequestType->setBillTo($billto);
   $transactionRequestType->setShipTo($shipto);
   $request = new AnetAPI\CreateTransactionRequest();
   $request->setMerchantAuthentication($merchantAuthentication);
@@ -121,9 +158,9 @@
     $tresponse = $response->getTransactionResponse();
     if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
     {
-      echo  "APPROVED  :" . "\n";
-      echo " AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-      echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
+      echo  "Charge Customer Profile APPROVED  :" . "\n";
+      echo " Charge Customer Profile AUTH CODE : " . $tresponse->getAuthCode() . "\n";
+      echo " Charge Customer Profile TRANS ID  : " . $tresponse->getTransId() . "\n";
     }
     elseif (($tresponse != null) && ($tresponse->getResponseCode()=="2") )
     {
@@ -139,4 +176,3 @@
     echo "no response returned";
   }
 ?>
-

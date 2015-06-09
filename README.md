@@ -17,3 +17,7 @@ The code samples are organized just like our API reference which you can access 
 06-05-2015 Greg White - Added create-customer-profile.php to test CreateCustomerProfile Transaction with capture-previously-authed-amount and other API’s that use a customer profile. Testing capture-previously-authed.
 
 06-08-2015 Greg White - Additional testing charge-customer-profile.php and charge-tokenized-credit-card.php. Removed .idea and phplog from project directory 
+
+06-08-2015 Greg White - Additional testing charge-customer-profile.php. Fixed. Updated sample-code-ruby.  
+
+

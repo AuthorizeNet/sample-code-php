@@ -18,6 +18,6 @@ The code samples are organized just like our API reference which you can access 
 
 06-08-2015 Greg White - Additional testing charge-customer-profile.php and charge-tokenized-credit-card.php. Removed .idea and phplog from project directory 
 
-06-08-2015 Greg White - Additional testing charge-customer-profile.php. Fixed. Updated sample-code-ruby.  
+06-09-2015 Greg White - Additional testing charge-customer-profile.php. Fixed. Updated sample-code-ruby.  
 
 

@@ -108,6 +108,6 @@
   }
   else
   {
-    echo  "Debit Bank Account No response returned";
+    echo  "Debit Bank Account Null response returned";
   }
 ?>

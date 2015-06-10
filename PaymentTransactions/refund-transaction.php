@@ -34,12 +34,12 @@
     }
     else
     {
-      echo  "ERROR : " . $tresponse->getResponseCode() . "\n";
+      echo  "Refund ERROR : " . $tresponse->getResponseCode() . "\n";
     }
     
   }
   else
   {
-    echo  "No response returned";
+    echo  "Refund Null response returned";
   }
 ?>

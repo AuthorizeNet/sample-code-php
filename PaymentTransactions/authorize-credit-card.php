@@ -14,7 +14,7 @@
   $creditCard->setExpirationDate( "2038-12");
   $paymentOne = new AnetAPI\PaymentType();
   $paymentOne->setCreditCard($creditCard);
-  //create a transaction
+  //create an authorize Only transaction
   $transactionRequestType = new AnetAPI\TransactionRequestType();
   $transactionRequestType->setTransactionType( "authOnlyTransaction"); 
   $transactionRequestType->setAmount(151.21);
@@ -30,17 +30,17 @@
     $tresponse = $response->getTransactionResponse();
     if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
     {
-      echo " AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-      echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
+      echo " Authorize Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
+      echo " Authorize Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";
     }
     else
     {
-        echo  "ERROR : " . $tresponse->getResponseCode() . "\n";
+        echo  "Authorize Credit Card ERROR : " . $tresponse->getResponseCode() . "\n";
     }
     
   }
   else
   {
-    echo  "No response returned";
+    echo  "Authorize Credit Card No response returned";
   }
 ?>

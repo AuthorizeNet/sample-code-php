@@ -20,4 +20,5 @@ The code samples are organized just like our API reference which you can access 
 
 06-09-2015 Greg White - Additional testing charge-customer-profile.php. Fixed. Updated sample-code-ruby.  
 
-
+06-10-2015 Greg White - Added charge-tokenized-crdit-card.php. Tested. Modified capture-only. Tested.
+                        Modified charge-previously-authed-amount. Tested. NOTE: Seems to not recognize previously authorized transaction ID's

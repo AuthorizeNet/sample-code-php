@@ -89,17 +89,17 @@
     print_r($tresponse);
     if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
     {
-      echo "AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-      echo "TRANS ID  : " . $tresponse->getTransId() . "\n";
+      echo "Charge Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
+      echo "Charge Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";
     }
     else
     {
-        echo  "ERROR :  Invalid response\n";
+        echo  "Charge Credit Card ERROR :  Invalid response\n";
     }
     
   }
   else
   {
-    echo  "No response returned";
+    echo  "Charge Credit card Null response returned";
   }
 ?>

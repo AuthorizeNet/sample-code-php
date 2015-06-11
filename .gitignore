@@ -35,3 +35,11 @@
 
 # Composer PHAR
 /composer.phar
+/composer.lock
+
+# log files
+/phplog
+
+# PHP Storm
+/.idea/*
+

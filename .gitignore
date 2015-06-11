@@ -35,3 +35,9 @@
 
 # Composer PHAR
 /composer.phar
+
+# PHP log file
+phplog
+
+# PHPStorm IDE files
+/.idea/

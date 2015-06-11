@@ -62,14 +62,14 @@
   $transactionRequestType->setAmount(5.00);
   $transactionRequestType->setPayment($paymentOne);
   //Set the merchant assigned reference ID from the previous capture only transaction request
-  $transactionRequestType->setRefTransId("2234916176");
+  $transactionRequestType->setRefTransId("2234918264");
  // $transactionRequestType->setAuthCode($capturedAuthCode);
   $transactionRequestType->setOrder($order);
   
   $request = new AnetAPI\CreateTransactionRequest();
   $request->setMerchantAuthentication($merchantAuthentication);
   $request->setTransactionRequest( $transactionRequestType);
-  $request->setRefId($refId);
+
   $controller = new AnetController\CreateTransactionController($request);
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   

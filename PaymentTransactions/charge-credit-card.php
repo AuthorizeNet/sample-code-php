@@ -3,17 +3,21 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
+
+
   // Common setup for API credentials
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
   $merchantAuthentication->setName("556KThWQ6vf2");
   $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
   $refId = 'ref' . time();
+
   // Create the payment data for a credit card
   $creditCard = new AnetAPI\CreditCardType();
   $creditCard->setCardNumber( "4111111111111111" );
   $creditCard->setExpirationDate( "2038-12");
   $paymentOne = new AnetAPI\PaymentType();
   $paymentOne->setCreditCard($creditCard);
+
   // Order info
   $order = new AnetAPI\OrderType();
   $order->setInvoiceNumber("101");
@@ -66,7 +70,7 @@
   //create a transaction
   $transactionRequestType = new AnetAPI\TransactionRequestType();
   $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
-  $transactionRequestType->setAmount(151.21);
+  $transactionRequestType->setAmount(151.51);
   $transactionRequestType->setPayment($paymentOne);
   $transactionRequestType->setOrder($order);
   $transactionRequestType->addToLineItems($lineitem);
@@ -86,7 +90,7 @@
   if ($response != null)
   {
     $tresponse = $response->getTransactionResponse();
-    print_r($tresponse);
+
     if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
     {
       echo "Charge Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";

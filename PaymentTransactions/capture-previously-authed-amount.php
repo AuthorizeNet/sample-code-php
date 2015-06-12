@@ -21,41 +21,6 @@
   $order->setInvoiceNumber("INV-12345");
   $order->setDescription("Product Description");
 
-   //create a captureOnly transaction
-   $transactionRequestType = new AnetAPI\TransactionRequestType();
-   $transactionRequestType->setTransactionType("authCaptureTransaction");
-   $transactionRequestType->setAmount(5.00);
-   $transactionRequestType->setPayment($paymentOne);
-   //Set the authorization code, which many have come through a different channel(voice call, text message,  etc)
-   $transactionRequestType->setAuthCode("ROHNFQ");
-   $transactionRequestType->setOrder($order);
-
-   $request = new AnetAPI\CreateTransactionRequest();
-   $request->setMerchantAuthentication($merchantAuthentication);
-   $request->setRefId($refId);
-   $request->setTransactionRequest($transactionRequestType);
-   $controller = new AnetController\CreateTransactionController($request);
-   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
-   if ($response != null)
-   {
-    $tresponse = $response->getTransactionResponse();
-    if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )
-    {
-        echo "Capture Funds Authorized Through Another Channel AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-        $capturedAuthCode = $tresponse->getAuthCode();
-        echo "Capture Funds Authorized Through Another Channel TRANS ID  : " . $tresponse->getTransId() . "\n";
-        $capturedTransId = $tresponse->getTransId();
-    }
-    else
-    {
-        echo  " Capture Funds Authorized Through Another Channel:  Invalid response\n";
-    }
-   }
-   else
-   {
-    echo  "Capture Funds Authorized Through Another Channel NULL response Error\n";
-   }
-
   //create a previously authorized capture transaction
   $transactionRequestType = new AnetAPI\TransactionRequestType();
   $transactionRequestType->setTransactionType("priorAuthCaptureTransaction");

@@ -20,15 +20,49 @@
   $order = new AnetAPI\OrderType();
   $order->setInvoiceNumber("INV-12345");
   $order->setDescription("Product Description");
-  
+
+    //Do an Auth Only first
+    $transactionRequestType = new AnetAPI\TransactionRequestType();
+    $transactionRequestType->setTransactionType( "authOnlyTransaction");
+    $transactionRequestType->setAmount(151);
+    $transactionRequestType->setPayment($paymentOne);
+
+    $request = new AnetAPI\CreateTransactionRequest();
+    $request->setMerchantAuthentication($merchantAuthentication);
+    $request->setRefId( $refId);
+    $request->setTransactionRequest( $transactionRequestType);
+
+    $controller = new AnetController\CreateTransactionController($request);
+    $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+
+    $transId = 0;
+
+    if ($response != null)
+    {
+        $tresponse = $response->getTransactionResponse();
+
+        if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )
+        {
+            $transId = $tresponse->getTransId();
+
+            echo " AUTH CODE : " . $tresponse->getAuthCode() . "\n";
+            echo " TRANS ID  : " . $transId . "\n";
+        }
+        else
+        {
+            echo  "ERROR : " . $tresponse->getResponseCode() . "\n";
+        }
+
+    }
+    else
+    {
+        echo  "No response returned for AUTH";
+    }
+
   //create a captureOnly transaction
   $transactionRequestType = new AnetAPI\TransactionRequestType();
   $transactionRequestType->setTransactionType( "captureOnlyTransaction");
-  $transactionRequestType->setAmount(5.00);
-  $transactionRequestType->setPayment($paymentOne);
-  //Set the authorization code, which many have come through a different channel(voice call, text message,  etc)
-  $transactionRequestType->setAuthCode("ROHNFQ");
-  $transactionRequestType->setOrder($order);
+  $transactionRequestType->setAmount(151);
   
   $request = new AnetAPI\CreateTransactionRequest();
   $request->setMerchantAuthentication($merchantAuthentication);
@@ -42,8 +76,7 @@
     $tresponse = $response->getTransactionResponse();
     if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )
     {
-      echo "Capture Funds Authorized Through Another Channel AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-      echo "Capture Funds Authorized Through Another Channel TRANS ID  : " . $tresponse->getTransId() . "\n";
+      echo "Capture Funds TRANS ID  : " . $tresponse->getTransId() . "\n";
     }
     else
     {

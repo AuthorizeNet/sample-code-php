@@ -76,7 +76,7 @@
   $transactionRequestType->setBillTo($billto);
   $transactionRequestType->setShipTo($shipto);
 
-  $request = new AnetAPI\CreateCustomerProfileTransactionRequest();
+  $request = new AnetAPI\CreateTransactionRequest();
   $request->setMerchantAuthentication($merchantAuthentication);
   $request->setRefId( $refId);
   $request->setTransactionRequest( $transactionRequestType);

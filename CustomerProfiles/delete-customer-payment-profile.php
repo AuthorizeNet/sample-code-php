@@ -7,21 +7,24 @@
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
   $merchantAuthentication->setName("556KThWQ6vf2");
   $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
-  $refId = 'ref' . time();
 
-  // Get all existing customer profile ID's
-  $request = new AnetAPI\GetCustomerProfileIdsRequest();
+  // An existing payment profile ID for this Merchant name and Transaction key
+  //
+  $customerprofileid = "10000";
+  $customerpaymentprofileid = "20000";
+
+  $request = new AnetAPI\DeleteCustomerPaymentProfileRequest();
   $request->setMerchantAuthentication($merchantAuthentication);
-  $controller = new AnetController\GetCustomerProfileIdsController($request);
+  $request->setCustomerProfileId($customerprofileid);
+  $request->setCustomerPaymentProfileId($customerpaymentprofileid);
+  $controller = new AnetController\DeleteCustomerPaymentProfileController($request);
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {
-      echo "GetCustomerProfileId's SUCCESS: " . "\n";
-      $profileIds[] = $response->getIds();
-      echo "There are " . count($profileIds[0]) . " Customer Profile ID's for this Merchant Name and Transaction Key" . "\n";
+      echo "SUCCESS: Delete Customer Payment Profile  SUCCESS  :" . "\n";
    }
   else
   {
-      echo "GetCustomerProfileId's ERROR :  Invalid response\n";
+      echo "ERROR :  Delete Customer Payment Profile: Invalid response\n";
   }
-?>
+ ?>

@@ -11,4 +11,3 @@ php VisaCheckout/visacheckout-decrypt.php
 
 ## API Reference
 The code samples are organized just like our API reference which you can access here http://developer.authorize.net/api/reference
- 

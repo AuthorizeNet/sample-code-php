@@ -16,7 +16,7 @@
   $customershippingaddress->setFirstName("James");
   $customershippingaddress->setLastName("White");
   $customershippingaddress->setCompany("Addresses R Us");
-  $customershippingaddress->setAddress("14 North Spring Street");
+  $customershippingaddress->setAddress(rand() . " North Spring Street");
   $customershippingaddress->setCity("Toms River");
   $customershippingaddress->setState("NJ");
   $customershippingaddress->setZip("08753");

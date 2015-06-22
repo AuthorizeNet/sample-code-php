@@ -8,23 +8,25 @@
   $merchantAuthentication->setName("556KThWQ6vf2");
   $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
 
+  // Use an existing customer profile and address id for this merchant name and transaction key
+  $customerprofileid = "35894174";
+  $customeraddressid = "32445389";
 
-
-  $request = new AnetAPI\CreateCustomerProfileFromTransactionRequest();
+  // Delete an existing customer shipping address for an existing customer profile
+  $request = new AnetAPI\DeleteCustomerShippingAddressRequest();
   $request->setMerchantAuthentication($merchantAuthentication);
-  $request->setTransId("2235382051");
+  $request->setCustomerProfileId($customerprofileid);
+  $request->setCustomerAddressId($customeraddressid);
 
-  $controller = new AnetController\CreateCustomerProfileFromTransactionController($request);
-
+  $controller = new AnetController\DeleteCustomerShippingAddressController($request);
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
-
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {
-      echo "SUCCESS: PROFILE ID : " . $response->getCustomerProfileId() . "\n";
+      echo "Delete Customer Shipping Address SUCCESS:" . "\n";
    }
   else
   {
-      echo "ERROR :  Invalid response\n";
+      echo "Delete Customer Shipping Address  ERROR :  Invalid response\n";
       echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
   }
 ?>

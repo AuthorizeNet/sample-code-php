@@ -54,12 +54,33 @@
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {
-      echo "SUCCESS: PROFILE ID : " . $response->getCustomerProfileId() . "\n";
+      echo "SUCCESS: CreateCustomerProfile PROFILE ID : " . $response->getCustomerProfileId() . "\n";
+
+      $profileIdRequested = $response->getCustomerProfileId();
    }
   else
   {
-      echo "ERROR :  Invalid response\n";
+      echo "ERROR :  CreateCustomerProfile: Invalid response\n";
       echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
-      
+  }
+  // Retrieve an existing customer profile along with all the associated payment profiles and shipping addresses
+
+  $request = new AnetAPI\GetCustomerProfileRequest();
+  $request->setMerchantAuthentication($merchantAuthentication);
+  $request->setCustomerProfileId($profileIdRequested);
+  $controller = new AnetController\GetCustomerProfileController($request);
+  $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+  if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
+  {
+    echo "GetCustomerProfile SUCCESS : " .  "\n";
+    $profileSelected = $response->getProfile();
+    $paymentProfilesSelected[] = $profileSelected->getPaymentProfiles();
+    echo "Profile Has " . count($paymentProfilesSelected). " Payment Profiles" . "\n";
+
+  }
+  else
+  {
+    echo "ERROR :  GetCustomerProfile: Invalid response\n";
+    echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
   }
 ?>

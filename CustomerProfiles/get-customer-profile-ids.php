@@ -7,24 +7,22 @@
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
   $merchantAuthentication->setName("556KThWQ6vf2");
   $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
+  $refId = 'ref' . time();
 
-
-
-  $request = new AnetAPI\CreateCustomerProfileFromTransactionRequest();
+  // Get all existing customer profile ID's
+  $request = new AnetAPI\GetCustomerProfileIdsRequest();
   $request->setMerchantAuthentication($merchantAuthentication);
-  $request->setTransId("2235382051");
-
-  $controller = new AnetController\CreateCustomerProfileFromTransactionController($request);
-
+  $controller = new AnetController\GetCustomerProfileIdsController($request);
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
-
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {
-      echo "SUCCESS: PROFILE ID : " . $response->getCustomerProfileId() . "\n";
+      echo "GetCustomerProfileId's SUCCESS: " . "\n";
+      $profileIds[] = $response->getIds();
+      echo "There are " . count($profileIds[0]) . " Customer Profile ID's for this Merchant Name and Transaction Key" . "\n";
    }
   else
   {
-      echo "ERROR :  Invalid response\n";
+      echo "GetCustomerProfileId's ERROR :  Invalid response\n";
       echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
   }
 ?>

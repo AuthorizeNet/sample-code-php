@@ -31,7 +31,6 @@
  //  1. create a Payment Profile
  //  2. create a Customer Profile   
  //  3. Submit a CreateCustomerProfile Request
- //  4. Validate Profiiel ID returned
 
   $paymentprofile = new AnetAPI\CustomerPaymentProfileType();
 
@@ -40,10 +39,10 @@
   $paymentprofile->setPayment($paymentCreditCard);
   $paymentprofiles[] = $paymentprofile;
   $customerprofile = new AnetAPI\CustomerProfileType();
-  $customerprofile->setDescription("Customer 2 Test PHP");
+  $customerprofile->setDescription("Create Customer Profile Request Test for PHP");
   $merchantCustomerId = time().rand(1,150);
   $customerprofile->setMerchantCustomerId($merchantCustomerId);
-  $customerprofile->setEmail("test2@domain.com");
+  $customerprofile->setEmail("customerprofile@domain.com");
   $customerprofile->setPaymentProfiles($paymentprofiles);
 
   $request = new AnetAPI\CreateCustomerProfileRequest();
@@ -54,12 +53,29 @@
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {
-      echo "SUCCESS: PROFILE ID : " . $response->getCustomerProfileId() . "\n";
+      echo "SUCCESS: CreateCustomerProfile PROFILE ID : " . $response->getCustomerProfileId() . "\n";
+
+      $profileidcreated = $response->getCustomerProfileId();
    }
   else
   {
-      echo "ERROR :  Invalid response\n";
-      echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
-      
+      echo "ERROR :  CreateCustomerProfile: Invalid response\n";
+  }
+  // Delete an existing customer profile  
+  $request = new AnetAPI\DeleteCustomerProfileRequest();
+  $request->setMerchantAuthentication($merchantAuthentication);
+  $request->setCustomerProfileId( $profileidcreated );
+
+  $controller = new AnetController\DeleteCustomerProfileController($request);
+  $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+  if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
+  {
+    echo "DeleteCustomerProfile SUCCESS : " .  "\n";
+  }
+  else
+  {
+    echo "ERROR :  DeleteCustomerProfile: Invalid response\n";
+    echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+
   }
 ?>

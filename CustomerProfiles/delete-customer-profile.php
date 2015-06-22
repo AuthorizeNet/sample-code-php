@@ -75,5 +75,7 @@
   else
   {
     echo "ERROR :  DeleteCustomerProfile: Invalid response\n";
+    echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+
   }
 ?>

@@ -1,13 +1,16 @@
-# Sample Code for the Authorize.Net PHP SDK
-The goal of this code sample repository is to provide completely self-contained autonomous examples of using our PHP SDK to access the Authorize.Net API.
+# Sample PHP Code for Authorize.Net
+This repository contains working code samples which demonstrate PHP integration with the Authorize.Net PHP SDK.
+The samples are organized just like our API, which you can also try out directly here: http://developer.authorize.net/api/reference
 
-## Set Up
+
+##Using the Sample Code
+
+The samples are all completely independent and self-contained so you can look at them to get a gist of how the method works, you can use the snippets to try in your own sample project, or you can run each sample from the command line.
+
+##Running the Samples
 Clone this repository.
 Run "composer update" in the root directory.
 Run the individual samples e.g. 
 ````
-php VisaCheckout/visacheckout-decrypt.php
+php PaymentTransactions/charge-credit-card.php
 ````
-
-## API Reference
-The code samples are organized just like our API reference which you can access here http://developer.authorize.net/api/reference

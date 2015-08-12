@@ -9,26 +9,12 @@
   $merchantAuthentication->setName( "556KThWQ6vf2"); 
   $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
 
-  $refId = 'ref' . time();
-
-  $subscription = new AnetAPI\ARBSubscriptionType();
-
-  $creditCard = new AnetAPI\CreditCardType();
-  $creditCard->setCardNumber("4111111111111111");
-  $creditCard->setExpirationDate("2020-12");
-
-  $payment = new AnetAPI\PaymentType();
-  $payment->setCreditCard($creditCard);
-
-  $subscription->setPayment($payment);
-
-  $request = new AnetAPI\ARBUpdateSubscriptionRequest();
+  $request = new AnetAPI\UpdateSplitTenderGroupRequest();
   $request->setMerchantAuthentication($merchantAuthentication);
-  $request->setRefId($refId);
-  $request->setSubscriptionId("100748");
-  $request->setSubscription($subscription);
+  $request->setSplitTenderId("123456");
+  $request->setSplitTenderStatus("voided");
 
-  $controller = new AnetController\ARBUpdateSubscriptionController($request);
+  $controller = new AnetController\UpdateSplitTenderGroupController($request);
 
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   

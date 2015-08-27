@@ -24,6 +24,8 @@
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
   {
       echo "SUCCESS: Transaction Status:" . $response->getTransaction()->getTransactionStatus() . "\n";
+      echo "                Auth Amount:" . $response->getTransaction()->getAuthAmount() . "\n";
+      echo "                   Trans ID:" . $response->getTransaction()->getTransId() . "\n";
    }
   else
   {

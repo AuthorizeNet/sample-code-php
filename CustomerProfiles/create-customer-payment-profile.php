@@ -32,6 +32,7 @@
   $creditCard = new AnetAPI\CreditCardType();
   $creditCard->setCardNumber( "4012888818888" );
   $creditCard->setExpirationDate( "2038-11");
+  $creditCard->setCardCode( "123");
   $paymentCreditCard = new AnetAPI\PaymentType();
   $paymentCreditCard->setCreditCard($creditCard);
 
@@ -67,8 +68,7 @@
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {
-     echo "Create Customer Payment Profile SUCCESS: " . "\n";
-     $retrievedcustomerpaymentprofile = $response->getCustomerPaymentProfileId();
+     echo "Create Customer Payment Profile SUCCESS: " . $response->getCustomerPaymentProfileId() . "\n";
    }
   else
   {

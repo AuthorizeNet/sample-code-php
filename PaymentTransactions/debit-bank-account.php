@@ -48,11 +48,15 @@
     elseif (($tresponse != null) && ($tresponse->getResponseCode()=="2") )
     {
       echo  "Debit Bank Account ERROR : DECLINED" . "\n";
-      echo  "Error : " . $tresponse->getErrors()->getErrorText() . "\n";
+      echo  "Error : " . $tresponse->getErrors()[0]->getErrorText() . "\n";
     }
     elseif (($tresponse != null) && ($tresponse->getResponseCode()=="4") )
     {
         echo  "Debit Bank Account ERROR: HELD FOR REVIEW:"  . "\n";
+    }
+    else
+    {
+        echo  "Debit Bank Account 3 response returned";
     }
   }
   else

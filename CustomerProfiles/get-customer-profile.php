@@ -74,7 +74,7 @@
   {
     echo "GetCustomerProfile SUCCESS : " .  "\n";
     $profileSelected = $response->getProfile();
-    $paymentProfilesSelected[] = $profileSelected->getPaymentProfiles();
+    $paymentProfilesSelected = $profileSelected->getPaymentProfiles();
     echo "Profile Has " . count($paymentProfilesSelected). " Payment Profiles" . "\n";
 
   }

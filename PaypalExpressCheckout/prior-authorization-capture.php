@@ -22,6 +22,7 @@
   $transactionRequest->setAmount(floatval(19.45));
   $transactionRequest->setRefTransId(2241687191);
 
+  $request = new AnetAPI\CreateTransactionRequest();
   $request->setMerchantAuthentication($merchantAuthentication);
   $request->setRefId( $refId);
   $request->setTransactionRequest($transactionRequest);

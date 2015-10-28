@@ -22,7 +22,7 @@
 
   //  First Authorize the amount
   $transactionRequestType = new AnetAPI\TransactionRequestType();
-  $transactionRequestType->setTransactionType("authOnlyTransaction");
+  $transactionRequestType->setTransactionType("priorAuthCaptureTransaction");
   $transactionRequestType->setAmount(5.00);
   $transactionRequestType->setPayment($paymentOne);
 

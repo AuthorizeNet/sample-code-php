@@ -38,7 +38,8 @@
 	// Getting the response
 	$response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
 	
-	if(($response != null)){
+	if(($response != null))
+	{
 		if ($response->getMessages()->getResultCode() == "Ok")
 		{
 			// Success
@@ -47,7 +48,7 @@
 			echo "Message Text: " . $response->getMessages()->getMessage()[0]->getText() . "\n";
 			echo "Total number of Results in the result set" . $response->getTotalNumInResultSet() . "\n";
 			// Displaying the customer payment profile list 
-			foreach($response->paymentProfiles as $paymentProfile )
+			foreach($response->getPaymentProfiles() as $paymentProfile )
 			{
 				echo "\nCustomer Profile id: " . $paymentProfile->getCustomerProfileId() . "\n";
 				echo "Payment profile id: " . $paymentProfile->getCustomerPaymentProfileId() . "\n";
@@ -63,7 +64,8 @@
 			echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
 		}
 	}
-	else{
+	else
+	{
 		// Failed to get the response
 		echo "NULL Response Error";
 	}

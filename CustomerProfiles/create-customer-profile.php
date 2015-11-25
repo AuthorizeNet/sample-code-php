@@ -55,6 +55,7 @@
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {
       echo "SUCCESS: PROFILE ID : " . $response->getCustomerProfileId() . "\n";
+      echo "SUCCESS: PAYMENT PROFILE ID : " . $response->getCustomerPaymentProfileIdList()[0] . "\n";
    }
   else
   {

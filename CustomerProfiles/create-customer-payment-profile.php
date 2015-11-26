@@ -11,24 +11,6 @@
   //Use an existing profile id
   $existingcustomerprofileid = "35858366";
 
-  // Retrieve an existing customer profile along with all the associated payment profiles and shipping addresses
-  $request = new AnetAPI\GetCustomerProfileRequest();
-  $request->setMerchantAuthentication($merchantAuthentication);
-  $request->setCustomerProfileId( $existingcustomerprofileid );
-  $controller = new AnetController\GetCustomerProfileController($request);
-
-  $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
-  if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
-  {
- //   echo "SUCCESS: PROFILE RETRIEVED : " . $response->getProfile() . "\n";
-    $getcustomerprofileid = $response->getProfile();
-  }
-  else
-  {
-    echo "GetCustomerProfileRequest ERROR :  Invalid response\n";
-  }
-
-  // Create the payment data for a credit card
   $creditCard = new AnetAPI\CreditCardType();
   $creditCard->setCardNumber( "4012888818888" );
   $creditCard->setExpirationDate( "2038-11");
@@ -54,17 +36,16 @@
   $paymentprofile->setCustomerType('individual');
   $paymentprofile->setBillTo($billto);
   $paymentprofile->setPayment($paymentCreditCard);
-  $paymentprofile->setTaxId("level2");
 
   $paymentprofiles[] = $paymentprofile;
 
   // Submit a CreateCustomerPaymentProfileRequest to create a new Customer Payment Profile
   $paymentprofilerequest = new AnetAPI\CreateCustomerPaymentProfileRequest();
   $paymentprofilerequest->setMerchantAuthentication($merchantAuthentication);
-  $paymentprofilerequest->setCustomerProfileId( $getcustomerprofileid  );
+  $paymentprofilerequest->setCustomerProfileId( $existingcustomerprofileid );
   $paymentprofilerequest->setPaymentProfile( $paymentprofile );
   $paymentprofilerequest->setValidationMode("liveMode");
-  $controller = new AnetController\CreateCustomerPaymentProfileController($request);
+  $controller = new AnetController\CreateCustomerPaymentProfileController($paymentprofilerequest);
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {

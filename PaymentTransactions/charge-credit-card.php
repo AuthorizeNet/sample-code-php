@@ -30,7 +30,7 @@
   $lineitem->setDescription("golf shirt");
   $lineitem->setQuantity("1");
   $lineitem->setUnitPrice(20.95);
-  $lineitem->setTaxable("Y");
+  $lineitem->setTaxable(false);
 
   // Tax info 
   $tax =  new AnetAPI\ExtendedAmountType();

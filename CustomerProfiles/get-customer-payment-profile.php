@@ -28,6 +28,9 @@ if(($response != null)){
     {
         echo "GetCustomerPaymentProfile SUCCESS: " . "\n";
         echo "Customer Payment Profile Id: " . $response->getPaymentProfile()->getCustomerPaymentProfileId() . "\n";
+        echo "Customer Payment Profile Billing Address: " . $response->getPaymentProfile()->getbillTo()->getAddress(). "\n";
+        echo "Customer Payment Profile Card Last 4 " . $response->getPaymentProfile()->getPayment()->getCreditCard()->getCardNumber(). "\n";
+
     }
     else
     {

@@ -20,7 +20,7 @@
 	$paging->setOffset("1");
 	
 	//Setting the sorting
-	$sorting = new AnetApi\CustomerPaymentProfileSortingType();
+	$sorting = new AnetAPI\CustomerPaymentProfileSortingType();
 	$sorting->setOrderBy("id");
 	$sorting->setOrderDescending("false");
 	

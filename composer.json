@@ -12,12 +12,7 @@
   "goetas/xsd2php":"2.*@dev",
   "goetas/xsd-reader":"2.*@dev"
 },
-"autoload": {
-        "classmap": ["lib"]
-    },
-    "autoload-dev": {
-        "classmap": ["tests"]
-    },
+
 "repositories": [{
     "type": "vcs",
     "url": "https://github.com/goetas/serializer.git"

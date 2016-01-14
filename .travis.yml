@@ -5,9 +5,5 @@ php:
     
 sudo: false
 
-before_script:
-    - pecl install xmldiff
-    - composer install --prefer-dist --dev
-    
 script:
     - phpunit test-runner.php

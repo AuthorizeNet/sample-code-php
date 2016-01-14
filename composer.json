@@ -2,10 +2,9 @@
   "require": {
   "php": ">=5.2.0",
   "ext-curl": "*",
-  "authorizenet/authorizenet": "1.8.6.2",
-  "jms/serializer": "xsd2php-dev as 0.18.0"
+  "authorizenet/authorizenet": "1.8.6.2"
   },
   "require-dev": {
-  "phpunit/phpunit": "~4.0",
+  "phpunit/phpunit": "~4.0"
   }
 }

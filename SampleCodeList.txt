@@ -1,0 +1,15 @@
+﻿SampleCodeName,IsDependent,ShouldRun
+CreateCustomerProfile,0,1
+GetCustomerProfile,0,0
+GetCustomerProfileIds,0,0
+UpdateCustomerProfile,0,0
+DeleteCustomerProfile,0,0
+CreateCustomerPaymentProfile,1,1
+GetCustomerPaymentProfile,0,0
+GetCustomerPaymentProfileList,0,0
+ValidateCustomerPaymentProfile,0,0
+UpdateCustomerPaymentProfile,0,0
+DeleteCustomerPaymentProfile,0,0
+CreateCustomerShippingAddress,0,0
+DeleteCustomerShippingAddress,0,0
+CreateCustomerProfileFromTransaction,0,0

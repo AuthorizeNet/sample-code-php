@@ -8,6 +8,8 @@
 	
 	define("AUTHORIZENET_LOG_FILE", "phplog");
 	
+	function getCustomerPaymentProfileList()
+	{
 	// Common setup for API credentials (merchant)
 	$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
 	$merchantAuthentication->setName("5KP3u95bQpv");
@@ -20,7 +22,7 @@
 	$paging->setOffset("1");
 	
 	//Setting the sorting
-	$sorting = new AnetApi\CustomerPaymentProfileSortingType();
+	$sorting = new AnetAPI\CustomerPaymentProfileSortingType();
 	$sorting->setOrderBy("id");
 	$sorting->setOrderDescending("false");
 	
@@ -69,4 +71,8 @@
 		// Failed to get the response
 		echo "NULL Response Error";
 	}
+	return $response;
+	}
+	if(!defined(DONT_RUN_SAMPLES))
+        getCustomerPaymentProfileList();
 ?>

@@ -8,6 +8,8 @@ use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
+function getCustomerPaymentProfile($customerProfileId="36731856", $customerPaymentProfileId="33211899")
+{
 // Common setup for API credentials (merchant)
 $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
 $merchantAuthentication->setName("5KP3u95bQpv");
@@ -18,8 +20,8 @@ $refId = 'ref' . time();
 $request = new AnetAPI\GetCustomerPaymentProfileRequest();
 $request->setMerchantAuthentication($merchantAuthentication);
 $request->setRefId( $refId);
-$request->setCustomerProfileId("36731856");
-$request->setCustomerPaymentProfileId("33211899");
+$request->setCustomerProfileId($customerProfileId);
+$request->setCustomerPaymentProfileId($customerPaymentProfileId);
 
 $controller = new AnetController\GetCustomerPaymentProfileController($request);
 $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
@@ -41,4 +43,8 @@ if(($response != null)){
 else{
     echo "NULL Response Error";
 }
+return $response;
+}
+if(!defined(DONT_RUN_SAMPLES))
+    getCustomerPaymentProfile();
 ?>

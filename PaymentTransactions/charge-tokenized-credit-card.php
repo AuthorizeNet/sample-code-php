@@ -4,7 +4,7 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function chargeTokenizedCreditCard(){
+  function chargeTokenizedCreditCard($amount){
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName("556KThWQ6vf2");
@@ -24,7 +24,7 @@
     //create a transaction
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType("authCaptureTransaction"); 
-    $transactionRequestType->setAmount(151.22);
+    $transactionRequestType->setAmount($amount);
     $transactionRequestType->setPayment($paymentOne);
 
 

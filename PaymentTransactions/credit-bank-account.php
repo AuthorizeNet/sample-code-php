@@ -4,12 +4,12 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function creditBankAccount(){
+  function creditBankAccount($transactionid, $amount){
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName("556KThWQ6vf2");
     $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
-    $refId = 'ref' . time();
+    $refId = $transactionid;
     // Create the payment data for a Bank Account
     $bankAccount = new AnetAPI\BankAccountType();
     $bankAccount->setRoutingNumber('125000024');
@@ -28,7 +28,7 @@
     
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType( "refundTransaction"); 
-    $transactionRequestType->setAmount(250.75);
+    $transactionRequestType->setAmount($amount);
     $transactionRequestType->setPayment($paymentBank);
     $transactionRequestType->setOrder($order);
     $request = new AnetAPI\CreateTransactionRequest();

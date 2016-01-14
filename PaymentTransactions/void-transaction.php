@@ -4,12 +4,12 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function voidTransaction(){
+  function voidTransaction($transactionid){
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName("556KThWQ6vf2");
     $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
-    $refId = 'ref' . time();
+    
     // Create the payment data for a credit card
     $creditCard = new AnetAPI\CreditCardType();
     $creditCard->setCardNumber( "4111111111111111" );
@@ -23,7 +23,7 @@
     RequestType->setPayment($paymentOne);
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
-    $request->setRefId( $refId);
+    $request->setRefId($transactionid);
     $request->setTransactionRequest( $transactionRequestType);
     $controller = new AnetController\CreateTransactionController($request);
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);

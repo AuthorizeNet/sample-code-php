@@ -4,7 +4,7 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function debitBankAccount(){
+  function debitBankAccount($amount){
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName("556KThWQ6vf2");
@@ -28,7 +28,7 @@
     
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
-    $transactionRequestType->setAmount(250.75);
+    $transactionRequestType->setAmount($amount);
     $transactionRequestType->setPayment($paymentBank);
 
     $request = new AnetAPI\CreateTransactionRequest();

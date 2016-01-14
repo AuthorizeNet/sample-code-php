@@ -4,18 +4,16 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function createCustomerProfileFromTransaction()
+  function createCustomerProfileFromTransaction($transId="2238251168")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
 	  $merchantAuthentication->setName("556KThWQ6vf2");
 	  $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
 
-
-
 	  $request = new AnetAPI\CreateCustomerProfileFromTransactionRequest();
 	  $request->setMerchantAuthentication($merchantAuthentication);
-	  $request->setTransId("2238251168");
+	  $request->setTransId($transId);
 
 	  $controller = new AnetController\CreateCustomerProfileFromTransactionController($request);
 

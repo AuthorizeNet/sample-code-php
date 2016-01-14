@@ -88,6 +88,7 @@
 		  echo "Update Customer Payment Profile: ERROR Invalid response\n";
 		  echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
 	  }
+	  return $response;
   }
   if(!defined(DONT_RUN_SAMPLES))
       updateCustomerPaymentProfile();

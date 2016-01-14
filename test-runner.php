@@ -35,6 +35,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	}
 	public function testAllSampleCodes(){
 		$runTests = 0;
+		$skippedTests = 0;
 		$file = 'SampleCodeList.txt';
 		$data = file($file) or die('\nCould not read SampleCodeList.');
 		foreach ($data as $line)
@@ -53,7 +54,8 @@ class TestRunner extends PHPUnit_Framework_TestCase
 				echo "should run:".$shouldRun."\n";
 				if("0" === $shouldRun)
 				{
-					echo ":Skipping " . $sampleMethodName . "\n";
+					echo ":Skipping " . $apiName . "\n";
+					$skippedTests++;
 				}
 				else
 				{
@@ -71,7 +73,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 					
 					
 					//request the api
-					echo "Running sample: " . $sampleMethodName;
+					echo "Running sample: " . $sampleMethodName . "\n";
 					
 					$response = call_user_func($sampleMethodName);
 
@@ -83,12 +85,79 @@ class TestRunner extends PHPUnit_Framework_TestCase
 			}
 		}
 		echo "Number of sample codes run: ". $runTests;
+		echo "Number of sample codes skipped: " . $skippedTests;
 	}
-	public static function runCreateCustomerPaymentProfile(){
-		$responseCustomerProfile = createCustomerProfile();
+	//customer profiles methods
+	public static function runCreateCustomerProfile(){
+		$response = createCustomerProfile(self::randEmail());
+		$customerProfileId = $response->getCustomerProfileId();
+		deleteCustomerProfileWithId($customerProfileId);
+		return $response;
+	}
+	public static function runGetCustomerProfile(){
+		$responseCustomerProfile = createCustomerProfile(self::randEmail());
 		$existingCustomerProfileId = $responseCustomerProfile->getCustomerProfileId();
-		return createCustomerPaymentProfile($existingCustomerProfileId, self::randPhoneNumber());
+		$response = getCustomerProfile($existingCustomerProfileId);
+		return $response;
 	}
+	public static function runUpdateCustomerProfile(){
+		$responseCustomerProfile = createCustomerProfile(self::randEmail());
+		$customerProfileId = $responseCustomerProfile->getCustomerProfileId();
+		$response = updateCustomerProfileById($customerProfileId);
+		deleteCustomerProfileWithId($customerProfileId);
+		return $response;
+	}
+	//customer profiles - payment profiles methods
+	public static function runCreateCustomerPaymentProfile(){
+		$responseCustomerProfile = createCustomerProfile(self::randEmail());
+		$existingCustomerProfileId = $responseCustomerProfile->getCustomerProfileId();
+		$response=createCustomerPaymentProfile($existingCustomerProfileId, self::randPhoneNumber());
+		return $response;
+	}
+	public static function runGetCustomerPaymentProfile(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$customerPaymentProfileId = createCustomerPaymentProfile($customerProfileId, self::randPhoneNumber())
+			->getCustomerPaymentProfileId();
+		$response= getCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		deleteCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		return $response;
+	}
+	public static function runValidateCustomerPaymentProfile(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$customerPaymentProfileId = createCustomerPaymentProfile($customerProfileId, self::randPhoneNumber())
+			->getCustomerPaymentProfileId();
+		$response= getCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		validateCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		return $response;
+	}
+	public static function runUpdateCustomerPaymentProfile(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$customerPaymentProfileId = createCustomerPaymentProfile($customerProfileId, self::randPhoneNumber())
+			->getCustomerPaymentProfileId();
+		$response= getCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		updateCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		return $response;
+	}
+	public static function runDeleteCustomerPaymentProfile(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$customerPaymentProfileId = createCustomerPaymentProfile($customerProfileId, self::randPhoneNumber())
+			->getCustomerPaymentProfileId();
+		$response= getCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		deleteCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		return $response;
+	}
+	//customer profiles - shipping address
+	public static function runCreateCustomerShippingAddress(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$response = createCustomerShippingAddress($customerProfileId, self::randPhoneNumber())
+		deleteCustomerShippingAddress($customerProfileId, $response->getCustomerShippingAddressId());
+		return $response;
+	}
+	public static function runDeleteCustomerShippingAddress(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$responseCreateShipping = createCustomerShippingAddress($customerProfileId, self::randPhoneNumber())
+		return deleteCustomerShippingAddress($customerProfileId, $responsCreateShippinge->getCustomerShippingAddressId());
+	} 
 	private static function toPhoneNumber($num)
 	{
 		$zeroPadded = sprintf("%10d", $num);

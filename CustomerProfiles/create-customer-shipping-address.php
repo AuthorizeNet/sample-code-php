@@ -3,7 +3,7 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
-  function createCustomerShippingAddress($existingcustomerprofileid = "35872074")
+  function createCustomerShippingAddress($existingcustomerprofileid = "35872074", $phoneNumber="000-000-0000")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -22,7 +22,7 @@
 	  $customershippingaddress->setState("NJ");
 	  $customershippingaddress->setZip("08753");
 	  $customershippingaddress->setCountry("USA");
-	  $customershippingaddress->setPhoneNumber("000-000-0000");
+	  $customershippingaddress->setPhoneNumber($phoneNumber);
 	  $customershippingaddress->setFaxNumber("999-999-9999");
 
 	  // Create a new customer shipping address for an existing customer profile

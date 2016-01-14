@@ -4,13 +4,13 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function validateCustomerPaymentProfile($customerprofileid = "37680862", $customerpaymentprofileid = "34249159")
+  function validateCustomerPaymentProfile($customerProfileId="36731856", $customerPaymentProfileId="33211899")
   {
   // Common setup for API credentials
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName("3Zw3Ru9nx");
-  $merchantAuthentication->setTransactionKey("7Tbj6T3a9cPq4A5d");
-
+  $merchantAuthentication->setName("5KP3u95bQpv");
+  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+	  
   // Use an existing payment profile ID for this Merchant name and Transaction key
   //validationmode tests , does not send an email receipt
   $validationmode = "testMode";

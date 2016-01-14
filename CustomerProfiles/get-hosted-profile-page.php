@@ -4,17 +4,14 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function getHostedProfielPage()
+  function getHostedProfilePage($customerprofileid = "37680862")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
 	  $merchantAuthentication->setName("3Zw3Ru9nx");
 	  $merchantAuthentication->setTransactionKey("7Tbj6T3a9cPq4A5d");
 
-	  // An existing payment profile ID for this Merchant name and Transaction key
-	  //
-	  $customerprofileid = "37680862";
-	  $customerpaymentprofileid = "34249159";
+	  // Use an existing payment profile ID for this Merchant name and Transaction key
 	  
 	  $setting = new AnetAPI\SettingType();
 	  $setting->setSettingName("hostedProfileReturnUrl");

@@ -4,42 +4,50 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  // Common Set Up for API Credentials
-  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName( "556KThWQ6vf2"); 
-  $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
+  function getListOfSubscriptions() {
 
-  $refId = 'ref' . time();
+    // Common Set Up for API Credentials
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName( "556KThWQ6vf2"); 
+    $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
 
-  $sorting = new AnetAPI\ARBGetSubscriptionListSortingType();
-  $sorting->setOrderBy("id");
-  $sorting->setOrderDescending("false");
+    $refId = 'ref' . time();
 
-  $paging = new AnetAPI\PagingType();
-  $paging->setLimit("1000");
-  $paging->setOffset("1");
+    $sorting = new AnetAPI\ARBGetSubscriptionListSortingType();
+    $sorting->setOrderBy("id");
+    $sorting->setOrderDescending("false");
 
-  $request = new AnetAPI\ARBGetSubscriptionListRequest();
-  $request->setMerchantAuthentication($merchantAuthentication);
-  $request->setRefId($refId);
-  $request->setSearchType("subscriptionInactive");
-  $request->setSorting($sorting);
-  $request->setPaging($paging);
+    $paging = new AnetAPI\PagingType();
+    $paging->setLimit("1000");
+    $paging->setOffset("1");
+
+    $request = new AnetAPI\ARBGetSubscriptionListRequest();
+    $request->setMerchantAuthentication($merchantAuthentication);
+    $request->setRefId($refId);
+    $request->setSearchType("subscriptionInactive");
+    $request->setSorting($sorting);
+    $request->setPaging($paging);
 
 
-  $controller = new AnetController\ARBGetSubscriptionListController($request);
+    $controller = new AnetController\ARBGetSubscriptionListController($request);
 
-  $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+    $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
-  if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
-  {
-      echo "SUCCESS: Subscription Details:" . $response->getSubscriptionDetails() . "\n";
-      echo "Total Number In Results:" . $response->getTotalNumInResultSet() . "\n";
-   }
-  else
-  {
-      echo "ERROR :  Invalid response\n";
-      echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
-      
+    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
+    {
+        echo "SUCCESS: Subscription Details:" . $response->getSubscriptionDetails() . "\n";
+        echo "Total Number In Results:" . $response->getTotalNumInResultSet() . "\n";
+     }
+    else
+    {
+        echo "ERROR :  Invalid response\n";
+        echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+        
+    }
+
+    return $response;
   }
-  ?>
+
+  if(!defined(DONT_RUN_SAMPLES))
+    getListOfSubscriptions();
+?>

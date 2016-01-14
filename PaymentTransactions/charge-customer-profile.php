@@ -4,7 +4,7 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function chargeCustomerProfile(){
+  function chargeCustomerProfile($profileid, $paymentprofileid, $amount){
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName("5KP3u95bQpv");
@@ -12,15 +12,15 @@
     $refId = 'ref' . time();
 
     $profileToCharge = new AnetAPI\CustomerProfilePaymentType();
-    $profileToCharge->setCustomerProfileId("36731856");
+    $profileToCharge->setCustomerProfileId($profileid);
     $paymentProfile = new AnetAPI\PaymentProfileType();
-    $paymentProfile->setPaymentProfileId("33211899");
+    $paymentProfile->setPaymentProfileId($paymentprofileid);
     $profileToCharge->setPaymentProfile($paymentProfile);
 
 
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
-    $transactionRequestType->setAmount(100.50);
+    $transactionRequestType->setAmount($amount);
     $transactionRequestType->setProfile($profileToCharge);
 
     $request = new AnetAPI\CreateTransactionRequest();

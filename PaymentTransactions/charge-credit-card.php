@@ -4,7 +4,7 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function chargeCreditCard(){
+  function chargeCreditCard($amount){
       // Common setup for API credentials
       $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
       $merchantAuthentication->setName("556KThWQ6vf2");
@@ -29,13 +29,13 @@
       $lineitem->setName("item1");
       $lineitem->setDescription("golf shirt");
       $lineitem->setQuantity("1");
-      $lineitem->setUnitPrice(20.95);
+      $lineitem->setUnitPrice($amount);
       $lineitem->setTaxable(false);
 
       // Tax info 
       $tax =  new AnetAPI\ExtendedAmountType();
       $tax->setName("level 2 tax name");
-      $tax->setAmount(4.50);
+      $tax->setAmount($amount);
       $tax->setDescription("level 2 tax");
 
       // Customer info 
@@ -70,7 +70,7 @@
       //create a transaction
       $transactionRequestType = new AnetAPI\TransactionRequestType();
       $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
-      $transactionRequestType->setAmount(151.51);
+      $transactionRequestType->setAmount($amount);
       $transactionRequestType->setPayment($paymentOne);
       $transactionRequestType->setOrder($order);
       $transactionRequestType->addToLineItems($lineitem);

@@ -20,7 +20,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	public static $payerID = "LM6NCLZ5RAKBY";
 	//random amount for transactions/subscriptions
 	public static function randAmount(){
-		return rand(0, 10000);
+		return 12 + (rand(1, 10000)/12);
 	}
 	//random email for a new customer profile
 	public static function randEmail(){
@@ -84,7 +84,9 @@ class TestRunner extends PHPUnit_Framework_TestCase
 		}
 		echo "Number of sample codes run: ". $runTests;
 	}
-	public static function runCreateCustomerPaymentProfile(){
+
+	public static function runCreateCustomerPaymentProfile()
+	{
 		$responseCustomerProfile = createCustomerProfile();
 		$existingCustomerProfileId = $responseCustomerProfile->getCustomerProfileId();
 		return createCustomerPaymentProfile($existingCustomerProfileId, self::randPhoneNumber());
@@ -93,6 +95,96 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	{
 		$zeroPadded = sprintf("%10d", $num);
 		return substr($zeroPadded,0,3)."-".substr($zeroPadded,3,3)."-".substr(6,4);
-		
 	}
+
+	public static function runAuthorizeCreditCard()
+	{
+		return authorizeCreditCard(self::randAmount());
+	}
+	
+	public static function runDebitBankAccount()
+	{
+		return debitBankAccount(self::randAmount());
+	}
+	
+	public static function runChargeTokenizedCreditCard()
+	{
+		return chargeTokenizedCreditCard(self::randAmount());
+	}
+
+	public static function runChargeCreditCard()
+	{
+		return chargeCreditCard(self::randAmount());
+	}
+
+	public static function runCapturePreviouslyAuthorizedAmount()
+	{
+		$response = authorizeCreditCard(self::randAmount());
+		return capturePreviouslyAuthorizedAmount(response->getTransactionResponse()->getTransId());
+	}
+
+	public static function runRefundTransaction()
+	{
+		$response = authorizeCreditCard.run(self::randAmount());
+		$response = capturePreviouslyAuthorizedAmount($response->getTransactionResponse()->getTransId());
+		return refundTransaction(self::randAmount(), response->getTransactionResponse()->getTransId());
+	}
+
+	public static function runVoidTransaction()
+	{
+		$response = authorizeCreditCard(self::randAmount());
+		return voidTransaction($response->getTransactionResponse()->getTransId());
+	}
+
+	public static function runCreditBankAccount()
+	{
+		return creditBankAccount(self::$transactionID, self::randAmount());
+	}
+
+	public static function runChargeCustomerProfile()
+	{
+		$response = createCustomerProfile(self::randEmail());
+		$paymentProfileResponse = createCustomerPaymentProfile(response->getCustomerProfileId());
+		$chargeResponse = chargeCustomerProfile(response->getCustomerProfileId(), paymentProfileResponse->getCustomerPaymentProfileId(), self::randAmount());
+		deleteCustomerProfile(response->getCustomerProfileId());
+
+		return $chargeResponse;
+	}
+
+	private static function runPayPalVoid() { 
+		$response = payPalAuthorizeCapture(self::randAmount());
+		return payPalVoid($response->getTransactionResponse()->getTransId());
+	}
+
+   private static function runPayPalAuthorizeCapture()
+   {
+		return payPalAuthorizeCapture(self::randAmount());
+   }
+
+   private static function runPayPalAuthorizeCaptureContinue() 
+   {
+		$response = payPalAuthorizeCapture(self::randAmount());
+        return payPalAuthorizeCaptureContinue($response->getTransactionResponse()->getTransId(), self::$payerID);
+   }
+
+   public static function runPayPalAuthorizeOnlyContinue() 
+   {
+		return payPalAuthorizeOnlyContinue(self::$transactionID, self::$payerID);
+   }
+
+   public static function runPayPalCredit() { 
+		return payPalCredit(self::$transactionID);
+   }
+
+   public static function runPayPalGetDetails() 
+   {
+   		$response = payPalAuthorizeCapture(self::randAmount());
+   		return payPalGetDetails($response->getTransactionResponse()->getTransId());
+   }
+
+   public static function runPayPalPriorAuthorizationCapture() 
+   {
+		$response = payPalAuthorizeCapture(self::randAmount());
+		return payPalPriorAuthorizationCapture($response->getTransactionResponse()->getTransId())
+   }
 }

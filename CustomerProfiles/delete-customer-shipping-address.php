@@ -7,8 +7,8 @@
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("556KThWQ6vf2");
-	  $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
+	  $merchantAuthentication->setName("5KP3u95bQpv");
+	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
 
 	  // Use an existing customer profile and address id for this merchant name and transaction key
 	  // Delete an existing customer shipping address for an existing customer profile

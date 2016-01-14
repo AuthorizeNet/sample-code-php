@@ -8,8 +8,8 @@
   function getCustomerProfile(){
 	  
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName("556KThWQ6vf2");
-  $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
+  $merchantAuthentication->setName("5KP3u95bQpv");
+  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
   $refId = 'ref' . time();
 
     // Create the payment data for a credit card

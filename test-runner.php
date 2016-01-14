@@ -3,7 +3,13 @@ define("DONT_RUN_SAMPLES", "true");
 define("SAMPLE_CODE_NAME_HEADING", "SampleCodeName");
 require 'vendor/autoload.php';
 $directories = array(
-            'CustomerProfiles/'
+            'CustomerProfiles/',
+            'RecurringBilling/',
+            'PaypalExpressCheckout/',
+            'PaymentTransactions/',
+            'TransactionReporting/',
+            'ApplePayTransactions/',
+            'VisaCheckout/'
 );
 foreach ($directories as $directory) {
     foreach(glob($directory . "*.php") as $sample) {
@@ -19,15 +25,15 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	public static $transactionID = "2245440957";
 	public static $payerID = "LM6NCLZ5RAKBY";
 	//random amount for transactions/subscriptions
-	public static function randAmount(){
+	public static function getAmount(){
 		return 12 + (rand(1, 10000)/12);
 	}
 	//random email for a new customer profile
-	public static function randEmail(){
+	public static function getEmail(){
 		return rand(0,10000) . "@test.com";
 	}
 	//random phonenumber for customer payment profile
-	public static function randPhoneNumber(){
+	public static function getPhoneNumber(){
 	    return self::toPhoneNumber(rand(0,9999999999));
 	}
 	public function getDay(){
@@ -85,12 +91,6 @@ class TestRunner extends PHPUnit_Framework_TestCase
 		echo "Number of sample codes run: ". $runTests;
 	}
 
-	public static function runCreateCustomerPaymentProfile()
-	{
-		$responseCustomerProfile = createCustomerProfile();
-		$existingCustomerProfileId = $responseCustomerProfile->getCustomerProfileId();
-		return createCustomerPaymentProfile($existingCustomerProfileId, self::randPhoneNumber());
-	}
 	private static function toPhoneNumber($num)
 	{
 		$zeroPadded = sprintf("%10d", $num);
@@ -99,71 +99,71 @@ class TestRunner extends PHPUnit_Framework_TestCase
 
 	public static function runAuthorizeCreditCard()
 	{
-		return authorizeCreditCard(self::randAmount());
+		return authorizeCreditCard(self::getAmount());
 	}
 	
 	public static function runDebitBankAccount()
 	{
-		return debitBankAccount(self::randAmount());
+		return debitBankAccount(self::getAmount());
 	}
 	
 	public static function runChargeTokenizedCreditCard()
 	{
-		return chargeTokenizedCreditCard(self::randAmount());
+		return chargeTokenizedCreditCard(self::getAmount());
 	}
 
 	public static function runChargeCreditCard()
 	{
-		return chargeCreditCard(self::randAmount());
+		return chargeCreditCard(self::getAmount());
 	}
 
 	public static function runCapturePreviouslyAuthorizedAmount()
 	{
-		$response = authorizeCreditCard(self::randAmount());
-		return capturePreviouslyAuthorizedAmount(response->getTransactionResponse()->getTransId());
+		$response = authorizeCreditCard(self::getAmount());
+		return capturePreviouslyAuthorizedAmount($response->getTransactionResponse()->getTransId());
 	}
 
 	public static function runRefundTransaction()
 	{
-		$response = authorizeCreditCard.run(self::randAmount());
+		$response = authorizeCreditCard.run(self::getAmount());
 		$response = capturePreviouslyAuthorizedAmount($response->getTransactionResponse()->getTransId());
-		return refundTransaction(self::randAmount(), response->getTransactionResponse()->getTransId());
+		return refundTransaction(self::getAmount(), $response->getTransactionResponse()->getTransId());
 	}
 
 	public static function runVoidTransaction()
 	{
-		$response = authorizeCreditCard(self::randAmount());
+		$response = authorizeCreditCard(self::getAmount());
 		return voidTransaction($response->getTransactionResponse()->getTransId());
 	}
 
 	public static function runCreditBankAccount()
 	{
-		return creditBankAccount(self::$transactionID, self::randAmount());
+		return creditBankAccount(self::$transactionID, self::getAmount());
 	}
 
 	public static function runChargeCustomerProfile()
 	{
-		$response = createCustomerProfile(self::randEmail());
-		$paymentProfileResponse = createCustomerPaymentProfile(response->getCustomerProfileId());
-		$chargeResponse = chargeCustomerProfile(response->getCustomerProfileId(), paymentProfileResponse->getCustomerPaymentProfileId(), self::randAmount());
-		deleteCustomerProfile(response->getCustomerProfileId());
+		$response = createCustomerProfile(self::getEmail());
+		$paymentProfileResponse = createCustomerPaymentProfile($response->getCustomerProfileId());
+		$chargeResponse = chargeCustomerProfile($response->getCustomerProfileId(), $paymentProfileResponse->getCustomerPaymentProfileId(), self::getAmount());
+		deleteCustomerProfile($response->getCustomerProfileId());
 
 		return $chargeResponse;
 	}
 
 	private static function runPayPalVoid() { 
-		$response = payPalAuthorizeCapture(self::randAmount());
+		$response = payPalAuthorizeCapture(self::getAmount());
 		return payPalVoid($response->getTransactionResponse()->getTransId());
 	}
 
    private static function runPayPalAuthorizeCapture()
    {
-		return payPalAuthorizeCapture(self::randAmount());
+		return payPalAuthorizeCapture(self::getAmount());
    }
 
    private static function runPayPalAuthorizeCaptureContinue() 
    {
-		$response = payPalAuthorizeCapture(self::randAmount());
+		$response = payPalAuthorizeCapture(self::getAmount());
         return payPalAuthorizeCaptureContinue($response->getTransactionResponse()->getTransId(), self::$payerID);
    }
 
@@ -178,13 +178,134 @@ class TestRunner extends PHPUnit_Framework_TestCase
 
    public static function runPayPalGetDetails() 
    {
-   		$response = payPalAuthorizeCapture(self::randAmount());
+   		$response = payPalAuthorizeCapture(self::getAmount());
    		return payPalGetDetails($response->getTransactionResponse()->getTransId());
    }
 
    public static function runPayPalPriorAuthorizationCapture() 
    {
-		$response = payPalAuthorizeCapture(self::randAmount());
-		return payPalPriorAuthorizationCapture($response->getTransactionResponse()->getTransId())
+		$response = payPalAuthorizeCapture(self::getAmount());
+		return payPalPriorAuthorizationCapture($response->getTransactionResponse()->getTransId());
    }
+
+   public static function runGetTransactionDetails()
+   {
+		$response = authorizeCreditCard(self::getAmount());
+		return getTransactionDetails($response.getTransactionResponse().getTransId());
+   }
+
+
+   public static function runCreateSubscription()
+   {
+		$response = createSubscription(self::getDay());
+		cancelSubscription($response->getSubscriptionId());
+
+		return $response;
+   }
+
+   public static function runCancelSubscription()
+   {
+		$response = createSubscription(self::getDay());
+		return cancelSubscription($response->getSubscriptionId());
+   }
+
+   public static function runGetSubscriptionStatus()
+   {
+		$response = createSubscription(self::getDay());
+		$status_response = getSubscriptionStatus($response->getSubscriptionId());
+		cancelSubscription($response->getSubscriptionId());
+
+		return $status_response;
+   }
+
+   public static function runGetSubscription()
+   {
+		$response = createSubscription(self::getDay());
+		$status_response = getSubscription($response->getSubscriptionId());
+		cancelSubscription($response->getSubscriptionId());
+
+		return $status_response;
+   }
+
+   public static function runUpdateSubscription()
+   {
+		$response = createSubscription(self::getDay());
+		$update_response = updateSubscription($response->getSubscriptionId());
+		cancelSubscription($response->getSubscriptionId());
+
+		return $update_response;
+   }
+
+   	//customer profiles methods
+	public static function runCreateCustomerProfile(){
+		$response = createCustomerProfile(self::randEmail());
+		$customerProfileId = $response->getCustomerProfileId();
+		deleteCustomerProfileWithId($customerProfileId);
+		return $response;
+	}
+	public static function runGetCustomerProfile(){
+		$responseCustomerProfile = createCustomerProfile(self::randEmail());
+		$existingCustomerProfileId = $responseCustomerProfile->getCustomerProfileId();
+		$response = getCustomerProfile($existingCustomerProfileId);
+		return $response;
+	}
+	public static function runUpdateCustomerProfile(){
+		$responseCustomerProfile = createCustomerProfile(self::randEmail());
+		$customerProfileId = $responseCustomerProfile->getCustomerProfileId();
+		$response = updateCustomerProfileById($customerProfileId);
+		deleteCustomerProfileWithId($customerProfileId);
+		return $response;
+	}
+	//customer profiles - payment profiles methods
+
+	public static function runCreateCustomerPaymentProfile()
+	{
+		$responseCustomerProfile = createCustomerProfile(self::randEmail());
+		$existingCustomerProfileId = $responseCustomerProfile->getCustomerProfileId();
+		$response=createCustomerPaymentProfile($existingCustomerProfileId, self::randPhoneNumber());
+		return $response;
+	}
+	public static function runGetCustomerPaymentProfile(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$customerPaymentProfileId = createCustomerPaymentProfile($customerProfileId, self::randPhoneNumber())
+			->getCustomerPaymentProfileId();
+		$response= getCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		deleteCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		return $response;
+	}
+	public static function runValidateCustomerPaymentProfile(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$customerPaymentProfileId = createCustomerPaymentProfile($customerProfileId, self::randPhoneNumber())
+			->getCustomerPaymentProfileId();
+		$response= getCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		validateCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		return $response;
+	}
+	public static function runUpdateCustomerPaymentProfile(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$customerPaymentProfileId = createCustomerPaymentProfile($customerProfileId, self::randPhoneNumber())->getCustomerPaymentProfileId();
+		$response= getCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		updateCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		return $response;
+	}
+	public static function runDeleteCustomerPaymentProfile(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$customerPaymentProfileId = createCustomerPaymentProfile($customerProfileId, self::randPhoneNumber())
+			->getCustomerPaymentProfileId();
+		$response= getCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		deleteCustomerPaymentProfile($customerProfileId, $customerPaymentProfileId);
+		return $response;
+	}
+	//customer profiles - shipping address
+	public static function runCreateCustomerShippingAddress(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$response = createCustomerShippingAddress($customerProfileId, self::randPhoneNumber());
+		deleteCustomerShippingAddress($customerProfileId, $response->getCustomerShippingAddressId());
+		return $response;
+	}
+	public static function runDeleteCustomerShippingAddress(){
+		$customerProfileId = createCustomerProfile(self::randEmail())->getCustomerProfileId();
+		$responseCreateShipping = createCustomerShippingAddress($customerProfileId, self::randPhoneNumber());
+		return deleteCustomerShippingAddress($customerProfileId, $responsCreateShippinge->getCustomerShippingAddressId());
+	} 
 }

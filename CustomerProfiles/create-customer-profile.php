@@ -4,7 +4,7 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function createCustomerProfile($customerEmail){
+  function createCustomerProfile($email){
 	  
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -44,9 +44,10 @@
 	  $paymentprofiles[] = $paymentprofile;
 	  $customerprofile = new AnetAPI\CustomerProfileType();
 	  $customerprofile->setDescription("Customer 2 Test PHP");
-	  $merchantCustomerId=time().rand(1,150);
-	  $customerprofile->setMerchantCustomerId($merchantCustomerId);
-	  $customerprofile->setEmail($customerEmail);
+	  if(-1 == $merchantCustomerId)
+	      $merchantCustomerId=time().rand(1,150);
+	  $customerprofile->setMerchantCustomerId("M_".$email);
+	  $customerprofile->setEmail($email);
 	  $customerprofile->setPaymentProfiles($paymentprofiles);
 
 	  $request = new AnetAPI\CreateCustomerProfileRequest();
@@ -69,5 +70,5 @@
 	  return $response;
   }
   if(!defined(DONT_RUN_SAMPLES))
-      createCustomerProfile("john2@test.com");
+      createCustomerProfile();
 ?>

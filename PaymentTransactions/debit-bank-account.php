@@ -67,5 +67,5 @@
     return $response;
   }
   if(!defined(DONT_RUN_SAMPLES))
-    debitBankAccount();
+    debitBankAccount(21.34);
 ?>

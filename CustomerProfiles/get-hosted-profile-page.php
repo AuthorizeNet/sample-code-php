@@ -8,8 +8,8 @@
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("3Zw3Ru9nx");
-	  $merchantAuthentication->setTransactionKey("7Tbj6T3a9cPq4A5d");
+	  $merchantAuthentication->setName("5KP3u95bQpv");
+	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
 
 	  // Use an existing payment profile ID for this Merchant name and Transaction key
 	  
@@ -43,5 +43,5 @@
 	  return $response;
   }
   if(!defined(DONT_RUN_SAMPLES))
-      getHostedProfielPage();    
+      getHostedProfilePage();    
 ?>

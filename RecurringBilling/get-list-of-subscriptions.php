@@ -35,7 +35,7 @@
 
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
     {
-        echo "SUCCESS: Subscription Details:" . $response->getSubscriptionDetails() . "\n";
+        //echo "SUCCESS: Subscription Details:" . $response->getSubscriptionDetails() . "\n";
         echo "Total Number In Results:" . $response->getTotalNumInResultSet() . "\n";
      }
     else

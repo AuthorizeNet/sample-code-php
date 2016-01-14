@@ -3,7 +3,7 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
-  function updateCustomerShippingAddress()
+  function updateCustomerShippingAddress($customerprofileid, $customeraddressid)
   {
   // Common setup for API credentials
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -11,7 +11,7 @@
   $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
 
   // An existing customer profile id for this merchant name and transaction key
-  $existingcustomerprofileid = "35843932";
+  $existingcustomerprofileid = $customerprofileid;
 
   // Create the customer shipping address
   $customershippingaddress = new AnetAPI\CustomerAddressExType();
@@ -25,6 +25,7 @@
   $customershippingaddress->setCountry("USA");
   $customershippingaddress->setPhoneNumber("201-000-0000");
   $customershippingaddress->setFaxNumber("973-999-9999");
+  $customershippingaddress->setCustomerAddressId($customeraddressid);
 
   // Update an existing customer shipping address for an existing customer profile
   $request = new AnetAPI\UpdateCustomerShippingAddressRequest();

@@ -6,7 +6,7 @@ use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function payPalAuthorizeOnly() {
+function payPalAuthorizeOnly($amount) {
     // Common setup for API credentials (Paypal compatible merchant)
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName("5KP3u95bQpv");
@@ -23,7 +23,7 @@ function payPalAuthorizeOnly() {
     //create a auth-only transaction
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType( "authOnlyTransaction");
-    $transactionRequestType->setAmount(921);
+    $transactionRequestType->setAmount($amount);
     $transactionRequestType->setPayment($paymentOne);
 
     $request = new AnetAPI\CreateTransactionRequest();
@@ -54,6 +54,6 @@ function payPalAuthorizeOnly() {
 }
 
 if(!defined(DONT_RUN_SAMPLES))
-    payPalAuthorizeOnly();
+    payPalAuthorizeOnly(23.34);
 
 ?>

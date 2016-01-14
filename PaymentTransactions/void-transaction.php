@@ -20,9 +20,10 @@
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType( "voidTransaction"); 
     $transactionRequestType->setPayment($paymentOne);
+    $transactionRequestType->setRefTransId($transactionid);
+
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
-    $request->setRefId($transactionid);
     $request->setTransactionRequest( $transactionRequestType);
     $controller = new AnetController\CreateTransactionController($request);
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);

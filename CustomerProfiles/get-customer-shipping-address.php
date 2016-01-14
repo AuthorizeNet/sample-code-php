@@ -3,7 +3,7 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
-  function getCustomerShippingAddress()
+  function getCustomerShippingAddress($customerprofileid, $customeraddressid)
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -11,8 +11,8 @@
 	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
 
 	  // An existing customer profile id and shipping address id for this merchant name and transaction key
-	  $customerProfileId = "36731856";
-	  $customerAddressId = "35850995";
+	  $customerProfileId = $customerprofileid;
+	  $customerAddressId = $customeraddressid;
 
 	  $request = new AnetAPI\GetCustomerShippingAddressRequest();
 	  $request->setMerchantAuthentication($merchantAuthentication);

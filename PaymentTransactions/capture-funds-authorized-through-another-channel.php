@@ -4,7 +4,7 @@ use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function captureFundsAuthorizedThroughAnotherChannel(){
+function captureFundsAuthorizedThroughAnotherChannel($amount){
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName("5KP3u95bQpv");
@@ -20,7 +20,7 @@ function captureFundsAuthorizedThroughAnotherChannel(){
 
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType("captureOnlyTransaction");
-    $transactionRequestType->setAmount(5.00);
+    $transactionRequestType->setAmount($amount);
     $transactionRequestType->setPayment($paymentOne);
 
     //Auth code of the previously authorized  amount
@@ -55,5 +55,5 @@ function captureFundsAuthorizedThroughAnotherChannel(){
     return $response;
 }
 if(!defined(DONT_RUN_SAMPLES))
-    captureFundsAuthorizedThroughAnotherChannel();
+    captureFundsAuthorizedThroughAnotherChannel(5.0);
 ?>

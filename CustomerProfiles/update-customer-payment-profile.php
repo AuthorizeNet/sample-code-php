@@ -22,8 +22,8 @@
 	  // For card information you can pass exactly what comes back from an GetCustomerPaymentProfile
 	  // if you don't need to update that info
 	  $creditCard = new AnetAPI\CreditCardType();
-	  $creditCard->setCardNumber( "XXXX1111" );
-	  $creditCard->setExpirationDate( "XXXX");
+	  $creditCard->setCardNumber( "4111111111111111" );
+	  $creditCard->setExpirationDate( "0718");
 	  $paymentCreditCard = new AnetAPI\PaymentType();
 	  $paymentCreditCard->setCreditCard($creditCard);
 

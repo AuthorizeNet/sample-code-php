@@ -41,7 +41,7 @@
       // Customer info 
       $customer = new AnetAPI\CustomerDataType();
       $customer->setId("15");
-      $customer->setEmail("foo@example.com");
+      $customer->setEmail(rand(0,10000) . "@test.com");
 
       // PO Number
       $ponumber = "15";
@@ -91,7 +91,7 @@
       {
         $tresponse = $response->getTransactionResponse();
 
-        if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
+        if (($tresponse != null) && ($tresponse->getResponseCode()=="Ok") )   
         {
           echo "Charge Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
           echo "Charge Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";

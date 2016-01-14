@@ -44,8 +44,7 @@
 	  $paymentprofiles[] = $paymentprofile;
 	  $customerprofile = new AnetAPI\CustomerProfileType();
 	  $customerprofile->setDescription("Customer 2 Test PHP");
-	  if(-1 == $merchantCustomerId)
-	      $merchantCustomerId=time().rand(1,150);
+
 	  $customerprofile->setMerchantCustomerId("M_".$email);
 	  $customerprofile->setEmail($email);
 	  $customerprofile->setPaymentProfiles($paymentprofiles);

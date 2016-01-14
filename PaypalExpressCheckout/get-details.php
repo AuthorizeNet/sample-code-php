@@ -24,6 +24,15 @@
     //replace following transaction ID with your transaction ID for which the details are required
     $transactionRequestType->setRefTransId($transactionId);
 
+    // Create the payment data for a paypal account
+    $payPalType = new AnetAPI\PayPalType();
+    $payPalType->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
+    $payPalType->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
+    $paymentOne = new AnetAPI\PaymentType();
+    $paymentOne->setPayPal($payPalType);
+
+    $transactionRequestType->setPayment($paymentOne);
+
     //create a transaction request
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
@@ -48,7 +57,7 @@
       		echo "Shipping address : " . $shipping_response->getAddress() . ", " . $shipping_response->getCity()
       		. ", " . $shipping_response->getState() . ", " . $shipping_response->getCountry() . "\n";
       	
-      		echo "Payer ID : " . $tresponse->getSecureAcceptance()->getPayerID();
+      		//echo "Payer ID : " . $tresponse->getSecureAcceptance()->getPayerID();
       	}
       	else
       	{

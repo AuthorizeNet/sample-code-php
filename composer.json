@@ -8,9 +8,11 @@
 },
 "require-dev": {
   "phpunit/phpunit": "~4.0",
-  "goetas/xsd2php": "2.*@dev",
-  "goetas/xsd-reader": "2.*@dev"
+  "phpmd/phpmd": "~2.0",
+  "goetas/xsd2php":"2.*@dev",
+  "goetas/xsd-reader":"2.*@dev"
 },
+
 "repositories": [{
     "type": "vcs",
     "url": "https://github.com/goetas/serializer.git"

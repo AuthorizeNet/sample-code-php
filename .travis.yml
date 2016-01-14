@@ -6,7 +6,8 @@ php:
 sudo: false
 
 before_script:
+    - pecl install xmldiff
     - composer install --prefer-dist --dev
     
 script:
-    - vendor/phpunit/phpunit/phpunit --coverage-clover=coverage.clover
+    - vendor/phpunit/phpunit/phpunit

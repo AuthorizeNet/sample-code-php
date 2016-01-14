@@ -33,7 +33,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	}
 	//random email for a new customer profile
 	public static function getEmail(){
-		return rand(0,10000) . "@test.com";
+		return rand(0,10000) . "@test" .rand(0,10000) .".com";
 	}
 	//random phonenumber for customer payment profile
 	public static function getPhoneNumber(){

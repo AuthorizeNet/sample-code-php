@@ -4,7 +4,7 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function deleteCustomerPaymentProfile($customerProfileId="38900575", $customerpaymentprofileid = "35366197")
+  function deleteCustomerPaymentProfile($customerProfileId="36152127", $customerpaymentprofileid = "32689274")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();

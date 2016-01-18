@@ -30,6 +30,7 @@
 	  }
 	  return $response;
   }
+  //provide a transaction that has customer information
   if(!defined(DONT_RUN_SAMPLES))
-      createCustomerProfileFromTransaction();
+      createCustomerProfileFromTransaction("2249066517");
 ?>

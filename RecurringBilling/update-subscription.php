@@ -23,7 +23,7 @@
     $payment->setCreditCard($creditCard);
 
     $subscription->setPayment($payment);
-
+    
     $request = new AnetAPI\ARBUpdateSubscriptionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
     $request->setRefId($refId);
@@ -48,5 +48,5 @@
   }
 
   if(!defined(DONT_RUN_SAMPLES))
-      updateSubscription("100748");
+      updateSubscription("3056948");
 ?>

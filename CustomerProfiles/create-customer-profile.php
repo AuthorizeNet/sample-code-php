@@ -69,5 +69,5 @@
 	  return $response;
   }
   if(!defined(DONT_RUN_SAMPLES))
-      createCustomerProfile();
+      createCustomerProfile("test567@test.com");
 ?>

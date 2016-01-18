@@ -55,5 +55,5 @@
     return $response;
   }
   if(!defined(DONT_RUN_SAMPLES))
-    chargeTokenizedCreditCard();
+    chargeTokenizedCreditCard(13.5);
 ?>

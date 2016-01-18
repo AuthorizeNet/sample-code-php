@@ -9,9 +9,11 @@
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName( "8V4xFm3z");
     $merchantAuthentication->setTransactionKey("655AS4Ek7TJ42snq");
+	$refId = 'ref' . time();
 
     $request = new AnetAPI\UpdateSplitTenderGroupRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
+	$request->setRefId($refId);
     $request->setSplitTenderId("116468");
     $request->setSplitTenderStatus("voided");
 

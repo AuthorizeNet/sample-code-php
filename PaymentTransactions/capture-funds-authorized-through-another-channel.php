@@ -9,7 +9,7 @@ function captureFundsAuthorizedThroughAnotherChannel($amount){
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName("5KP3u95bQpv");
     $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-    $refId = "123456";
+    $refId = 'ref' . time();
 
     $creditCard = new AnetAPI\CreditCardType();
     $creditCard->setCardNumber( "4111111111111111");

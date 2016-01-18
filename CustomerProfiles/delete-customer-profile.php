@@ -34,5 +34,5 @@
   }
   
   if(!defined(DONT_RUN_SAMPLES))
-      deleteCustomerProfile("2133432");
+      deleteCustomerProfile("38958129");
 ?>

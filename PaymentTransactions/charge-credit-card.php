@@ -31,11 +31,11 @@
       $controller = new AnetController\CreateTransactionController($request);
       $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
       
-      if ($response != null)
+	  if ($response != null)
       {
         $tresponse = $response->getTransactionResponse();
 
-        if (($tresponse != null) && ($tresponse->getResponseCode()=="Ok") )   
+        if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
         {
           echo "Charge Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
           echo "Charge Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";
@@ -53,5 +53,5 @@
       return $response;
   }
   if(!defined(DONT_RUN_SAMPLES))
-      chargeCreditCard();
+      chargeCreditCard(17.9);
 ?>

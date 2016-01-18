@@ -4,7 +4,7 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function deleteCustomerShippingAddress($customerprofileid = "35872074", $customeraddressid = "36931511")
+  function deleteCustomerShippingAddress($customerprofileid = "36152127", $customeraddressid = "36976434")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -22,7 +22,7 @@
 	  $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
 	  if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
 	  {
-		  echo "Delete Customer Shipping Address SUCCESS:" . "\n";
+		  echo "Delete Customer Shipping Address SUCCESS" . "\n";
 	   }
 	  else
 	  {

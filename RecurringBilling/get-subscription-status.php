@@ -37,6 +37,6 @@
   }
 
   if(!defined(DONT_RUN_SAMPLES))
-    getSubscriptionStatus("100748");
+    getSubscriptionStatus("3056945");
 
 ?>

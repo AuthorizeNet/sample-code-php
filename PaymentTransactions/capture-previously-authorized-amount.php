@@ -9,7 +9,7 @@
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName("5KP3u95bQpv");
     $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-    $refId = "123456";
+    $refId = 'ref' . time();
 
     // Now capture the previously authorized  amount
     echo "Capturing the Authorization with transaction ID : " . $transactionid . "\n";
@@ -45,5 +45,5 @@
     return $response;
   }
   if(!defined(DONT_RUN_SAMPLES))
-    capturePreviouslyAuthorizedAmount();
+    capturePreviouslyAuthorizedAmount(2245440574);
 ?>

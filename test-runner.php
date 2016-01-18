@@ -135,7 +135,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	{
 		$response = authorizeCreditCard.run(self::getAmount());
 		$response = capturePreviouslyAuthorizedAmount($response->getTransactionResponse()->getTransId());
-		return refundTransaction(self::getAmount(), $response->getTransactionResponse()->getTransId());
+		return refundTransaction(self::getAmount());
 	}
 
 	public static function runVoidTransaction()
@@ -146,7 +146,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 
 	public static function runCreditBankAccount()
 	{
-		return creditBankAccount(self::$transactionID, self::getAmount());
+		return creditBankAccount(self::getAmount());
 	}
 
 	public static function runChargeCustomerProfile()

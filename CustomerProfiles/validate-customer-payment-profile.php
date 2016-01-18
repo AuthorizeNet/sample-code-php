@@ -16,9 +16,10 @@
   $validationmode = "testMode";
 
   $request = new AnetAPI\ValidateCustomerPaymentProfileRequest();
+  
   $request->setMerchantAuthentication($merchantAuthentication);
-  $request->setCustomerProfileId($customerprofileid);
-  $request->setCustomerPaymentProfileId($customerpaymentprofileid);
+  $request->setCustomerProfileId($customerProfileId);
+  $request->setCustomerPaymentProfileId($customerPaymentProfileId);
   $request->setValidationMode($validationmode);
   
   $controller = new AnetController\ValidateCustomerPaymentProfileController($request);

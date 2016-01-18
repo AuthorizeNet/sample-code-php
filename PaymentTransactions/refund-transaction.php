@@ -4,11 +4,12 @@
   use net\authorize\api\controller as AnetController;
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function refundTransaction($amount, $transactionid){
+  function refundTransaction($amount){
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName("5KP3u95bQpv");
     $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+	$refId = 'ref' . time();
 
     // Create the payment data for a credit card
     $creditCard = new AnetAPI\CreditCardType();
@@ -23,7 +24,7 @@
     $transactionRequestType->setPayment($paymentOne);
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
-    $request->setRefId($transactionid);
+    $request->setRefId($refId);
     $request->setTransactionRequest( $transactionRequestType);
     $controller = new AnetController\CreateTransactionController($request);
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
@@ -47,5 +48,5 @@
     return $response;
   }
   if(!defined(DONT_RUN_SAMPLES))
-    refundTransaction();
+    refundTransaction(32.14);
 ?>

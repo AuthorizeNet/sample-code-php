@@ -65,6 +65,6 @@
     }
     return $response;
   }
-  if(!defined(DONT_RUN_SAMPLES))
+  if(!defined('DONT_RUN_SAMPLES'))
     debitBankAccount(21.34);
 ?>

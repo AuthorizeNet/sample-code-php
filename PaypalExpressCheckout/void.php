@@ -52,7 +52,7 @@
     return $response;
   }
 
-  if(!defined(DONT_RUN_SAMPLES))
+  if(!defined('DONT_RUN_SAMPLES'))
     payPalVoid("2241706281");
 
   ?>

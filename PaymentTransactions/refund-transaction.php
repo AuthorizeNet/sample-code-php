@@ -46,6 +46,6 @@
     }
     return $response;
   }
-  if(!defined(DONT_RUN_SAMPLES))
+  if(!defined('DONT_RUN_SAMPLES'))
     refundTransaction(32.14);
 ?>

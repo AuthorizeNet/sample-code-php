@@ -36,7 +36,7 @@
 
   }
 
-  if(!defined(DONT_RUN_SAMPLES))
+  if(!defined('DONT_RUN_SAMPLES'))
     cancelSubscription("3056945");
 
 ?>

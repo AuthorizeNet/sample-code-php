@@ -44,6 +44,6 @@
 	  }
 	  return $response;
   }
-  if(!defined(DONT_RUN_SAMPLES))
+  if(!defined('DONT_RUN_SAMPLES'))
       getCustomerShippingAddress("36152127", "36976566");
 ?>

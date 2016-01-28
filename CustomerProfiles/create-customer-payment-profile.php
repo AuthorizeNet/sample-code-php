@@ -59,6 +59,6 @@
 	  }
 	  return $response;
   }
-  if(!defined(DONT_RUN_SAMPLES))
+  if(!defined('DONT_RUN_SAMPLES'))
       createCustomerPaymentProfile("36152127","000-000-0009");
 ?>

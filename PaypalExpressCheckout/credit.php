@@ -61,7 +61,7 @@ function payPalCredit($transactionId) {
     return $response;
 }
 
-if(!defined(DONT_RUN_SAMPLES))
+if(!defined('DONT_RUN_SAMPLES'))
   payPalCredit("2241762126");
 
 ?>

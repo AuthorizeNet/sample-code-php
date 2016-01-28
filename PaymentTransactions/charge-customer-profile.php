@@ -52,6 +52,6 @@
     }
     return $response;
   }
-  if(!defined(DONT_RUN_SAMPLES))
+  if(!defined('DONT_RUN_SAMPLES'))
     chargeCustomerProfile("36152127", "32689274", 99.32);
 ?>

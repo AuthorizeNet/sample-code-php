@@ -51,7 +51,7 @@ function payPalAuthorizeOnly($amount) {
     return $response;
 }
 
-if(!defined(DONT_RUN_SAMPLES))
+if(!defined('DONT_RUN_SAMPLES'))
     payPalAuthorizeOnly(23.34);
 
 ?>

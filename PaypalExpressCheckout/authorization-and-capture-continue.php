@@ -59,6 +59,6 @@
 		return $response;
 	}
 
-  	if(!defined(DONT_RUN_SAMPLES))
+  	if(!defined('DONT_RUN_SAMPLES'))
     	payPalAuthorizeCaptureContinue("2241708986","6ZSCSYG33VP8Q");
 ?>

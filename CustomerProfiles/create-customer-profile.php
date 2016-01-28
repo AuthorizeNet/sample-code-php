@@ -67,6 +67,6 @@
 	  }
 	  return $response;
   }
-  if(!defined(DONT_RUN_SAMPLES))
+  if(!defined('DONT_RUN_SAMPLES'))
       createCustomerProfile("test567@test.com");
 ?>

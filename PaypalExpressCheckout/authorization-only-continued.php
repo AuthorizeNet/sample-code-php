@@ -62,7 +62,7 @@
     return $response;
   }
   
-  if(!defined(DONT_RUN_SAMPLES))
+  if(!defined('DONT_RUN_SAMPLES'))
       payPalAuthorizeOnlyContinue("2241711631", "JJLRRB29QC7RU");
 
 ?>

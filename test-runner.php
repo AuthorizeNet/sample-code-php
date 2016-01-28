@@ -1,6 +1,6 @@
 <?php
 $errorlevel=error_reporting();
-error_reporting($errorlevel & ~E_NOTICE);
+//error_reporting($errorlevel & ~E_NOTICE);
 
 define("DONT_RUN_SAMPLES", "true");
 define("SAMPLE_CODE_NAME_HEADING", "SampleCodeName");

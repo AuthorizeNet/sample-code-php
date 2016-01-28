@@ -4,8 +4,6 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
 
-  define("AUTHORIZENET_LOG_FILE", "phplog");
-
   function authorizeCreditCard($amount){
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();

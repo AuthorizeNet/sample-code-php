@@ -2,7 +2,6 @@
   require 'vendor/autoload.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
-  define("AUTHORIZENET_LOG_FILE", "phplog");
   function updateCustomerPaymentProfile($customerProfileId="36731856", $customerPaymentProfileId="33211899")
   {
 	  // Common setup for API credentials

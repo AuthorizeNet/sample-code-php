@@ -6,18 +6,18 @@
   function debitBankAccount($amount){
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName("5KP3u95bQpv");
-    $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     $refId = 'ref' . time();
 
     // Create the payment data for a Bank Account
     $bankAccount = new AnetAPI\BankAccountType();
     //$bankAccount->setAccountType('CHECKING');
     $bankAccount->setEcheckType('WEB');
-    $bankAccount->setRoutingNumber('121042882');
-    $bankAccount->setAccountNumber('123456789123');
-    $bankAccount->setNameOnAccount('Jane Doe');
-    $bankAccount->setBankName('Bank of the Earth');
+    $bankAccount->setRoutingNumber(\SampleCode\Constants::DEBIT_ROUTING_NUMBER);
+    $bankAccount->setAccountNumber(\SampleCode\Constants::DEBIT_ACCOUNT_NUMBER);
+    $bankAccount->setNameOnAccount(\SampleCode\Constants::NAME_ON_ACCOUNT);
+    $bankAccount->setBankName(\SampleCode\Constants::BANK_NAME);
 
     $paymentBank= new AnetAPI\PaymentType();
     $paymentBank->setBankAccount($bankAccount);

@@ -13,5 +13,8 @@
   "repositories": [{
     "type": "vcs",
     "url": "https://github.com/goetas/serializer.git"
-    }]
+    }],
+  "autoload": {
+    "classmap": ["constants"]
+  }
 }

@@ -6,22 +6,22 @@
   function creditBankAccount($amount){
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName("5KP3u95bQpv");
-    $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     $refId = 'ref' . time();
     // Create the payment data for a Bank Account
     $bankAccount = new AnetAPI\BankAccountType();
-    $bankAccount->setRoutingNumber('125000024');
-    $bankAccount->setAccountNumber('12345678');
-    $bankAccount->setNameOnAccount('John Doe');
+    $bankAccount->setRoutingNumber(\SampleCode\Constants::ROUTING_NUMBER);
+    $bankAccount->setAccountNumber(\SampleCode\Constants::ACCOUNT_NUMBER);
+    $bankAccount->setNameOnAccount(\SampleCode\Constants::NAME_ON_ACCOUNT);
     
     $paymentBank= new AnetAPI\PaymentType();
     $paymentBank->setBankAccount($bankAccount);
 
   // Order info
     $order = new AnetAPI\OrderType();
-    $order->setInvoiceNumber("101");
-    $order->setDescription("Golf Shirts");
+    $order->setInvoiceNumber(\SampleCode\Constants::INVOICE_NUMBER);
+    $order->setDescription(\SampleCode\Constants::ORDER_DESCRIPTION);
 
       //create a debit card Bank transaction
     

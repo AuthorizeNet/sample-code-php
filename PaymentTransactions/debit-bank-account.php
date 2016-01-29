@@ -39,7 +39,7 @@
     if ($response != null)
     {
       $tresponse = $response->getTransactionResponse();
-      if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
+      if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )   
       {
         echo  "Debit Bank Account APPROVED  :" . "\n";
         echo " Debit Bank Account AUTH CODE : " . $tresponse->getAuthCode() . "\n";
@@ -66,5 +66,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    debitBankAccount(21.34);
+    debitBankAccount( \SampleCode\Constants::SAMPLE_AMOUNT);
 ?>

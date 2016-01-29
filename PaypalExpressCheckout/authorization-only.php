@@ -7,8 +7,8 @@ use net\authorize\api\controller as AnetController;
 function payPalAuthorizeOnly($amount) {
     // Common setup for API credentials (Paypal compatible merchant)
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName("5KP3u95bQpv");
-    $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     $refId = 'ref' . time();
 
     // Create the payment data for a paypal account

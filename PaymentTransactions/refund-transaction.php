@@ -30,7 +30,7 @@
     if ($response != null)
     {
       $tresponse = $response->getTransactionResponse();
-      if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
+      if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )   
       {
         echo "Refund SUCCESS: " . $tresponse->getTransId() . "\n";
       }
@@ -47,5 +47,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    refundTransaction(32.14);
+    refundTransaction( \SampleCode\Constants::SAMPLE_AMOUNT_REFUND);
 ?>

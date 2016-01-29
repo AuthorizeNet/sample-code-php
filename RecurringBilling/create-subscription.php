@@ -8,9 +8,9 @@
 
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName( "5KP3u95bQpv"); 
-    $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
     $refId = 'ref' . time();
 
     // Subscription Type Info
@@ -28,7 +28,7 @@
     $paymentSchedule->setTrialOccurrences("1");
 
     $subscription->setPaymentSchedule($paymentSchedule);
-    $subscription->setAmount("10.29");
+    $subscription->setAmount(rand(1,99999)/12.0*12);
     $subscription->setTrialAmount("0.00");
     
     $creditCard = new AnetAPI\CreditCardType();
@@ -68,6 +68,6 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    createSubscription(23);
+    createSubscription( \SampleCode\Constants::SUBSCRIPTION_INTERVAL_DAYS);
 
 ?>

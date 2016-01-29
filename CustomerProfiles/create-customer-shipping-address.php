@@ -2,13 +2,14 @@
   require 'vendor/autoload.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
-  function createCustomerShippingAddress($existingcustomerprofileid = "36152127", $phoneNumber="000-000-0000")
+  function createCustomerShippingAddress($existingcustomerprofileid = \SampleCode\Constants::CUSTOMER_PROFILE_ID, 
+     $phoneNumber= \SampleCode\Constants::PHONE_NUMBER)
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("5KP3u95bQpv");
-	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-
+	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
 	  // Use An existing customer profile id for this merchant name and transaction key
 
 	  // Create the customer shipping address

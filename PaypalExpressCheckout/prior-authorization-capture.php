@@ -7,8 +7,8 @@
 
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName("5KP3u95bQpv");
-    $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     $refId = 'ref' . time();
 
     $payPalType = new AnetAPI\PayPalType();
@@ -54,5 +54,7 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    payPalPriorAuthorizationCapture("2241687191");
+  {
+    payPalPriorAuthorizationCapture( \SampleCode\Constants::TRANS_ID_PAYPAL_GET);
+  }
 ?>

@@ -6,9 +6,9 @@
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("5KP3u95bQpv");
-	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-
+	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
 	  // An existing customer profile id and shipping address id for this merchant name and transaction key
 	  $customerProfileId = $customerprofileid;
 	  $customerAddressId = $customeraddressid;
@@ -45,5 +45,6 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      getCustomerShippingAddress("36152127", "36976566");
+      getCustomerShippingAddress(\SampleCode\Constants::CUSTOMER_PROFILE_ID, 
+          \SampleCode\Constants::CUSTOMER_SHIPPING_ADDRESS_ID_GET);
 ?>

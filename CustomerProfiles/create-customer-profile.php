@@ -7,14 +7,14 @@
 	  
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("5KP3u95bQpv");
-	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-	  $refId = 'ref' . time();
+      $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+      $refId = 'ref' . time();
 
 		// Create the payment data for a credit card
 	  $creditCard = new AnetAPI\CreditCardType();
-	  $creditCard->setCardNumber( "4111111111111111" );
-	  $creditCard->setExpirationDate( "2038-12");
+	  $creditCard->setCardNumber(  \SampleCode\Constants::CREDIT_CARD_NUMBER);
+	  $creditCard->setExpirationDate( \SampleCode\Constants::EXPIRY_DATE);
 	  $paymentCreditCard = new AnetAPI\PaymentType();
 	  $paymentCreditCard->setCreditCard($creditCard);
 
@@ -68,5 +68,5 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      createCustomerProfile("test567@test.com");
+      createCustomerProfile( \SampleCode\Constants::TEST_CUSTOMER_EMAIL);
 ?>

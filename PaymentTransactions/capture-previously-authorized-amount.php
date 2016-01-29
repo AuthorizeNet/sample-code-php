@@ -27,10 +27,10 @@
     if ($response != null)
     {
       $tresponse = $response->getTransactionResponse();
-      if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )
+      if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )
       {
         echo "Successful." . "\n";
-        echo "Capture Previously Authorized Amount TRANS ID  : " . $tresponse->getTransId() . "\n";
+        echo "Capture Previously Authorized Amount, Trans ID : " . $tresponse->getRefTransId() . "\n";
       }
       else
       {
@@ -39,10 +39,10 @@
     }
     else
     {
-      echo  "Capture Previously Authorized Amount NULL Response Error\n";
+      echo  "Capture Previously Authorized Amount, NULL Response Error\n";
     }
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    capturePreviouslyAuthorizedAmount(2245440574);
+    capturePreviouslyAuthorizedAmount(\SampleCode\Constants::TRANS_ID_PREVIOUSLY_AUTHORIZED);
 ?>

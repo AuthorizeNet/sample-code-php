@@ -15,7 +15,7 @@
     $creditCard->setCardNumber( \SampleCode\Constants::CREDIT_CARD_NUMBER );
     $creditCard->setExpirationDate( \SampleCode\Constants::EXPIRY_DATE);
     //Set the cryptogram 
-    $creditCard->setCryptogram("EjRWeJASNFZ4kBI0VniQEjRWeJA=");
+    $creditCard->setCryptogram( \SampleCode\Constants::CRYPTOGRAM);
     
     $paymentOne = new AnetAPI\PaymentType();
     $paymentOne->setCreditCard($creditCard);
@@ -37,7 +37,7 @@
     if ($response != null)
     {
       $tresponse = $response->getTransactionResponse();
-      if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )
+      if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )
       {
         echo "Charge Tokenized Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
         echo "Charge Tokenized Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";
@@ -54,5 +54,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    chargeTokenizedCreditCard(13.5);
+    chargeTokenizedCreditCard( \SampleCode\Constants::SAMPLE_AMOUNT);
 ?>

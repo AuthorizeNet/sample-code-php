@@ -7,9 +7,9 @@
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("5KP3u95bQpv");
-	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-	  $refId = 'ref' . time();
+	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+      $refId = 'ref' . time();
 
 	  // Delete an existing customer profile  
 	  $request = new AnetAPI\DeleteCustomerProfileRequest();
@@ -33,5 +33,5 @@
   }
   
   if(!defined('DONT_RUN_SAMPLES'))
-      deleteCustomerProfile("38958129");
+      deleteCustomerProfile( \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID_DELETE);
 ?>

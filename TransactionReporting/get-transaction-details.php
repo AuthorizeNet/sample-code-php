@@ -7,8 +7,8 @@
 
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName( "5KP3u95bQpv"); 
-    $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
 
     $refId = 'ref' . time();
 
@@ -37,5 +37,5 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    getTransactionDetails("2238968786");
+    getTransactionDetails( \SampleCode\Constants::TRANS_ID);
 ?>

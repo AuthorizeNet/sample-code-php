@@ -3,13 +3,14 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   
-  function deleteCustomerPaymentProfile($customerProfileId="36152127", $customerpaymentprofileid = "32689274")
+  function deleteCustomerPaymentProfile($customerProfileId= \SampleCode\Constants::CUSTOMER_PROFILE_ID,
+     $customerpaymentprofileid = \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID)
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("5KP3u95bQpv");
-	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-
+	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
 	  // Use an existing payment profile ID for this Merchant name and Transaction key
 	  
 	  $request = new AnetAPI\DeleteCustomerPaymentProfileRequest();

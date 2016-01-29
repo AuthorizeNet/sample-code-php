@@ -39,7 +39,7 @@
     if ($response != null)
     {
       $tresponse = $response->getTransactionResponse();
-      if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
+      if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )   
       {
         echo  "Credit Bank Account APPROVED  :" . "\n";
         echo  "Credit Bank Account AUTH CODE : " . $tresponse->getAuthCode() . "\n";
@@ -61,5 +61,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    creditBankAccount(21.54);
+    creditBankAccount( \SampleCode\Constants::SAMPLE_AMOUNT);
 ?>

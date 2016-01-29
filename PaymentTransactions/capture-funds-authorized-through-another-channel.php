@@ -23,7 +23,7 @@ function captureFundsAuthorizedThroughAnotherChannel($amount){
     $transactionRequestType->setPayment($paymentOne);
 
     //Auth code of the previously authorized  amount
-    $transactionRequestType->setAuthCode("ROHNFQ");
+    $transactionRequestType->setAuthCode(\SampleCode\Constants::SAMPLE_AUTH_CODE_AUTHORIZED);
 
 
     $request = new AnetAPI\CreateTransactionRequest();
@@ -36,10 +36,10 @@ function captureFundsAuthorizedThroughAnotherChannel($amount){
     if ($response != null)
     {
         $tresponse = $response->getTransactionResponse();
-        if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )
+        if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )
         {
             echo "Successful." . "\n";
-            echo "Capture funds authorized through another channel TRANS ID  : " . $tresponse->getTransId() . "\n";
+            echo "Capture funds authorized through another channel TRANS ID  : " . $tresponse->getTransId() . " Amount : $amount \n";
         }
         else
         {
@@ -49,10 +49,10 @@ function captureFundsAuthorizedThroughAnotherChannel($amount){
     }
     else
     {
-        echo  "Capture funds authorized through another channel NULL Response Error\n";
+        echo  "Capture funds authorized through another channel, NULL Response Error\n";
     }
     return $response;
 }
 if(!defined('DONT_RUN_SAMPLES'))
-    captureFundsAuthorizedThroughAnotherChannel(5.0);
+    captureFundsAuthorizedThroughAnotherChannel((rand(1, \SampleCode\Constants::MAX_AMOUNT)/12*12));
 ?>

@@ -6,15 +6,15 @@
   function updateSplitTenderGroup(){
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName( "8V4xFm3z");
-    $merchantAuthentication->setTransactionKey("655AS4Ek7TJ42snq");
+    $merchantAuthentication->setName( \SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
 	$refId = 'ref' . time();
 
     $request = new AnetAPI\UpdateSplitTenderGroupRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
 	$request->setRefId($refId);
-    $request->setSplitTenderId("116468");
-    $request->setSplitTenderStatus("voided");
+    $request->setSplitTenderId(\SampleCode\Constants::SPLIT_TENDER_ID);
+    $request->setSplitTenderStatus(\SampleCode\Constants::STATUS_VOID);
 
     $controller = new AnetController\UpdateSplitTenderGroupController($request);
 

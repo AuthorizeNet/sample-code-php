@@ -36,7 +36,7 @@
     {
       $tresponse = $response->getTransactionResponse();
 
-      if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
+      if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )   
       {
         echo " AUTH CODE : " . $tresponse->getAuthCode() . "\n";
         echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
@@ -54,5 +54,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    authorizeCreditCard(12.23);
+    authorizeCreditCard( \SampleCode\Constants::SAMPLE_AMOUNT);
 ?>

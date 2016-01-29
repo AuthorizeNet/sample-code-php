@@ -3,13 +3,13 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
 
-  function getHostedProfilePage($customerprofileid = "37680862")
+  function getHostedProfilePage($customerprofileid = \SampleCode\Constants::CUSTOMER_PROFILE_ID_HOSTED_PAGE)
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("5KP3u95bQpv");
-	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-
+	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
 	  // Use an existing payment profile ID for this Merchant name and Transaction key
 	  
 	  $setting = new AnetAPI\SettingType();

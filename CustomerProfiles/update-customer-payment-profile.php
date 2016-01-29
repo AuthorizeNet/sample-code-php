@@ -2,13 +2,14 @@
   require 'vendor/autoload.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
-  function updateCustomerPaymentProfile($customerProfileId="36731856", $customerPaymentProfileId="33211899")
+  function updateCustomerPaymentProfile($customerProfileId= \SampleCode\Constants::CUSTOMER_PROFILE_ID_2,
+      $customerPaymentProfileId= \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID_GET)
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("5KP3u95bQpv");
-	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-	  $refId = 'ref' . time();
+	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+      $refId = 'ref' . time();
 
 	  //Set profile ids of profile to be updated
 	  $request = new AnetAPI\UpdateCustomerPaymentProfileRequest();

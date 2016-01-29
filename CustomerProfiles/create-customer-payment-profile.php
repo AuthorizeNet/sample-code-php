@@ -6,14 +6,14 @@
   function createCustomerPaymentProfile($existingcustomerprofileid, $phoneNumber){
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("5KP3u95bQpv");
-	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
       $refId = 'ref' . time();
 
 	  $creditCard = new AnetAPI\CreditCardType();
-	  $creditCard->setCardNumber( "4242424242424242" );
-	  $creditCard->setExpirationDate( "2038-11");
-	  $creditCard->setCardCode( "142");
+	  $creditCard->setCardNumber( \SampleCode\Constants::CREDIT_CARD_NUMBER_2);
+	  $creditCard->setExpirationDate( \SampleCode\Constants::EXPIRY_DATE);
+	  $creditCard->setCardCode( \SampleCode\Constants::CVV);
 	  $paymentCreditCard = new AnetAPI\PaymentType();
 	  $paymentCreditCard->setCreditCard($creditCard);
 
@@ -60,5 +60,5 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      createCustomerPaymentProfile("36152127","000-000-0009");
+      createCustomerPaymentProfile(\SampleCode\Constants::CUSTOMER_PROFILE_ID,"000-000-0009");
 ?>

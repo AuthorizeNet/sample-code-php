@@ -6,8 +6,8 @@
   {
   // Common setup for API credentials
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName("5KP3u95bQpv");
-  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+  $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
 
   // An existing customer profile id for this merchant name and transaction key
   $existingcustomerprofileid = $customerprofileid;
@@ -35,7 +35,7 @@
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {
-      echo "Update Customer Shipping Address SUCCESS:" . "\n";
+      echo "Update Customer Shipping Address SUCCESS.\n";
    }
   else
   {
@@ -45,5 +45,6 @@
   return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      updateCustomerShippingAddress("36152127", "36976566");
+      updateCustomerShippingAddress( \SampleCode\Constants::CUSTOMER_PROFILE_ID,
+        \SampleCode\Constants::CUSTOMER_SHIPPING_ADDRESS_ID_GET);
 ?>

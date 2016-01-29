@@ -31,7 +31,7 @@
     if ($response != null)
     {
       $tresponse = $response->getTransactionResponse();
-      if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
+      if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )   
       {
         echo "Void transaction SUCCESS AUTH CODE: " . $tresponse->getAuthCode() . "\n";
         echo "Void transaction SUCCESS TRANS ID  : " . $tresponse->getTransId() . "\n";
@@ -39,8 +39,9 @@
       else
       {
           echo  "void transaction ERROR : " . $tresponse->getResponseCode() . "\n";
+	      echo "Response Code : " . $response->getMessages()->getMessage()[0]->getCode() . " Resposne text: " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+		  //use print_r to see whole $response which will have the specific error messages
       }
-      
     }
     else
     {
@@ -49,5 +50,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    voidTransaction("2249063130");
+    voidTransaction(\SampleCode\Constants::TRANS_ID_VOID);
 ?>

@@ -10,8 +10,8 @@
     
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName("5KP3u95bQpv");
-    $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     
     $refId = 'ref' . time();
 
@@ -46,21 +46,39 @@
     {
       $tresponse = $response->getTransactionResponse();
       
-      if($tresponse != null)
+	  if($tresponse != null)
       {
-      	if ($tresponse->getResponseCode()=="1")
-      	{
-  			//parse the shipping information from response
+		if (($tresponse != null) && ($response->getMessages()->getResultCode()=="Ok"))
+		{
+			echo "Transaction Response...\n";
+			echo "Received response code: ".$tresponse->getResponseCode()."\n";
+			echo "Transaction ID: ".$tresponse->getTransId()."\n";
+			//Valid response codes: 1=Approved, 2=Declined, 3=Error, 5=Need Payer Consent
+			if(null != $tresponse->getSecureAcceptance())
+			{
+				echo "Payer ID : " . $tresponse->getSecureAcceptance()->getPayerID() . "\n";
+			}
+			//parse the shipping information from response
       		$shipping_response = $tresponse->getShipTo();
-      		echo "Shipping address : " . $shipping_response->getAddress() . ", " . $shipping_response->getCity()
-      		. ", " . $shipping_response->getState() . ", " . $shipping_response->getCountry() . "\n";
-      	
-      		//echo "Payer ID : " . $tresponse->getSecureAcceptance()->getPayerID();
-      	}
-      	else
-      	{
-      		echo  "ERROR : " . $tresponse->getResponseCode() . "\n";
-      	}
+			if(null != $shipping_response)
+			{
+				echo "Shipping address : " . $shipping_response->getAddress() . ", " . $shipping_response->getCity()
+					. ", " . $shipping_response->getState() . ", " . $shipping_response->getCountry() . "\n";
+			}
+		}
+		else
+			echo "NULL transactionResponse Error\n";
+		$messages=$response->getMessages();
+		if (($messages != null))
+		{
+			echo "Messages...\n";
+			echo "Result code: ".$messages->getResultCode()."\n";
+			$message0=$messages->getMessage()[0];
+			if($message0!=null)
+				echo "Message: ".$message0->getCode().", ".$message0->getText()."\n";
+		}
+		else
+			echo "NULL messages Error\n";
       }
       else
       {
@@ -76,6 +94,6 @@
   }
 
 if(!defined('DONT_RUN_SAMPLES'))
-  payPalGetDetails("2241687090");
+  payPalGetDetails( \SampleCode\Constants::TRANS_ID_PAYPAL_GET);
 
 ?>

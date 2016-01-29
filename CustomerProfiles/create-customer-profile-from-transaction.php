@@ -3,13 +3,13 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   
-  function createCustomerProfileFromTransaction($transId="2238251168")
+  function createCustomerProfileFromTransaction($transId= \SampleCode\Constants::TRANS_ID_TO_CREATE_CUSTOMER_PROFILE)
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName("5KP3u95bQpv");
-	  $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-
+	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+      
 	  $request = new AnetAPI\CreateCustomerProfileFromTransactionRequest();
 	  $request->setMerchantAuthentication($merchantAuthentication);
 	  $request->setTransId($transId);
@@ -31,5 +31,5 @@
   }
   //provide a transaction that has customer information
   if(!defined('DONT_RUN_SAMPLES'))
-      createCustomerProfileFromTransaction("2249066517");
+      createCustomerProfileFromTransaction(\SampleCode\Constants::TRANS_ID_TO_CREATE_CUSTOMER_PROFILE);
 ?>

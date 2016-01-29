@@ -7,9 +7,9 @@
 
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName( "5KP3u95bQpv"); 
-    $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
     $refId = 'ref' . time();
 
     $subscription = new AnetAPI\ARBSubscriptionType();
@@ -35,7 +35,7 @@
     
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
     {
-        echo "SUCCESS" . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+        echo "SUCCESS, Response Code: " . $response->getMessages()->getMessage()[0]->getCode() . " Response Text: " .$response->getMessages()->getMessage()[0]->getText() . "\n";
      }
     else
     {
@@ -47,5 +47,5 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-      updateSubscription("3056948");
+      updateSubscription( \SampleCode\Constants::SUBSCRIPTION_ID_UPDATE);
 ?>

@@ -7,9 +7,8 @@
 
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName( "5KP3u95bQpv"); 
-    $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
-
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     $refId = 'ref' . time();
 
     $request = new AnetAPI\ARBCancelSubscriptionRequest();
@@ -37,6 +36,6 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    cancelSubscription("3056945");
+    cancelSubscription(\SampleCode\Constants::SUBSCRIPTION_ID_CANCEL);
 
 ?>

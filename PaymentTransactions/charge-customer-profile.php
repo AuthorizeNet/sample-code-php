@@ -31,7 +31,7 @@
     if ($response != null)
     {
       $tresponse = $response->getTransactionResponse();
-      if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
+      if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )   
       {
         echo  "Charge Customer Profile APPROVED  :" . "\n";
         echo " Charge Customer Profile AUTH CODE : " . $tresponse->getAuthCode() . "\n";
@@ -53,5 +53,6 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    chargeCustomerProfile("36152127", "32689274", 99.32);
+    chargeCustomerProfile(\SampleCode\Constants::CUSTOMER_PROFILE_ID,
+      \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID, \SampleCode\Constants::SAMPLE_AMOUNT);
 ?>

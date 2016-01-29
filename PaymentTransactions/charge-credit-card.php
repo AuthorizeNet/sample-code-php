@@ -34,7 +34,7 @@
       {
         $tresponse = $response->getTransactionResponse();
 
-        if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )   
+        if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )   
         {
           echo "Charge Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
           echo "Charge Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";
@@ -52,5 +52,5 @@
       return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      chargeCreditCard(17.9);
+      chargeCreditCard(\SampleCode\Constants::SAMPLE_AMOUNT);
 ?>

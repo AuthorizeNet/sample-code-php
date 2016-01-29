@@ -8,12 +8,11 @@ function payPalCredit($transactionId) {
 
     // Common setup for API credentials (Paypal compatible merchant)
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    // $merchantAuthentication->setName("mbld_api_-g9yGXH6");
-    // $merchantAuthentication->setTransactionKey("8b948Sk5Tk5jBB6w");
-    $merchantAuthentication->setName("5KP3u95bQpv");
-    $merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
 
     $refId = 'ref' . time();
+	//use transaction of already settled paypal checkout transaction
     $refTransId = $transactionId;
 
     // Create the payment data for a paypal account
@@ -61,7 +60,8 @@ function payPalCredit($transactionId) {
     return $response;
 }
 
-if(!defined('DONT_RUN_SAMPLES'))
+if(!defined('DONT_RUN_SAMPLES')){
+	//use transaction id of already settled transaction
   payPalCredit("2241762126");
-
+}
 ?>

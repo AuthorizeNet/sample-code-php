@@ -3,6 +3,8 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   
+  define("AUTHORIZENET_LOG_FILE", "phplog");
+  
   function createCustomerProfileFromTransaction($transId= \SampleCode\Constants::TRANS_ID_TO_CREATE_CUSTOMER_PROFILE)
   {
 	  // Common setup for API credentials

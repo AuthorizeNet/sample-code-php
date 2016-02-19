@@ -3,7 +3,9 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   
-  function deleteCustomerPaymentProfile($customerProfileId= \SampleCode\Constants::CUSTOMER_PROFILE_ID,
+  define("AUTHORIZENET_LOG_FILE", "phplog");
+  
+  function deleteCustomerPaymentProfile($customerProfileId= \SampleCode\Constants::CUSTOMER_PROFILE_ID, 
      $customerpaymentprofileid = \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID)
   {
 	  // Common setup for API credentials

@@ -4,6 +4,8 @@
   use net\authorize\api\controller as AnetController;
   date_default_timezone_set('America/Los_Angeles');
   
+  define("AUTHORIZENET_LOG_FILE", "phplog");
+
   function createSubscription($intervalLength) {
 
     // Common Set Up for API Credentials

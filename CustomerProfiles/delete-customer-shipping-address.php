@@ -3,6 +3,8 @@
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   
+  define("AUTHORIZENET_LOG_FILE", "phplog");
+  
   function deleteCustomerShippingAddress($customerprofileid = \SampleCode\Constants::CUSTOMER_PROFILE_ID_2, 
      $customeraddressid = "36976434")
   {

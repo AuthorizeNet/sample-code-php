@@ -1,7 +1,9 @@
 <?php
-  require 'vendor/autoload.php';
-  use net\authorize\api\contract\v1 as AnetAPI;
-  use net\authorize\api\controller as AnetController;
+ require 'vendor/autoload.php';
+ use net\authorize\api\contract\v1 as AnetAPI;
+ use net\authorize\api\controller as AnetController;
+
+ define("AUTHORIZENET_LOG_FILE", "phplog");
 
  function capturePreviouslyAuthorizedAmount($transactionid){
     // Common setup for API credentials
@@ -43,6 +45,6 @@
     }
     return $response;
   }
-  if(!defined('DONT_RUN_SAMPLES'))
+ if(!defined('DONT_RUN_SAMPLES'))
     capturePreviouslyAuthorizedAmount(\SampleCode\Constants::TRANS_ID_PREVIOUSLY_AUTHORIZED);
 ?>

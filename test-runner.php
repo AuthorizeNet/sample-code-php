@@ -44,7 +44,10 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	}
 	public function testAllSampleCodes(){
 		$runTests = 0;
-		$file = 'SampleCodeList.txt';
+		if ( $argc != 2 ) { 
+		  die('\n Usage: phpunit test-runner.php <SampleCodeListFile>');
+		} 
+		$file = $argv[1];
 		$data = file($file) or die('\nCould not read SampleCodeList.');
 		foreach ($data as $line)
 		{

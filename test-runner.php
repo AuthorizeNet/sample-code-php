@@ -44,6 +44,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	}
 	public function testAllSampleCodes(){
 		$runTests = 0;
+		echo "argc : " .$_SERVER['argc'] . "\n";
 		if ( $_SERVER['argc'] != 2 ) { 
 		  die('\n Usage: phpunit test-runner.php <SampleCodeListFile>');
 		} 

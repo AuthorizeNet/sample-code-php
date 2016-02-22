@@ -48,7 +48,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 		if ( $_SERVER['argc'] != 3 ) { 
 		  die('\n Usage: phpunit test-runner.php <SampleCodeListFile>');
 		} 
-		$file = $_SERVER['argv'][1];
+		$file = $_SERVER['argv'][2];
 		$data = file($file) or die('\nCould not read SampleCodeList.');
 		foreach ($data as $line)
 		{

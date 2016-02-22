@@ -2,54 +2,59 @@
 require 'vendor/autoload.php';
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
+
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
+function captureFundsAuthorizedThroughAnotherChannel($amount){
+    // Common setup for API credentials
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    $refId = 'ref' . time();
 
-// Common setup for API credentials
-$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-$merchantAuthentication->setName("556KThWQ6vf2");
-$merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
-$refId = "123456";
+    $creditCard = new AnetAPI\CreditCardType();
+    $creditCard->setCardNumber( \SampleCode\Constants::CREDIT_CARD_NUMBER);
+    $creditCard->setExpirationDate( \SampleCode\Constants::EXPIRY_DATE);
 
-$creditCard = new AnetAPI\CreditCardType();
-$creditCard->setCardNumber( "4111111111111111");
-$creditCard->setExpirationDate( "2038-12");
+    $paymentOne = new AnetAPI\PaymentType();
+    $paymentOne->setCreditCard($creditCard);
 
-$paymentOne = new AnetAPI\PaymentType();
-$paymentOne->setCreditCard($creditCard);
+    $transactionRequestType = new AnetAPI\TransactionRequestType();
+    $transactionRequestType->setTransactionType("captureOnlyTransaction");
+    $transactionRequestType->setAmount($amount);
+    $transactionRequestType->setPayment($paymentOne);
 
-$transactionRequestType = new AnetAPI\TransactionRequestType();
-$transactionRequestType->setTransactionType("captureOnlyTransaction");
-$transactionRequestType->setAmount(5.00);
-$transactionRequestType->setPayment($paymentOne);
-
-//Auth code of the previously authorized  amount
-$transactionRequestType->setAuthCode("ROHNFQ");
+    //Auth code of the previously authorized  amount
+    $transactionRequestType->setAuthCode(\SampleCode\Constants::SAMPLE_AUTH_CODE_AUTHORIZED);
 
 
-$request = new AnetAPI\CreateTransactionRequest();
-$request->setMerchantAuthentication($merchantAuthentication);
-$request->setTransactionRequest( $transactionRequestType);
+    $request = new AnetAPI\CreateTransactionRequest();
+    $request->setMerchantAuthentication($merchantAuthentication);
+    $request->setTransactionRequest( $transactionRequestType);
 
-$controller = new AnetController\CreateTransactionController($request);
-$response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+    $controller = new AnetController\CreateTransactionController($request);
+    $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
-if ($response != null)
-{
-    $tresponse = $response->getTransactionResponse();
-    if (($tresponse != null) && ($tresponse->getResponseCode()=="1") )
+    if ($response != null)
     {
-        echo "Successful." . "\n";
-        echo "Capture funds authorized through another channel TRANS ID  : " . $tresponse->getTransId() . "\n";
+        $tresponse = $response->getTransactionResponse();
+        if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )
+        {
+            echo "Successful." . "\n";
+            echo "Capture funds authorized through another channel TRANS ID  : " . $tresponse->getTransId() . " Amount : $amount \n";
+        }
+        else
+        {
+            echo  "Capture funds authorized through another channel ERROR: Invalid response\n";
+            echo "Response Code: " . $response->getMessages()->getMessage()[0]->getCode() . "  Response Text: " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+        }
     }
     else
     {
-        echo  "Capture funds authorized through another channel ERROR: Invalid response\n";
-        echo "Response Code: " . $response->getMessages()->getMessage()[0]->getCode() . "  Response Text: " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+        echo  "Capture funds authorized through another channel, NULL Response Error\n";
     }
+    return $response;
 }
-else
-{
-    echo  "Capture funds authorized through another channel NULL Response Error\n";
-}
+if(!defined('DONT_RUN_SAMPLES'))
+    captureFundsAuthorizedThroughAnotherChannel((rand(1, \SampleCode\Constants::MAX_AMOUNT)/12*12));
 ?>

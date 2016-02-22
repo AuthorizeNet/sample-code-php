@@ -2,23 +2,26 @@
   require 'vendor/autoload.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
+  
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
+  function validateCustomerPaymentProfile($customerProfileId= \SampleCode\Constants::CUSTOMER_PROFILE_ID_2,
+    $customerPaymentProfileId= \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID_GET)
+  {
   // Common setup for API credentials
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName("3Zw3Ru9nx");
-  $merchantAuthentication->setTransactionKey("7Tbj6T3a9cPq4A5d");
-
-  // An existing payment profile ID for this Merchant name and Transaction key
-  //
-  $customerprofileid = "37680862";
-  $customerpaymentprofileid = "34249159";
+  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+  $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+  
+  // Use an existing payment profile ID for this Merchant name and Transaction key
+  //validationmode tests , does not send an email receipt
   $validationmode = "testMode";
 
   $request = new AnetAPI\ValidateCustomerPaymentProfileRequest();
+  
   $request->setMerchantAuthentication($merchantAuthentication);
-  $request->setCustomerProfileId($customerprofileid);
-  $request->setCustomerPaymentProfileId($customerpaymentprofileid);
+  $request->setCustomerProfileId($customerProfileId);
+  $request->setCustomerPaymentProfileId($customerPaymentProfileId);
   $request->setValidationMode($validationmode);
   
   $controller = new AnetController\ValidateCustomerPaymentProfileController($request);
@@ -33,4 +36,8 @@
       echo "ERROR :  Validate Customer Payment Profile: Invalid response\n";
       echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
   }
+  return $response;
+  }
+  if(!defined('DONT_RUN_SAMPLES'))
+      validateCustomerPaymentProfile();
  ?>

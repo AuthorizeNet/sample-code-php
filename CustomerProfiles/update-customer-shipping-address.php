@@ -2,14 +2,18 @@
   require 'vendor/autoload.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
+  
   define("AUTHORIZENET_LOG_FILE", "phplog");
+  
+  function updateCustomerShippingAddress($customerprofileid, $customeraddressid)
+  {
   // Common setup for API credentials
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName("556KThWQ6vf2");
-  $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
+  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+  $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
 
   // An existing customer profile id for this merchant name and transaction key
-  $existingcustomerprofileid = "35843932";
+  $existingcustomerprofileid = $customerprofileid;
 
   // Create the customer shipping address
   $customershippingaddress = new AnetAPI\CustomerAddressExType();
@@ -23,6 +27,7 @@
   $customershippingaddress->setCountry("USA");
   $customershippingaddress->setPhoneNumber("201-000-0000");
   $customershippingaddress->setFaxNumber("973-999-9999");
+  $customershippingaddress->setCustomerAddressId($customeraddressid);
 
   // Update an existing customer shipping address for an existing customer profile
   $request = new AnetAPI\UpdateCustomerShippingAddressRequest();
@@ -33,11 +38,16 @@
   $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
   if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
   {
-      echo "Update Customer Shipping Address SUCCESS:" . "\n";
+      echo "Update Customer Shipping Address SUCCESS.\n";
    }
   else
   {
       echo "Update Customer Shipping Address  ERROR :  Invalid response\n";
       echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
   }
+  return $response;
+  }
+  if(!defined('DONT_RUN_SAMPLES'))
+      updateCustomerShippingAddress( \SampleCode\Constants::CUSTOMER_PROFILE_ID,
+        \SampleCode\Constants::CUSTOMER_SHIPPING_ADDRESS_ID_GET);
 ?>

@@ -1,6 +1,6 @@
 <?php
 $errorlevel=error_reporting();
-//error_reporting($errorlevel & ~E_NOTICE);
+error_reporting($errorlevel & ~E_NOTICE); //turn off constant re-defined and other notices
 
 define("DONT_RUN_SAMPLES", "true");
 define("SAMPLE_CODE_NAME_HEADING", "SampleCodeName");
@@ -20,7 +20,7 @@ foreach ($directories as $directory) {
 		//echo $sample;
     }
 }
-#error_reporting($errorlevel);
+error_reporting($errorlevel);
 class TestRunner extends PHPUnit_Framework_TestCase
 {
 	public static $apiLoginId = "5KP3u95bQpv";

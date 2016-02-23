@@ -39,7 +39,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	public static $payerID = "LM6NCLZ5RAKBY";
 	//random amount for transactions/subscriptions
 	public static function getAmount(){
-		return 12 + (rand(1, 10000)/12);
+		return 12 + (rand(1, 900000)/12);
 	}
 	//random email for a new customer profile
 	public static function getEmail(){

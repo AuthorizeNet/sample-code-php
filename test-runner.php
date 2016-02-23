@@ -1,7 +1,4 @@
 <?php
-$errorlevel=error_reporting();
-error_reporting($errorlevel & ~E_NOTICE); //turn off constant re-defined and other notices
-
 define("DONT_RUN_SAMPLES", "true");
 define("SAMPLE_CODE_NAME_HEADING", "SampleCodeName");
 require 'vendor/autoload.php';
@@ -10,10 +7,10 @@ if ( $_SERVER['argc'] != 3 ) {
   die('\n Usage: phpunit test-runner.php <SampleCodeDirectoryPath>');
 } 
 $dirPath = $_SERVER['argv'][2];
+echo $dirPath;
 if(substr($dirPath, -1) != "/")
   $dirPath = $dirPath."/";
 
-$prefix = getDirectoryPrefix();
 $directories = array(
             'CustomerProfiles/',
             'RecurringBilling/',
@@ -23,8 +20,11 @@ $directories = array(
             'ApplePayTransactions/',
             'VisaCheckout/'
 );
-foreach ($directories as $dirPath.$directory) {
-    foreach(glob($directory . "*.php") as $sample) {
+
+$errorlevel=error_reporting();
+error_reporting($errorlevel & ~E_NOTICE); //turn off constant re-defined and other notices
+foreach ($directories as $directory) {
+    foreach(glob($dirPath.$directory . "*.php") as $sample) {
         require_once $sample;
 		//echo $sample;
     }
@@ -55,7 +55,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	public function testAllSampleCodes(){
 		$runTests = 0;
 
-		$file = $dirPath."SampleCodeList.txt";
+		$file = $GLOBALS["dirPath"]."SampleCodeList.txt";
 		$data = file($file) or die('\nCould not read SampleCodeList.');
 		foreach ($data as $line)
 		{

@@ -19,14 +19,18 @@
     $paymentOne = new AnetAPI\PaymentType();
     $paymentOne->setCreditCard($creditCard);
     //create a transaction
-    $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType( "refundTransaction"); 
-    $transactionRequestType->setAmount($amount);
-    $transactionRequestType->setPayment($paymentOne);
+    $transactionRequest = new AnetAPI\TransactionRequestType();
+    $transactionRequest->setTransactionType( "refundTransaction"); 
+    $transactionRequest->setAmount($amount);
+    $transactionRequest->setPayment($paymentOne);
+    $customer = new AnetAPI\CustomerDataType();
+    $customer->setId("CUST001");
+    $transactionRequest->setCustomer($customer);
+
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
     $request->setRefId($refId);
-    $request->setTransactionRequest( $transactionRequestType);
+    $request->setTransactionRequest( $transactionRequest);
     $controller = new AnetController\CreateTransactionController($request);
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
     if ($response != null)

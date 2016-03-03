@@ -15,7 +15,7 @@
     $request = new AnetAPI\UpdateSplitTenderGroupRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
 	$request->setRefId($refId);
-    $request->setSplitTenderId(\SampleCode\Constants::SPLIT_TENDER_ID);
+    $request->setSplitTenderId("115901");
     $request->setSplitTenderStatus(\SampleCode\Constants::STATUS_VOID);
 
     $controller = new AnetController\UpdateSplitTenderGroupController($request);

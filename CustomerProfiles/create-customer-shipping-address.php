@@ -5,8 +5,8 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function createCustomerShippingAddress($existingcustomerprofileid = \SampleCode\Constants::CUSTOMER_PROFILE_ID, 
-     $phoneNumber= \SampleCode\Constants::PHONE_NUMBER)
+  function createCustomerShippingAddress($existingcustomerprofileid = "36152127", 
+     $phoneNumber="000-000-0000")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();

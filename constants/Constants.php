@@ -8,43 +8,43 @@ class Constants
 	const MERCHANT_TRANSACTION_KEY = "4Ktq966gC55GAX7S";
 	
 	//credit card fields
-	const CREDIT_CARD_NUMBER = "4111111111111111";
-	const CREDIT_CARD_NUMBER_2 = "4242424242424242";
-	const EXPIRY_DATE = "2038-12";
-	const CVV = "142";
+	//const CREDIT_CARD_NUMBER = "4111111111111111";
+	//const CREDIT_CARD_NUMBER_2 = "4242424242424242";
+	//const EXPIRY_DATE = "2038-12";
+	//const CVV = "142";
 	
 	//bank account fields
-	const ROUTING_NUMBER = '125000024';
-	const DEBIT_ROUTING_NUMBER = '121042882';
-	const ACCOUNT_NUMBER = '125000024';
-	const DEBIT_ACCOUNT_NUMBER = '123456789123';
-	const NAME_ON_ACCOUNT = 'Jane Doe';
-	const BANK_NAME= 'Bank of the Earth';
+	//const ROUTING_NUMBER = '125000024';
+	//const DEBIT_ROUTING_NUMBER = '121042882';
+	//const ACCOUNT_NUMBER = '125000024';
+	//const DEBIT_ACCOUNT_NUMBER = '123456789123';
+	//const NAME_ON_ACCOUNT = 'Jane Doe';
+	//const BANK_NAME= 'Bank of the Earth';
 	
 	//order info
-	const INVOICE_NUMBER = "101";
-	const ORDER_DESCRIPTION = "Golf Shirts";
+	//const INVOICE_NUMBER = "101";
+	//const ORDER_DESCRIPTION = "Golf Shirts";
 	//cryptogram
-	const CRYPTOGRAM = "EjRWeJASNFZ4kBI0VniQEjRWeJA=";
+	//const CRYPTOGRAM = "EjRWeJASNFZ4kBI0VniQEjRWeJA=";
 	
 	//transaction-id's used by different samples
 	const TRANS_ID_PREVIOUSLY_AUTHORIZED = 2249839471;
-	const TRANS_ID_VOID = "2249063130";
+	//const TRANS_ID_VOID = "2249063130";
 	const TRANS_ID_TO_CREATE_CUSTOMER_PROFILE = "2249066517";
 	
 	//split tender id
-	const SPLIT_TENDER_ID = "115901";
+	//const SPLIT_TENDER_ID = "115901";
 	//transaction status constants
 	const STATUS_VOID = "voided";
 	
 	
     //limits
-	const MAX_AMOUNT = 99999;
+	//const MAX_AMOUNT = 99999;
 
 	//miscelaneous variables for individual samples
-	const SAMPLE_AMOUNT_REFUND = 32.14;
-	const SAMPLE_AMOUNT = 12.23;
-	const SAMPLE_AUTH_CODE_AUTHORIZED = "ROHNFQ";
+	//const SAMPLE_AMOUNT_REFUND = 12.14;
+	//const SAMPLE_AMOUNT = 12.23;
+	//const SAMPLE_AUTH_CODE_AUTHORIZED = "ROHNFQ";
 	
 	//response
 	const RESPONSE_OK = "1";
@@ -56,16 +56,16 @@ class Constants
 	const SUBSCRIPTION_INTERVAL_DAYS = 23;
 	
 	//Customer Profiles
-	const TEST_CUSTOMER_EMAIL = "test123@test.com";
-    const CUSTOMER_PROFILE_ID = "36152127";
-    const CUSTOMER_PROFILE_ID_2 = "36731856";
-    const CUSTOMER_PROFILE_ID_HOSTED_PAGE = "123212";
+	//const TEST_CUSTOMER_EMAIL = "test123@test.com";
+    //const CUSTOMER_PROFILE_ID = "36152127";
+    //const CUSTOMER_PROFILE_ID_2 = "36731856";
+    //const CUSTOMER_PROFILE_ID_HOSTED_PAGE = "123212";
 	
-	const CUSTOMER_PAYMENT_PROFILE_ID = "32689274";
-	const CUSTOMER_PAYMENT_PROFILE_ID_DELETE = "38958129";
-	const CUSTOMER_PAYMENT_PROFILE_ID_GET = "33211899";
-	const CUSTOMER_SHIPPING_ADDRESS_ID_GET = "36976566";
-    const PHONE_NUMBER = "000-000-0000";
+	//const CUSTOMER_PAYMENT_PROFILE_ID = "32689274";
+	//const CUSTOMER_PAYMENT_PROFILE_ID_DELETE = "38958129";
+	//const CUSTOMER_PAYMENT_PROFILE_ID_GET = "33211899";
+	//const CUSTOMER_SHIPPING_ADDRESS_ID_GET = "36976566";
+    //const PHONE_NUMBER = "000-000-0000";
 	
 	//Transaction Reporting
 	const TRANS_ID = "2238968786";

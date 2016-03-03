@@ -7,8 +7,8 @@ use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
   
-function getCustomerPaymentProfile($customerProfileId=\SampleCode\Constants::CUSTOMER_PROFILE_ID_2, 
-   $customerPaymentProfileId= \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID_GET)
+function getCustomerPaymentProfile($customerProfileId="36731856", 
+   $customerPaymentProfileId= "33211899")
 {
 	// Common setup for API credentials (merchant)
 	$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();

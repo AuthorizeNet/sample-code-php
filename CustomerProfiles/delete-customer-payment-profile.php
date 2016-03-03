@@ -5,8 +5,8 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function deleteCustomerPaymentProfile($customerProfileId= \SampleCode\Constants::CUSTOMER_PROFILE_ID, 
-     $customerpaymentprofileid = \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID)
+  function deleteCustomerPaymentProfile($customerProfileId= "36152127", 
+     $customerpaymentprofileid = "32689274")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();

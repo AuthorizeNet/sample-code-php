@@ -227,6 +227,21 @@ class TestRunner extends PHPUnit_Framework_TestCase
 		return $response;
    }
 
+   public static function runCreateSubscriptionFromCustomerProfile()
+   {
+		$responseCustomerProfile = createCustomerProfile(self::getEmail());
+		$responseCustomerPaymentProfile = createCustomerPaymentProfile($responseCustomerProfile->getCustomerProfileId(), self::getPhoneNumber());
+		$responseCustomerShippingAddress = createCustomerShippingAddress($responseCustomerProfile->getCustomerProfileId(), self::getPhoneNumber());
+
+		$response = createSubscription(self::getDay(), $responseCustomerProfile->getCustomerProfileId(),
+				$responseCustomerPaymentProfile->getCustomerPaymentProfileId(), $responseCustomerShippingAddress->getCustomerAddressId());
+
+		cancelSubscription($response->getSubscriptionId());
+		deleteCustomerProfile($responseCustomerProfile->getCustomerProfileId());
+
+		return $response;
+   }
+
    public static function runCancelSubscription()
    {
 		$response = createSubscription(self::getDay());

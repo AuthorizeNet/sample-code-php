@@ -16,7 +16,7 @@
     $request->setMerchantAuthentication($merchantAuthentication);
 	$request->setRefId($refId);
     $request->setSplitTenderId("115901");
-    $request->setSplitTenderStatus(\SampleCode\Constants::STATUS_VOID);
+    $request->setSplitTenderStatus("voided");
 
     $controller = new AnetController\UpdateSplitTenderGroupController($request);
 

@@ -38,6 +38,6 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    cancelSubscription(\SampleCode\Constants::SUBSCRIPTION_ID_CANCEL);
+    cancelSubscription("3056945");
 
 ?>

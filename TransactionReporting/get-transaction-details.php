@@ -39,5 +39,5 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    getTransactionDetails( \SampleCode\Constants::TRANS_ID);
+    getTransactionDetails("2238968786");
 ?>

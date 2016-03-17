@@ -77,23 +77,28 @@ class TestRunner extends PHPUnit_Framework_TestCase
 				}
 				else
 				{
-					if("0" === $isDependent)
+					for($i=0; $i<=1; $i++)
 					{
-						echo "not dependent\n";
-						$sampleMethodName = $apiName;
-						$sampleMethodName[0] = strtolower($sampleMethodName[0]);
+							if("0" === $isDependent)
+							{
+								echo "not dependent\n";
+								$sampleMethodName = $apiName;
+								$sampleMethodName[0] = strtolower($sampleMethodName[0]);
+							}
+							else
+							{
+								$sampleMethodName = "TestRunner::run" . $apiName;
+								echo " is dependent\n";
+							}
+							
+							//request the api
+							echo "Running sample: " . $sampleMethodName . "\n";
+							
+							$response = call_user_func($sampleMethodName);
+
+							if(($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
+								break;
 					}
-					else
-					{
-						$sampleMethodName = "TestRunner::run" . $apiName;
-						echo " is dependent\n";
-					}
-					
-					
-					//request the api
-					echo "Running sample: " . $sampleMethodName . "\n";
-					
-					$response = call_user_func($sampleMethodName);
 
 					//response must be successful
 					$this->assertNotNull($response);

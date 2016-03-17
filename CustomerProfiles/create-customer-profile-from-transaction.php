@@ -15,7 +15,7 @@
       $customerProfile = new AnetAPI\CustomerProfileBaseType();
       $customerProfile->setMerchantCustomerId("123212");
       $customerProfile->setEmail(rand(0,10000) . "@test" .".com");
-      $customerProfile->setDesciption(rand(0,10000) ."sample description");
+      $customerProfile->setDescription(rand(0,10000) ."sample description");
       
 	  $request = new AnetAPI\CreateCustomerProfileFromTransactionRequest();
 	  $request->setMerchantAuthentication($merchantAuthentication);

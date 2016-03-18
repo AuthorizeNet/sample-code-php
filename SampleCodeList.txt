@@ -1,6 +1,7 @@
 ﻿SampleCodeName,IsDependent,ShouldRun
 ChargeCreditCard,1,1
 CreateSubscription,1,1
+CreateSubscriptionFromCustomerProfile,1,1
 GetCustomerPaymentProfileList,0,1
 GetTransactionList,0,1
 CreateAnApplePayTransaction,0,0

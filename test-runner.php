@@ -77,23 +77,28 @@ class TestRunner extends PHPUnit_Framework_TestCase
 				}
 				else
 				{
-					if("0" === $isDependent)
+					for($i=0; $i<=1; $i++)
 					{
-						echo "not dependent\n";
-						$sampleMethodName = $apiName;
-						$sampleMethodName[0] = strtolower($sampleMethodName[0]);
+							if("0" === $isDependent)
+							{
+								echo "not dependent\n";
+								$sampleMethodName = $apiName;
+								$sampleMethodName[0] = strtolower($sampleMethodName[0]);
+							}
+							else
+							{
+								$sampleMethodName = "TestRunner::run" . $apiName;
+								echo " is dependent\n";
+							}
+							
+							//request the api
+							echo "Running sample: " . $sampleMethodName . "\n";
+							
+							$response = call_user_func($sampleMethodName);
+
+							if(($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
+								break;
 					}
-					else
-					{
-						$sampleMethodName = "TestRunner::run" . $apiName;
-						echo " is dependent\n";
-					}
-					
-					
-					//request the api
-					echo "Running sample: " . $sampleMethodName . "\n";
-					
-					$response = call_user_func($sampleMethodName);
 
 					//response must be successful
 					$this->assertNotNull($response);
@@ -223,6 +228,21 @@ class TestRunner extends PHPUnit_Framework_TestCase
    {
 		$response = createSubscription(self::getDay());
 		cancelSubscription($response->getSubscriptionId());
+
+		return $response;
+   }
+
+   public static function runCreateSubscriptionFromCustomerProfile()
+   {
+		$responseCustomerProfile = createCustomerProfile(self::getEmail());
+		$responseCustomerPaymentProfile = createCustomerPaymentProfile($responseCustomerProfile->getCustomerProfileId(), self::getPhoneNumber());
+		$responseCustomerShippingAddress = createCustomerShippingAddress($responseCustomerProfile->getCustomerProfileId(), self::getPhoneNumber());
+
+		$response = createSubscription(self::getDay(), $responseCustomerProfile->getCustomerProfileId(),
+				$responseCustomerPaymentProfile->getCustomerPaymentProfileId(), $responseCustomerShippingAddress->getCustomerAddressId());
+
+		cancelSubscription($response->getSubscriptionId());
+		deleteCustomerProfile($responseCustomerProfile->getCustomerProfileId());
 
 		return $response;
    }

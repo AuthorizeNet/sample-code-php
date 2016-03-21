@@ -33,6 +33,17 @@ function getCustomerPaymentProfile($customerProfileId=\SampleCode\Constants::CUS
 			echo "Customer Payment Profile Billing Address: " . $response->getPaymentProfile()->getbillTo()->getAddress(). "\n";
 			echo "Customer Payment Profile Card Last 4 " . $response->getPaymentProfile()->getPayment()->getCreditCard()->getCardNumber(). "\n";
 
+			if($response->getPaymentProfile()->getSubscriptionIds() != null) 
+			{
+				if(($response->getPaymentProfile()->getSubscriptionIds() != null) && 
+						(!empty($response->getPaymentProfile()->getSubscriptionIds())))
+				{
+
+					echo "List of subscriptions:";
+					foreach($response->getPaymentProfile()->getSubscriptionIds() as $subscriptionid)
+						echo $subscriptionid . "\n";
+				}
+			}
 		}
 		else
 		{

@@ -39,6 +39,18 @@
 		  echo "	Phone Number 	: " . $response->getAddress()->getPhoneNumber() . "\n";
 		  echo "	FAX Number 	: " . $response->getAddress()->getFaxNumber() . "\n";
 		  echo "Customer AddressId 	: " . $response->getAddress()->getCustomerAddressId() . "\n";
+
+		if($response->getSubscriptionIds() != null) 
+		{
+			if(($response->getSubscriptionIds() != null) && 
+					(!empty($response->getSubscriptionIds())))
+			{
+
+				echo "List of subscriptions:";
+				foreach($response->getSubscriptionIds() as $subscriptionid)
+					echo $subscriptionid . "\n";
+			}
+		}
 	   }
 	  else
 	  {

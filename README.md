@@ -15,3 +15,10 @@ Run the individual samples e.g.
 ````
 php PaymentTransactions/charge-credit-card.php
 ````
+
+##What if I'm not using Composer?
+We provide a custom `SPL` autoloader, just [download the SDK.](https://github.com/AuthorizeNet/sdk-php/releases):
+
+```php
+require 'path/to/anet_php_sdk/autoload.php';
+```

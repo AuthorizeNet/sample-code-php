@@ -21,14 +21,14 @@
 
 	  // Create the Bill To info for new payment type
 	  $billto = new AnetAPI\CustomerAddressType();
-	  $billto->setFirstName("Mrs Mary");
+	  $billto->setFirstName("Mrs Mary".$phoneNumber);
 	  $billto->setLastName("Doe");
 	  $billto->setCompany("My company");
 	  $billto->setAddress("123 Main St.");
 	  $billto->setCity("Bellevue");
 	  $billto->setState("WA");
 	  $billto->setZip("98004");
-	  $billto->setPhoneNumber("000-000-0000");
+	  $billto->setPhoneNumber($phoneNumber);
 	  $billto->setfaxNumber("999-999-9999");
 	  $billto->setCountry("USA");
 

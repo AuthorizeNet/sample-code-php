@@ -81,6 +81,17 @@
 		$paymentProfilesSelected = $profileSelected->getPaymentProfiles();
 		echo "Profile Has " . count($paymentProfilesSelected). " Payment Profiles" . "\n";
 
+		if($response->getSubscriptionIds() != null) 
+		{
+			if(($response->getSubscriptionIds() != null) && 
+					(!empty($response->getSubscriptionIds())))
+			{
+
+				echo "List of subscriptions:";
+				foreach($response->getSubscriptionIds() as $subscriptionid)
+					echo $subscriptionid . "\n";
+			}
+		}
 	  }
 	  else
 	  {

@@ -10,3 +10,4 @@ class Constants
 	const RESPONSE_OK = "1";
 }
 ?>
+

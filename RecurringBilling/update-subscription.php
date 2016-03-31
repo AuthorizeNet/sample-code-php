@@ -23,7 +23,16 @@
     $payment = new AnetAPI\PaymentType();
     $payment->setCreditCard($creditCard);
 
+    //set profile information
+    $profile = new AnetAPI\CustomerProfileIdType();
+    $profile->setCustomerProfileId("121212");
+    $profile->setCustomerPaymentProfileId("131313");
+    $profile->setCustomerAddressId("141414");
+
     $subscription->setPayment($payment);
+
+    //set customer profile information
+    //$subscription->setProfile($profile);
     
     $request = new AnetAPI\ARBUpdateSubscriptionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);

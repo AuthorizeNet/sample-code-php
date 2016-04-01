@@ -8,8 +8,8 @@
   function getUnsettledTransactionList() {
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName("4gf2H89Xc");
-    $merchantAuthentication->setTransactionKey("3T32UcwyCL555U6J");
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
 
     $refId = 'ref' . time();
 

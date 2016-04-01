@@ -57,6 +57,6 @@
 
   if(!defined('DONT_RUN_SAMPLES'))
   {
-    payPalPriorAuthorizationCapture( \SampleCode\Constants::TRANS_ID_PAYPAL_GET);
+    payPalPriorAuthorizationCapture("2249863278");
   }
 ?>

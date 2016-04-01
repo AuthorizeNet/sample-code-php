@@ -14,7 +14,7 @@
     $refId = 'ref' . time();
 
     //Setting a valid batch Id for the Merchant
-    $batchId = \SampleCode\Constants::BATCH_ID;
+    $batchId = "4532808";
     
     // Creating a request 
     $request = new AnetAPI\GetBatchStatisticsRequest();

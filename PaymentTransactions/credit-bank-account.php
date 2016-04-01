@@ -13,17 +13,17 @@
     $refId = 'ref' . time();
     // Create the payment data for a Bank Account
     $bankAccount = new AnetAPI\BankAccountType();
-    $bankAccount->setRoutingNumber(\SampleCode\Constants::ROUTING_NUMBER);
-    $bankAccount->setAccountNumber(\SampleCode\Constants::ACCOUNT_NUMBER);
-    $bankAccount->setNameOnAccount(\SampleCode\Constants::NAME_ON_ACCOUNT);
+    $bankAccount->setRoutingNumber('125000024');
+    $bankAccount->setAccountNumber('12345678');
+    $bankAccount->setNameOnAccount('Jane Doe');
     
     $paymentBank= new AnetAPI\PaymentType();
     $paymentBank->setBankAccount($bankAccount);
 
   // Order info
     $order = new AnetAPI\OrderType();
-    $order->setInvoiceNumber(\SampleCode\Constants::INVOICE_NUMBER);
-    $order->setDescription(\SampleCode\Constants::ORDER_DESCRIPTION);
+    $order->setInvoiceNumber("101");
+    $order->setDescription("Golf Shirts");
 
       //create a debit card Bank transaction
     
@@ -63,5 +63,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    creditBankAccount( \SampleCode\Constants::SAMPLE_AMOUNT);
+    creditBankAccount(12.23);
 ?>

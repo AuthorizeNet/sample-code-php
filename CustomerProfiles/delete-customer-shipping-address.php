@@ -5,8 +5,7 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function deleteCustomerShippingAddress($customerprofileid = \SampleCode\Constants::CUSTOMER_PROFILE_ID_2, 
-     $customeraddressid = "36976434")
+  function deleteCustomerShippingAddress($customerprofileid = "36731856", $customeraddressid = "36976434")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();

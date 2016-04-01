@@ -5,8 +5,8 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function validateCustomerPaymentProfile($customerProfileId= \SampleCode\Constants::CUSTOMER_PROFILE_ID_2,
-    $customerPaymentProfileId= \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID_GET)
+  function validateCustomerPaymentProfile($customerProfileId= "36731856",
+    $customerPaymentProfileId= "33211899")
   {
   // Common setup for API credentials
   $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();

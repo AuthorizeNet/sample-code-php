@@ -24,12 +24,17 @@
 
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
     {
-        foreach($response->getTransactions() as $tx)
-        {
-          echo "SUCCESS: TransactionID: " . $tx->getTransId() . "\n";
+		if(null != $response->getTransactions())
+		{
+			foreach($response->getTransactions() as $tx)
+			{
+			  echo "SUCCESS: TransactionID: " . $tx->getTransId() . "\n";
+			}
         }
-        
-     }
+		else{
+			echo "No unsettled transactions for the merchant." . "\n";
+		}
+    }
     else
     {
         echo "ERROR :  Invalid response\n";

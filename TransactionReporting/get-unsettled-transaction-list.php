@@ -8,8 +8,8 @@
   function getUnsettledTransactionList() {
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    $merchantAuthentication->setName("4gf2H89Xc");
+    $merchantAuthentication->setTransactionKey("3T32UcwyCL555U6J");
 
     $refId = 'ref' . time();
 
@@ -24,12 +24,17 @@
 
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
     {
-        foreach($response->getTransactions() as $tx)
-        {
-          echo "SUCCESS: TransactionID: " . $tx->getTransId() . "\n";
+		if(null != $response->getTransactions())
+		{
+			foreach($response->getTransactions() as $tx)
+			{
+			  echo "SUCCESS: TransactionID: " . $tx->getTransId() . "\n";
+			}
         }
-        
-     }
+		else{
+			echo "No unsettled transactions for the merchant." . "\n";
+		}
+    }
     else
     {
         echo "ERROR :  Invalid response\n";

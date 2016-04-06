@@ -15,8 +15,9 @@
 
     // Create the payment data for a credit card
     $creditCard = new AnetAPI\CreditCardType();
-    $creditCard->setCardNumber( \SampleCode\Constants::CREDIT_CARD_NUMBER );
-    $creditCard->setExpirationDate( \SampleCode\Constants::EXPIRY_DATE);
+    $creditCard->setCardNumber("4111111111111111");
+    $creditCard->setExpirationDate("1226");
+    $creditCard->setCardCode("123");
     $paymentOne = new AnetAPI\PaymentType();
     $paymentOne->setCreditCard($creditCard);
 

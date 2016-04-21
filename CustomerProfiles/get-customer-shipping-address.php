@@ -42,8 +42,7 @@
 
 		if($response->getSubscriptionIds() != null) 
 		{
-			if(($response->getSubscriptionIds() != null) && 
-					(!empty($response->getSubscriptionIds())))
+			if($response->getSubscriptionIds() != null)
 			{
 
 				echo "List of subscriptions:";

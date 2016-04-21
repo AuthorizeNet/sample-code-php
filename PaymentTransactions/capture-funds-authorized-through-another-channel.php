@@ -48,7 +48,6 @@ function captureFundsAuthorizedThroughAnotherChannel($amount){
             echo  "Capture funds authorized through another channel ERROR: Invalid response\n";
             $errorMessages = $response->getMessages()->getMessage();
             echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
-  }
         }
     }
     else

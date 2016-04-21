@@ -65,7 +65,8 @@
 	  else
 	  {
 		  echo "ERROR :  CreateCustomerProfile: Invalid response\n";
-		  echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+		  $errorMessages = $response->getMessages()->getMessage();
+		  echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
 	  }
 	  // Retrieve an existing customer profile along with all the associated payment profiles and shipping addresses
 
@@ -96,7 +97,8 @@
 	  else
 	  {
 		echo "ERROR :  GetCustomerProfile: Invalid response\n";
-		echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+		$errorMessages = $response->getMessages()->getMessage();
+		echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
 	  }
 	  return $response;
   }

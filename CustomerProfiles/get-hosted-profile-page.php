@@ -31,15 +31,13 @@
 	  
 	  if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
 	  {
-		  echo $response->getMessages()->getMessage()[0]->getCode()."\n";
-		  echo $response->getMessages()->getMessage()[0]->getText()."\n";
-		  
 		  echo $response->getToken()."\n";
 	   }
 	  else
 	  {
 		  echo "ERROR :  Failed to get hosted profile page\n";
-		  echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+		  $errorMessages = $response->getMessages()->getMessage();
+		  echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
 	  }
 	  return $response;
   }

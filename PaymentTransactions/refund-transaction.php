@@ -14,8 +14,8 @@
 
     // Create the payment data for a credit card
     $creditCard = new AnetAPI\CreditCardType();
-    $creditCard->setCardNumber( \SampleCode\Constants::CREDIT_CARD_NUMBER );
-    $creditCard->setExpirationDate( \SampleCode\Constants::EXPIRY_DATE);
+    $creditCard->setCardNumber("0015");
+    $creditCard->setExpirationDate("XXXX");
     $paymentOne = new AnetAPI\PaymentType();
     $paymentOne->setCreditCard($creditCard);
     //create a transaction
@@ -23,9 +23,7 @@
     $transactionRequest->setTransactionType( "refundTransaction"); 
     $transactionRequest->setAmount($amount);
     $transactionRequest->setPayment($paymentOne);
-    $customer = new AnetAPI\CustomerDataType();
-    $customer->setId("CUST001");
-    $transactionRequest->setCustomer($customer);
+ 
 
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);

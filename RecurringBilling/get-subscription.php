@@ -44,8 +44,8 @@
 			{
 				// Error
 				echo "ERROR :  Invalid response\n";
-				echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
-		  
+				$errorMessages = $response->getMessages()->getMessage();
+                echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
 			}
 		}
 		else

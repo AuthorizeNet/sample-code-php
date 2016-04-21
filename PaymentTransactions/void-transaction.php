@@ -41,8 +41,9 @@
       else
       {
           echo  "void transaction ERROR : " . $tresponse->getResponseCode() . "\n";
-	      echo "Response Code : " . $response->getMessages()->getMessage()[0]->getCode() . " Resposne text: " .$response->getMessages()->getMessage()[0]->getText() . "\n";
-		  //use print_r to see whole $response which will have the specific error messages
+	        $errorMessages = $response->getMessages()->getMessage();
+          echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
+          //use print_r to see whole $response which will have the specific error messages
       }
     }
     else

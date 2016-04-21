@@ -75,9 +75,8 @@
 		{
 			echo "Messages...\n";
 			echo "Result code: ".$messages->getResultCode()."\n";
-			$message0=$messages->getMessage()[0];
-			if($message0!=null)
-				echo "Message: ".$message0->getCode().", ".$message0->getText()."\n";
+			$errorMessages = $messages->getMessage();
+      echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
 		}
 		else
 			echo "NULL messages Error\n";

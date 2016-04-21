@@ -44,8 +44,8 @@
 			{
 				// Success
 				echo "GetCustomerPaymentProfileList SUCCESS: " . "\n";
-				echo "Message Code: " . $response->getMessages()->getMessage()[0]->getCode() . "\n";
-				echo "Message Text: " . $response->getMessages()->getMessage()[0]->getText() . "\n";
+				$errorMessages = $response->getMessages()->getMessage();
+		        echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
 				echo "Total number of Results in the result set" . $response->getTotalNumInResultSet() . "\n";
 				// Displaying the customer payment profile list 
 				foreach($response->getPaymentProfiles() as $paymentProfile )
@@ -61,7 +61,8 @@
 			{
 				// Error
 				echo "GetCustomerPaymentProfileList ERROR :  Invalid response\n";
-				echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+				$errorMessages = $response->getMessages()->getMessage();
+		        echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";				
 			}
 		}
 		else

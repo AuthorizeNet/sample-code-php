@@ -23,13 +23,15 @@
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
     
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
-    {
-        echo "SUCCESS : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+    { 
+        $errorMessages = $response->getMessages()->getMessage();
+        echo "SUCCESS  Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
      }
     else
     {
         echo "ERROR :  Invalid response\n";
-        echo "Response Code : " . $response->getMessages()->getMessage()[0]->getCode() . " Resposne text: " .$response->getMessages()->getMessage()[0]->getText() . "\n";
+        $errorMessages = $response->getMessages()->getMessage();
+        echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
     }
     return $response;
   }

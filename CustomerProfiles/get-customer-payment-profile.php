@@ -35,8 +35,7 @@ function getCustomerPaymentProfile($customerProfileId=\SampleCode\Constants::CUS
 
 			if($response->getPaymentProfile()->getSubscriptionIds() != null) 
 			{
-				if(($response->getPaymentProfile()->getSubscriptionIds() != null) && 
-						(!empty($response->getPaymentProfile()->getSubscriptionIds())))
+				if($response->getPaymentProfile()->getSubscriptionIds() != null)
 				{
 
 					echo "List of subscriptions:";

@@ -59,7 +59,8 @@
 	  if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
 	  {
 		  echo "Succesfully create customer profile : " . $response->getCustomerProfileId() . "\n";
-		  echo "SUCCESS: PAYMENT PROFILE ID : " . $response->getCustomerPaymentProfileIdList()[0] . "\n";
+		  $paymentProfiles = $response->getCustomerPaymentProfileIdList();
+		  echo "SUCCESS: PAYMENT PROFILE ID : " . $paymentProfiles[0] . "\n";
 	   }
 	  else
 	  {

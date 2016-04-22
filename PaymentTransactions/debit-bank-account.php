@@ -50,7 +50,8 @@
       elseif (($tresponse != null) && ($tresponse->getResponseCode()=="2") )
       {
         echo  "Debit Bank Account ERROR : DECLINED" . "\n";
-        echo  "Error : " . $tresponse->getErrors()[0]->getErrorText() . "\n";
+        $errorMessages = $tresponse->getErrors();
+        echo  "Error : " . $errorMessages[0]->getErrorText() . "\n";
       }
       elseif (($tresponse != null) && ($tresponse->getResponseCode()=="4") )
       {

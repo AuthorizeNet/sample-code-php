@@ -20,11 +20,16 @@
       $paymentOne = new AnetAPI\PaymentType();
       $paymentOne->setCreditCard($creditCard);
 
+      $order = new AnetAPI\OrderType();
+      $order->setDescription("New Item");
+
       //create a transaction
       $transactionRequestType = new AnetAPI\TransactionRequestType();
       $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
       $transactionRequestType->setAmount($amount);
+      $transactionRequestType->setOrder($order);
       $transactionRequestType->setPayment($paymentOne);
+      
 
       $request = new AnetAPI\CreateTransactionRequest();
       $request->setMerchantAuthentication($merchantAuthentication);

@@ -2,18 +2,8 @@
   "require": {
   "php": ">=5.5",
   "ext-curl": "*",
-  "authorizenet/authorizenet": "1.8.9",
-  "jms/serializer": "serializer-master-dev as 1.0"
+  "authorizenet/authorizenet": "1.8.9"
   },
-  "require-dev": {
-  "phpunit/phpunit": "~4.0",
-  "goetas-webservices/xsd2php-runtime":"^0.2",
-  "goetas-webservices/xsd-reader": "^0.1"
-  },
-  "repositories": [{
-    "type": "vcs",
-    "url": "https://github.com/goetas/serializer.git"
-    }],
   "autoload": {
     "classmap": ["constants"]
   }

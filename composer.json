@@ -2,6 +2,7 @@
   "require": {
   "php": ">=5.5",
   "ext-curl": "*",
+  "phpunit/phpunit": "~4.0",
   "authorizenet/authorizenet": "1.8.9",
   "jms/serializer": "serializer-master-dev as 1.0"
   },

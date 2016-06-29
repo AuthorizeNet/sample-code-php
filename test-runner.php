@@ -34,7 +34,7 @@ error_reporting($errorlevel);
 class TestRunner extends PHPUnit_Framework_TestCase
 {
 	public static $apiLoginId = "5KP3u95bQpv";
-	public static $transactionKey = "4Ktq966gC55GAX7S";
+	public static $transactionKey = "346HZ32z3fP4hTG2";
 	public static $transactionID = "2245440957";
 	public static $payerID = "LM6NCLZ5RAKBY";
 	//random amount for transactions/subscriptions

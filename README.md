@@ -1,6 +1,3 @@
-[![Travis](https://img.shields.io/travis/AuthorizeNet/sample-code-php/master.svg)]
-(https://travis-ci.org/AuthorizeNet/sample-code-php)
-
 # Sample PHP Code for Authorize.Net
 [![Build Status](https://travis-ci.org/AuthorizeNet/sample-code-php.png?branch=master)]
 (https://travis-ci.org/AuthorizeNet/sample-code-php)

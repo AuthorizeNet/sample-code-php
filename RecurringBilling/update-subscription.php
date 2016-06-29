@@ -61,5 +61,5 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-      updateSubscription( \SampleCode\Constants::SUBSCRIPTION_ID_UPDATE);
+      updateSubscription("3056948");
 ?>

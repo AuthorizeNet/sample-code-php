@@ -26,7 +26,7 @@
 		
 		// Getting the response
 		$response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
-
+		
 		if ($response != null) 
 		{
 			if($response->getMessages()->getResultCode() == "Ok")
@@ -39,11 +39,12 @@
 				echo "Subscription status: " . $response->getSubscription()->getStatus(). "\n";
 				echo "Subscription Description: " . $response->getSubscription()->getProfile()->getDescription(). "\n";
 				echo "Customer Profile ID: " .  $response->getSubscription()->getProfile()->getCustomerProfileId() . "\n";
+				echo "Customer payment Profile ID: ". $response->getSubscription()->getProfile()->getPaymentProfile()->getCustomerPaymentProfileId() . "\n";
 			}
 			else
 			{
 				// Error
-				echo "ERROR :  Invalid response\n";
+				echo "ERROR :  Invalid response\n";	
 				$errorMessages = $response->getMessages()->getMessage();
                 echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
 			}
@@ -58,5 +59,5 @@
 	}
 
 	if(!defined('DONT_RUN_SAMPLES'))
-		getSubscription( \SampleCode\Constants::SUBSCRIPTION_ID_GET);
+		getSubscription("2930242");
  ?>

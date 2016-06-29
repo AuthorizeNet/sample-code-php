@@ -10,10 +10,10 @@ class Constants
 	const RESPONSE_OK = "1";
 	
 	//Recurring Billing
-	const SUBSCRIPTION_ID_CANCEL = "3056945";
-	const SUBSCRIPTION_ID_UPDATE = "3056948";
+	//const SUBSCRIPTION_ID_CANCEL = "3056945";
+	//const SUBSCRIPTION_ID_UPDATE = "3056948";
 	const SUBSCRIPTION_ID_GET = "2930242";
-	const SUBSCRIPTION_INTERVAL_DAYS = 23;
+	//const SUBSCRIPTION_INTERVAL_DAYS = 23;
 	
 	//Customer Profiles
 	//const TEST_CUSTOMER_EMAIL = "test123@test.com";

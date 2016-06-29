@@ -38,6 +38,6 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    getSubscriptionStatus( \SampleCode\Constants::SUBSCRIPTION_ID_UPDATE);
+    getSubscriptionStatus("3056948");
 
 ?>

@@ -71,6 +71,6 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    createSubscription( \SampleCode\Constants::SUBSCRIPTION_INTERVAL_DAYS);
+    createSubscription(23);
 
 ?>

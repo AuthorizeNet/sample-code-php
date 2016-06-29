@@ -13,8 +13,8 @@ function captureFundsAuthorizedThroughAnotherChannel($amount){
     $refId = 'ref' . time();
 
     $creditCard = new AnetAPI\CreditCardType();
-    $creditCard->setCardNumber( \SampleCode\Constants::CREDIT_CARD_NUMBER);
-    $creditCard->setExpirationDate( \SampleCode\Constants::EXPIRY_DATE);
+    $creditCard->setCardNumber("4111111111111111");
+    $creditCard->setExpirationDate("2038-12");
 
     $paymentOne = new AnetAPI\PaymentType();
     $paymentOne->setCreditCard($creditCard);
@@ -25,7 +25,7 @@ function captureFundsAuthorizedThroughAnotherChannel($amount){
     $transactionRequestType->setPayment($paymentOne);
 
     //Auth code of the previously authorized  amount
-    $transactionRequestType->setAuthCode(\SampleCode\Constants::SAMPLE_AUTH_CODE_AUTHORIZED);
+    $transactionRequestType->setAuthCode("ROHNFQ");
 
 
     $request = new AnetAPI\CreateTransactionRequest();
@@ -57,5 +57,5 @@ function captureFundsAuthorizedThroughAnotherChannel($amount){
     return $response;
 }
 if(!defined('DONT_RUN_SAMPLES'))
-    captureFundsAuthorizedThroughAnotherChannel((rand(1, \SampleCode\Constants::MAX_AMOUNT)/12*12));
+    captureFundsAuthorizedThroughAnotherChannel((rand(1, 99999)/12*12));
 ?>

@@ -15,8 +15,8 @@
 
 		// Create the payment data for a credit card
 	  $creditCard = new AnetAPI\CreditCardType();
-	  $creditCard->setCardNumber(  \SampleCode\Constants::CREDIT_CARD_NUMBER);
-	  $creditCard->setExpirationDate( \SampleCode\Constants::EXPIRY_DATE);
+	  $creditCard->setCardNumber(  "4111111111111111");
+	  $creditCard->setExpirationDate( "2038-12");
 	  $paymentCreditCard = new AnetAPI\PaymentType();
 	  $paymentCreditCard->setCreditCard($creditCard);
 
@@ -71,5 +71,5 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      createCustomerProfile( \SampleCode\Constants::TEST_CUSTOMER_EMAIL);
+      createCustomerProfile("test123@test.com");
 ?>

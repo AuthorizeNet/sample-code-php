@@ -95,6 +95,6 @@
   }
 
 if(!defined('DONT_RUN_SAMPLES'))
-  payPalGetDetails( \SampleCode\Constants::TRANS_ID_PAYPAL_GET);
+  payPalGetDetails("2249863278");
 
 ?>

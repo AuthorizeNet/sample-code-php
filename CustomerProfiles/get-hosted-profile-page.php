@@ -5,7 +5,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function getHostedProfilePage($customerprofileid = \SampleCode\Constants::CUSTOMER_PROFILE_ID_HOSTED_PAGE)
+  function getHostedProfilePage($customerprofileid = "123212")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();

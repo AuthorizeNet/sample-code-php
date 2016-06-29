@@ -16,10 +16,10 @@
     $bankAccount = new AnetAPI\BankAccountType();
     //$bankAccount->setAccountType('CHECKING');
     $bankAccount->setEcheckType('WEB');
-    $bankAccount->setRoutingNumber(\SampleCode\Constants::DEBIT_ROUTING_NUMBER);
-    $bankAccount->setAccountNumber(\SampleCode\Constants::DEBIT_ACCOUNT_NUMBER);
-    $bankAccount->setNameOnAccount(\SampleCode\Constants::NAME_ON_ACCOUNT);
-    $bankAccount->setBankName(\SampleCode\Constants::BANK_NAME);
+    $bankAccount->setRoutingNumber('121042882');
+    $bankAccount->setAccountNumber('123456789123');
+    $bankAccount->setNameOnAccount('Jane Doe');
+    $bankAccount->setBankName('Bank of the Earth');
 
     $paymentBank= new AnetAPI\PaymentType();
     $paymentBank->setBankAccount($bankAccount);
@@ -69,5 +69,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    debitBankAccount( \SampleCode\Constants::SAMPLE_AMOUNT);
+    debitBankAccount(12.23);
 ?>

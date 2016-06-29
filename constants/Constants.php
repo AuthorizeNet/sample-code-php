@@ -5,7 +5,7 @@ class Constants
 {
 	//merchant credentials
 	const MERCHANT_LOGIN_ID = "5KP3u95bQpv";
-	const MERCHANT_TRANSACTION_KEY = "4Ktq966gC55GAX7S";
+	const MERCHANT_TRANSACTION_KEY = "346HZ32z3fP4hTG2";
 	
 	const RESPONSE_OK = "1";
 	

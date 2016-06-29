@@ -51,5 +51,5 @@
 	}
 
   	if(!defined('DONT_RUN_SAMPLES'))
-    	payPalAuthorizeCapture(\SampleCode\Constants::SAMPLE_AMOUNT);
+    	payPalAuthorizeCapture(12.23);
 ?>

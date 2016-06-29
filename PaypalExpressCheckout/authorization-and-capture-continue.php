@@ -61,6 +61,5 @@
 	}
 
   	if(!defined('DONT_RUN_SAMPLES'))
-    	payPalAuthorizeCaptureContinue(\SampleCode\Constants::TRANS_ID_PAYPAL,
-	        \SampleCode\Constants::PAYER_ID);
+    	payPalAuthorizeCaptureContinue("2241708986","6ZSCSYG33VP8Q");
 ?>

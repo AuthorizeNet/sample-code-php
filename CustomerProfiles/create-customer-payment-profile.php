@@ -13,9 +13,9 @@
       $refId = 'ref' . time();
 
 	  $creditCard = new AnetAPI\CreditCardType();
-	  $creditCard->setCardNumber( \SampleCode\Constants::CREDIT_CARD_NUMBER_2);
-	  $creditCard->setExpirationDate( \SampleCode\Constants::EXPIRY_DATE);
-	  $creditCard->setCardCode( \SampleCode\Constants::CVV);
+	  $creditCard->setCardNumber( "4242424242424242");
+	  $creditCard->setExpirationDate( "2038-12");
+	  $creditCard->setCardCode( "142");
 	  $paymentCreditCard = new AnetAPI\PaymentType();
 	  $paymentCreditCard->setCreditCard($creditCard);
 
@@ -63,5 +63,5 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      createCustomerPaymentProfile(\SampleCode\Constants::CUSTOMER_PROFILE_ID,"000-000-0009");
+      createCustomerPaymentProfile("36152127","000-000-0009");
 ?>

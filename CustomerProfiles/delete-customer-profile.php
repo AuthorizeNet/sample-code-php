@@ -35,5 +35,5 @@
   }
   
   if(!defined('DONT_RUN_SAMPLES'))
-      deleteCustomerProfile( \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID_DELETE);
+      deleteCustomerProfile("38958129");
 ?>

@@ -5,7 +5,7 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function createCustomerProfileFromTransaction($transId= \SampleCode\Constants::TRANS_ID_TO_CREATE_CUSTOMER_PROFILE)
+  function createCustomerProfileFromTransaction($transId= "2249066517")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -44,5 +44,5 @@
   }
   //provide a transaction that has customer information
   if(!defined('DONT_RUN_SAMPLES'))
-      createCustomerProfileFromTransaction(\SampleCode\Constants::TRANS_ID_TO_CREATE_CUSTOMER_PROFILE);
+      createCustomerProfileFromTransaction("2249066517");
 ?>

@@ -49,6 +49,5 @@
   return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      updateCustomerShippingAddress( \SampleCode\Constants::CUSTOMER_PROFILE_ID,
-        \SampleCode\Constants::CUSTOMER_SHIPPING_ADDRESS_ID_GET);
+      updateCustomerShippingAddress( "36152127","36976566");
 ?>

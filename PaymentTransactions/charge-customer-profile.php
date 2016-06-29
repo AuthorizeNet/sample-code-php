@@ -55,6 +55,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    chargeCustomerProfile(\SampleCode\Constants::CUSTOMER_PROFILE_ID,
-      \SampleCode\Constants::CUSTOMER_PAYMENT_PROFILE_ID, \SampleCode\Constants::SAMPLE_AMOUNT);
+    chargeCustomerProfile("36731856","32689274",12.23);
 ?>

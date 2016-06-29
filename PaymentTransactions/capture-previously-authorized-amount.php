@@ -46,5 +46,5 @@
     return $response;
   }
  if(!defined('DONT_RUN_SAMPLES'))
-    capturePreviouslyAuthorizedAmount(\SampleCode\Constants::TRANS_ID_PREVIOUSLY_AUTHORIZED);
+    capturePreviouslyAuthorizedAmount(2249839471);
 ?>

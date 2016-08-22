@@ -17,7 +17,7 @@ $directories = array(
             'PaypalExpressCheckout/',
             'PaymentTransactions/',
             'TransactionReporting/',
-            'ApplePayTransactions/',
+            'MobileInAppTransactions/',
             'VisaCheckout/'
 );
 

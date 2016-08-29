@@ -49,9 +49,10 @@
       if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
       {
         $tresponse = $response->getTransactionResponse();
-        echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+        
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
+          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
           echo "Transaction Response...\n";
           echo "Received response code: ".$tresponse->getResponseCode()."\n";
           echo "Transaction ID: ".$tresponse->getTransId()."\n";

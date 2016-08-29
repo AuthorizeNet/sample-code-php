@@ -41,9 +41,10 @@
       if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
       {
         $tresponse = $response->getTransactionResponse();
-        echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+        
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
+          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
           echo "Charge Tokenized Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
           echo "Charge Tokenized Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";
           echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 

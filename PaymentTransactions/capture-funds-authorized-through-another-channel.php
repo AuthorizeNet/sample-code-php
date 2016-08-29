@@ -39,13 +39,14 @@ function captureFundsAuthorizedThroughAnotherChannel($amount){
       if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
       {
         $tresponse = $response->getTransactionResponse();
-        echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+        
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
-            echo "Successful." . "\n";
-            echo "Capture funds authorized through another channel TRANS ID  : " . $tresponse->getTransId() . " Amount : $amount \n";
-            echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
-	          echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
+          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+          echo "Successful." . "\n";
+          echo "Capture funds authorized through another channel TRANS ID  : " . $tresponse->getTransId() . " Amount : $amount \n";
+          echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
+          echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }
         else
         {

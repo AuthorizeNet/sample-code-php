@@ -31,9 +31,10 @@
       if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
       {
         $tresponse = $response->getTransactionResponse();
-        echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+        
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
+            echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
             echo "Successful." . "\n";
             echo "Capture Previously Authorized Amount, Trans ID : " . $tresponse->getRefTransId() . "\n";
             echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 

@@ -44,9 +44,10 @@
       if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
       {
         $tresponse = $response->getTransactionResponse();
-        echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+        
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
+          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
           echo  "Debit Bank Account APPROVED  :" . "\n";
           echo " Debit Bank Account AUTH CODE : " . $tresponse->getAuthCode() . "\n";
           echo " Debit Banlk Account TRANS ID  : " . $tresponse->getTransId() . "\n";

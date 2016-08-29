@@ -36,10 +36,10 @@
 	      if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
 	      {
 	        $tresponse = $response->getTransactionResponse();
-	        echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+	        
 	        if ($tresponse != null && $tresponse->getMessages() != null)   
 	        {
-				echo "Received response code: ".$tresponse->getResponseCode()."\n";
+          		echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
 				//Valid response codes: 1=Approved, 2=Declined, 3=Error, 5=Need Payer Consent
 				echo "Secure acceptance URL: ".$tresponse->getSecureAcceptance()->getSecureAcceptanceUrl()."\n";
 				echo "Transaction ID: ".$tresponse->getTransId()."\n";
@@ -61,7 +61,7 @@
 	      {
 	        echo "Transaction Failed \n";
 	        $tresponse = $response->getTransactionResponse();
-	        echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+	        
 
 	        if($tresponse != null && $tresponse->getErrors() != null)
 	        {

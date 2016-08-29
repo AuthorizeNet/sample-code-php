@@ -40,9 +40,10 @@
       if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
       {
         $tresponse = $response->getTransactionResponse();
-        echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+        
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
+          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
           echo " Successfully created a transaction with Auth code : " . $tresponse->getAuthCode() . "\n";
           echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
           echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
@@ -62,7 +63,7 @@
       {
         echo "Transaction Failed \n";
         $tresponse = $response->getTransactionResponse();
-        echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+        
         if($tresponse != null && $tresponse->getErrors() != null)
         {
           echo " Error code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";

@@ -35,9 +35,10 @@
       if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
       {
         $tresponse = $response->getTransactionResponse();
-        echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+        
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
+          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
           echo  "Charge Customer Profile APPROVED  :" . "\n";
           echo " Charge Customer Profile AUTH CODE : " . $tresponse->getAuthCode() . "\n";
           echo " Charge Customer Profile TRANS ID  : " . $tresponse->getTransId() . "\n";

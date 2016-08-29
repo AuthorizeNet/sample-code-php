@@ -46,55 +46,68 @@
 
     if ($response != null)
     {
-      $tresponse = $response->getTransactionResponse();
-      
-	  if($tresponse != null)
+      if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
       {
-		if (($tresponse != null) && ($response->getMessages()->getResultCode()=="Ok"))
-		{
-			echo "Transaction Response...\n";
-			echo "Received response code: ".$tresponse->getResponseCode()."\n";
-			echo "Transaction ID: ".$tresponse->getTransId()."\n";
-			//Valid response codes: 1=Approved, 2=Declined, 3=Error, 5=Need Payer Consent
-			if(null != $tresponse->getSecureAcceptance())
-			{
-				echo "Payer ID : " . $tresponse->getSecureAcceptance()->getPayerID() . "\n";
-			}
-			//parse the shipping information from response
-      		$shipping_response = $tresponse->getShipTo();
-			if(null != $shipping_response)
-			{
-				echo "Shipping address : " . $shipping_response->getAddress() . ", " . $shipping_response->getCity()
-					. ", " . $shipping_response->getState() . ", " . $shipping_response->getCountry() . "\n";
-			}
-		}
-		else
-			echo "NULL transactionResponse Error\n";
-		$messages=$response->getMessages();
-		if (($messages != null))
-		{
-			echo "Messages...\n";
-			echo "Result code: ".$messages->getResultCode()."\n";
-			$errorMessages = $messages->getMessage();
-      echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
-		}
-		else
-			echo "NULL messages Error\n";
+        $tresponse = $response->getTransactionResponse();
+        
+	      if ($tresponse != null && $tresponse->getMessages() != null)   
+        {
+          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+          echo "Transaction Response...\n";
+          echo "Received response code: ".$tresponse->getResponseCode()."\n";
+          echo "Transaction ID: ".$tresponse->getTransId()."\n";
+          //Valid response codes: 1=Approved, 2=Declined, 3=Error, 5=Need Payer Consent
+          if(null != $tresponse->getSecureAcceptance())
+          {
+            echo "Payer ID : " . $tresponse->getSecureAcceptance()->getPayerID() . "\n";
+          }
+          
+          //parse the shipping information from response
+          $shipping_response = $tresponse->getShipTo();
+          if(null != $shipping_response)
+          {
+            echo "Shipping address : " . $shipping_response->getAddress() . ", " . $shipping_response->getCity()
+              . ", " . $shipping_response->getState() . ", " . $shipping_response->getCountry() . "\n";
+          }          
+
+          echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
+	        echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
+        }
+        else
+        {
+          echo "Transaction Failed \n";
+          if($tresponse->getErrors() != null)
+          {
+            echo " Error code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
+            echo " Error message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";            
+          }
+        }
       }
       else
       {
-      	echo  "No response returned";
-      }    
+        echo "Transaction Failed \n";
+        $tresponse = $response->getTransactionResponse();
+        if($tresponse != null && $tresponse->getErrors() != null)
+        {
+          echo " Error code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
+          echo " Error message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";                      
+        }
+        else
+        {
+          echo " Error code  : " . $response->getMessages()->getMessage()[0]->getCode() . "\n";
+          echo " Error message : " . $response->getMessages()->getMessage()[0]->getText() . "\n";
+        }
+      }      
     }
     else
     {
-      echo  "No response returned";
+      echo  "No response returned \n";
     }
 
     return $response;
   }
 
 if(!defined('DONT_RUN_SAMPLES'))
-  payPalGetDetails("2249863278");
+  payPalGetDetails("60007107304");
 
 ?>

@@ -11,17 +11,10 @@
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
 	  $refId = 'ref' . time();
-    
-    // Create the payment data for a credit card
-    $creditCard = new AnetAPI\CreditCardType();
-    $creditCard->setCardNumber("4111111111111111" );
-    $creditCard->setExpirationDate("2038-12");
-    $paymentOne = new AnetAPI\PaymentType();
-    $paymentOne->setCreditCard($creditCard);
+
     //create a transaction
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType( "voidTransaction"); 
-    $transactionRequestType->setPayment($paymentOne);
     $transactionRequestType->setRefTransId($transactionid);
 
     $request = new AnetAPI\CreateTransactionRequest();
@@ -40,8 +33,8 @@
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
           echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
-          echo "Void transaction SUCCESS AUTH CODE: " . $tresponse->getAuthCode() . "\n";
-          echo "Void transaction SUCCESS TRANS ID  : " . $tresponse->getTransId() . "\n";
+          echo " Void transaction SUCCESS AUTH CODE: " . $tresponse->getAuthCode() . "\n";
+          echo " Void transaction SUCCESS TRANS ID  : " . $tresponse->getTransId() . "\n";
           echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
 	        echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }
@@ -79,5 +72,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    voidTransaction("2249063130");
+    voidTransaction("60009605785");
 ?>

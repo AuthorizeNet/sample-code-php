@@ -5,7 +5,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function createCustomerProfile($email){
+  function createCustomerProfileWithAcceptNonce($email){
 	  
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -71,5 +71,5 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      createCustomerProfile("test123@test.com");
+      createCustomerProfileWithAcceptNonce("test123@test.com");
 ?>

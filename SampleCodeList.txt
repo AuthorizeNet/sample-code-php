@@ -25,7 +25,7 @@ UpdateCustomerPaymentProfile,1,1
 GetCustomerShippingAddress,1,1
 GetCustomerProfileIds,0,1
 GetCustomerProfile,1,1
-GetHostedProfilePage,1,1
+GetAcceptCustomerProfilePage,1,1
 GetCustomerPaymentProfile,1,1
 DeleteCustomerShippingAddress,1,1
 DeleteCustomerProfile,1,1

@@ -6,7 +6,7 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function createSubscription($intervalLength) {
+  function createSubscriptionFromCustomerProfile($intervalLength, $customerProfileId, $customerPaymentProfileId, $customerAddressId) {
 
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -33,20 +33,12 @@
     $subscription->setAmount(rand(1,99999)/12.0*12);
     $subscription->setTrialAmount("0.00");
     
-    $creditCard = new AnetAPI\CreditCardType();
-    $creditCard->setCardNumber("4111111111111111");
-    $creditCard->setExpirationDate("2020-12");
+    $profile = new AnetAPI\CustomerProfileIdType();
+    $profile->setCustomerProfileId($customerProfileId);
+    $profile->setCustomerPaymentProfileId($customerPaymentProfileId);
+    $profile->setCustomerAddressId($customerAddressId);
 
-    $payment = new AnetAPI\PaymentType();
-    $payment->setCreditCard($creditCard);
-
-    $subscription->setPayment($payment);
-
-    $billTo = new AnetAPI\NameAndAddressType();
-    $billTo->setFirstName("John");
-    $billTo->setLastName("Smith");
-
-    $subscription->setBillTo($billTo);
+    $subscription->setProfile($profile);
 
     $request = new AnetAPI\ARBCreateSubscriptionRequest();
     $request->setmerchantAuthentication($merchantAuthentication);
@@ -71,6 +63,6 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    createSubscription(23);
+    createSubscriptionFromCustomerProfile( \SampleCode\Constants::SUBSCRIPTION_INTERVAL_DAYS, "247150", "215472", "189691");
 
 ?>

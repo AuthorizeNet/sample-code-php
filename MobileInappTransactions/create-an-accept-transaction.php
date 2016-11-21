@@ -1,34 +1,28 @@
 <?php
-  require 'vendor/autoload.php';
+require 'vendor/autoload.php';
 
-  use net\authorize\api\contract\v1 as AnetAPI;
-  use net\authorize\api\controller as AnetController;
+use net\authorize\api\contract\v1 as AnetAPI;
+use net\authorize\api\controller as AnetController;
 
-  define("AUTHORIZENET_LOG_FILE", "phplog");
+define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function payPalAuthorizeOnlyContinue($transactionId, $payerId) {
-    echo "PayPal Authorize Only Continue Transaction\n";
-    
-    // Common setup for API credentials
+function createAnAcceptTransaction(){
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     $refId = 'ref' . time();
 
-    $paypal_type = new AnetAPI\PayPalType();
-    $paypal_type->setPayerID($payerId);
-    $paypal_type->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");  
-    $paypal_type->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
-    
-    $payment_type = new AnetAPI\PaymentType();
-    $payment_type->setPayPal($paypal_type);
+    $op = new AnetAPI\OpaqueDataType();
+    $op->setDataDescriptor("COMMON.ACCEPT.INAPP.PAYMENT");
+    $op->setDataValue("9471471570959063005001");
+    $paymentOne = new AnetAPI\PaymentType();
+    $paymentOne->setOpaqueData($op);
 
     //create a transaction
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType( "authOnlyContinueTransaction"); 
-    $transactionRequestType->setRefTransId($transactionId);
-    $transactionRequestType->setAmount(125.34);
-    $transactionRequestType->setPayment($payment_type);
+    $transactionRequestType->setTransactionType( "authCaptureTransaction");
+    $transactionRequestType->setAmount(151);
+    $transactionRequestType->setPayment($paymentOne);
 
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
@@ -36,7 +30,6 @@
     $request->setTransactionRequest( $transactionRequestType);
 
     $controller = new AnetController\CreateTransactionController($request);
-
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
     if ($response != null)
@@ -48,9 +41,10 @@
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
           echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
-          echo "TRANS ID  : " . $tresponse->getTransId() . "\n";
-          echo "Payer ID : " . $tresponse->getSecureAcceptance()->getPayerID();      
-          echo "Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
+          echo " AUTH CODE : " . $tresponse->getAuthCode() . "\n";
+          echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
+          echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
+	        echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }
         else
         {
@@ -84,9 +78,8 @@
     }
 
     return $response;
-  }
-  
-  if(!defined('DONT_RUN_SAMPLES'))
-      payPalAuthorizeOnlyContinue("2241711631", "JJLRRB29QC7RU");
+}
 
+if(!defined('DONT_RUN_SAMPLES'))
+    createAnAcceptTransaction();
 ?>

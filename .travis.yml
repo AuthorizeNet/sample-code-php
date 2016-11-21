@@ -1,0 +1,15 @@
+language: php
+
+php:
+    - 5.5
+    - 5.6
+    - 7.0
+    
+sudo: false
+
+before_script:
+    - composer install --prefer-dist --ignore-platform-reqs
+
+script:
+    - phpunit test-runner.php .
+

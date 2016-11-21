@@ -5,7 +5,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function createCustomerProfile($email){
+  function createCustomerProfileWithAcceptNonce($email){
 	  
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -13,12 +13,12 @@
       $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
       $refId = 'ref' . time();
 
-		// Create the payment data for a credit card
-	  $creditCard = new AnetAPI\CreditCardType();
-	  $creditCard->setCardNumber(  "4111111111111111");
-	  $creditCard->setExpirationDate( "2038-12");
-	  $paymentCreditCard = new AnetAPI\PaymentType();
-	  $paymentCreditCard->setCreditCard($creditCard);
+		// Create the payment data for an accept token
+	  $op = new AnetAPI\OpaqueDataType();
+      $op->setDataDescriptor("COMMON.ACCEPT.INAPP.PAYMENT");
+      $op->setDataValue("9475089993864215505001");
+      $paymentOne = new AnetAPI\PaymentType();
+      $paymentOne->setOpaqueData($op);
 
 	  // Create the Bill To info
 	  $billto = new AnetAPI\CustomerAddressType();
@@ -41,10 +41,10 @@
 
 	  $paymentprofile->setCustomerType('individual');
 	  $paymentprofile->setBillTo($billto);
-	  $paymentprofile->setPayment($paymentCreditCard);
+	  $paymentprofile->setPayment($paymentOne);
 	  $paymentprofiles[] = $paymentprofile;
 	  $customerprofile = new AnetAPI\CustomerProfileType();
-	  $customerprofile->setDescription("Customer 2 Test PHP");
+	  $customerprofile->setDescription("Customer Test PHP Accept Test");
 
 	  $customerprofile->setMerchantCustomerId("M_".$email);
 	  $customerprofile->setEmail($email);
@@ -71,5 +71,5 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      createCustomerProfile("test123@test.com");
+      createCustomerProfileWithAcceptNonce("test123@test.com");
 ?>

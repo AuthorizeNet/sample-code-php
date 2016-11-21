@@ -2,60 +2,84 @@
 	require 'vendor/autoload.php';
 	use net\authorize\api\contract\v1 as AnetAPI;
 	use net\authorize\api\controller as AnetController;
-	define("AUTHORIZENET_LOG_FILE", "phplog");
 
-	// Put the values of the Payer ID and Ref. Transaction ID generated in Authorization and Capture
-	$payerID="6ZSCSYG33VP8Q";
-	$refTransId="2241708986";
+    define("AUTHORIZENET_LOG_FILE", "phplog");
 
-	// Common setup for API credentials (with PayPal compatible merchant credentials)
-	$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	$merchantAuthentication->setName("5KP3u95bQpv");
-	$merchantAuthentication->setTransactionKey("4Ktq966gC55GAX7S");
+	function payPalAuthorizeCaptureContinue($refTransId, $payerID) {
 
-	$payPalType=new AnetAPI\PayPalType();
-	$payPalType->setPayerID($payerID);
+		// Common setup for API credentials (with PayPal compatible merchant credentials)
+		$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+	    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+        $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
 
-	$paymentOne = new AnetAPI\PaymentType();
-	$paymentOne->setPayPal($payPalType);
+		$payPalType=new AnetAPI\PayPalType();
+		$payPalType->setPayerID($payerID);
 
-	// Create an authorize and capture continue transaction
-	$transactionRequestType = new AnetAPI\TransactionRequestType();
-	$transactionRequestType->setTransactionType( "authCaptureContinueTransaction");
-	$transactionRequestType->setPayment($paymentOne);
-	$transactionRequestType->setRefTransId($refTransId);
+		$paymentOne = new AnetAPI\PaymentType();
+		$paymentOne->setPayPal($payPalType);
 
-	$request = new AnetAPI\CreateTransactionRequest();
-	$request->setMerchantAuthentication($merchantAuthentication);
-	$request->setTransactionRequest( $transactionRequestType);
-	$controller = new AnetController\CreateTransactionController($request);
-	$response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+		// Create an authorize and capture continue transaction
+		$transactionRequestType = new AnetAPI\TransactionRequestType();
+		$transactionRequestType->setTransactionType( "authCaptureContinueTransaction");
+		$transactionRequestType->setPayment($paymentOne);
+		$transactionRequestType->setRefTransId($refTransId);
 
-	if ($response != null)
-	{
-		$tresponse = $response->getTransactionResponse();
-		if (($tresponse != null))
-		{
-			echo "Transaction Response...\n";
-			echo "Received response code: ".$tresponse->getResponseCode()."\n";
-			//Valid response codes: 1=Approved, 2=Declined, 3=Error, 5=Need Payer Consent
-			echo "Secure acceptance URL: ".$tresponse->getSecureAcceptance()->getSecureAcceptanceUrl()."\n";
-			echo "Transaction ID: ".$tresponse->getTransId()."\n";
-		}
-		else
-			echo "NULL transactionResponse Error\n";
-		$messages=$response->getMessages();
-		if (($messages != null))
-		{
-			echo "Messages...\n";
-			echo "Result code: ".$messages->getResultCode()."\n";
-			$message0=$messages->getMessage()[0];
-			if($message0!=null)
-				echo "Message: ".$message0->getCode().", ".$message0->getText()."\n";
-		}
-		else
-			echo "NULL messages Error\n";
+		$request = new AnetAPI\CreateTransactionRequest();
+		$request->setMerchantAuthentication($merchantAuthentication);
+		$request->setTransactionRequest( $transactionRequestType);
+		$controller = new AnetController\CreateTransactionController($request);
+		$response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+
+	    if ($response != null)
+	    {
+	      if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
+	      {
+	        $tresponse = $response->getTransactionResponse();
+	        
+	        if ($tresponse != null && $tresponse->getMessages() != null)   
+	        {
+				echo "Transaction Response...\n";
+          		echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+				//Valid response codes: 1=Approved, 2=Declined, 3=Error, 5=Need Payer Consent
+				echo "Secure acceptance URL: ".$tresponse->getSecureAcceptance()->getSecureAcceptanceUrl()."\n";
+				echo "Transaction ID: ".$tresponse->getTransId()."\n";
+	          	echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
+	          	echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
+	        }
+	        else
+	        {
+	          echo "Transaction Failed \n";
+	          if($tresponse->getErrors() != null)
+	          {
+	            echo " Error code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
+	            echo " Error message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";            
+	          }
+	        }
+	      }
+	      else
+	      {
+	        echo "Transaction Failed \n";
+	        $tresponse = $response->getTransactionResponse();
+	        if($tresponse != null && $tresponse->getErrors() != null)
+	        {
+	          echo " Error code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
+	          echo " Error message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";                      
+	        }
+	        else
+	        {
+	          echo " Error code  : " . $response->getMessages()->getMessage()[0]->getCode() . "\n";
+	          echo " Error message : " . $response->getMessages()->getMessage()[0]->getText() . "\n";
+	        }
+	      }      
+	    }
+	    else
+	    {
+	      echo  "No response returned \n";
+	    }
+
+		return $response;
 	}
-	else
-		echo  "NULL response Error\n";
+
+  	if(!defined('DONT_RUN_SAMPLES'))
+    	payPalAuthorizeCaptureContinue("2241708986","6ZSCSYG33VP8Q");
 ?>

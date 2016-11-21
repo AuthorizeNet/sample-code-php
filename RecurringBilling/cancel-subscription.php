@@ -2,32 +2,45 @@
   require 'vendor/autoload.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
-  define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  // Common Set Up for API Credentials
-  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName( "556KThWQ6vf2"); 
-  $merchantAuthentication->setTransactionKey("9ac2932kQ7kN2Wzq");
+  define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  $refId = 'ref' . time();
+  function cancelSubscription($subscriptionId) {
 
-  $request = new AnetAPI\ARBCancelSubscriptionRequest();
-  $request->setMerchantAuthentication($merchantAuthentication);
-  $request->setRefId($refId);
-  $request->setSubscriptionId("100748");
+    // Common Set Up for API Credentials
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    $refId = 'ref' . time();
 
-  $controller = new AnetController\ARBCancelSubscriptionController($request);
+    $request = new AnetAPI\ARBCancelSubscriptionRequest();
+    $request->setMerchantAuthentication($merchantAuthentication);
+    $request->setRefId($refId);
+    $request->setSubscriptionId($subscriptionId);
 
-  $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+    $controller = new AnetController\ARBCancelSubscriptionController($request);
 
-  if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
-  {
-      echo "SUCCESS" . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
-   }
-  else
-  {
-      echo "ERROR :  Invalid response\n";
-      echo "Response : " . $response->getMessages()->getMessage()[0]->getCode() . "  " .$response->getMessages()->getMessage()[0]->getText() . "\n";
-      
+    $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+
+    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
+    {
+        $successMessages = $response->getMessages()->getMessage();
+        echo "SUCCESS : " . $successMessages[0]->getCode() . "  " .$successMessages[0]->getText() . "\n";
+        
+     }
+    else
+    {
+        echo "ERROR :  Invalid response\n";
+        $errorMessages = $response->getMessages()->getMessage();
+        echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
+        
+    }
+
+    return $response;
+
   }
-  ?>
+
+  if(!defined('DONT_RUN_SAMPLES'))
+    cancelSubscription("3056945");
+
+?>

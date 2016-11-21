@@ -5,28 +5,36 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function getSubscriptionStatus($subscriptionId) {
-
+  function getUnsettledTransactionList() {
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
-    
+
     $refId = 'ref' . time();
 
-    $request = new AnetAPI\ARBGetSubscriptionStatusRequest();
-    $request->setMerchantAuthentication($merchantAuthentication);
-    $request->setRefId($refId);
-    $request->setSubscriptionId($subscriptionId);
 
-    $controller = new AnetController\ARBGetSubscriptionStatusController($request);
+    $request = new AnetAPI\GetUnsettledTransactionListRequest();
+    $request->setMerchantAuthentication($merchantAuthentication);
+
+
+    $controller = new AnetController\GetUnsettledTransactionListController($request);
 
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
     {
-        echo "SUCCESS: Subscription Status : " . $response->getStatus() . "\n";
-     }
+		if(null != $response->getTransactions())
+		{
+			foreach($response->getTransactions() as $tx)
+			{
+			  echo "SUCCESS: TransactionID: " . $tx->getTransId() . "\n";
+			}
+        }
+		else{
+			echo "No unsettled transactions for the merchant." . "\n";
+		}
+    }
     else
     {
         echo "ERROR :  Invalid response\n";
@@ -38,6 +46,6 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    getSubscriptionStatus("3056948");
+    getUnsettledTransactionList();
 
 ?>

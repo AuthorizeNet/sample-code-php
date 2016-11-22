@@ -395,10 +395,10 @@ class TestRunner extends PHPUnit_Framework_TestCase
 		return $getResponse;
 	}
 
-	public static function runGetHostedProfilePage()
+	public static function runGetAcceptCustomerProfilePage()
 	{
 		$response = createCustomerProfile(self::getEmail());
-		$profileResponse = getHostedProfilePage($response->getCustomerProfileId());
+		$profileResponse = GetAcceptCustomerProfilePage($response->getCustomerProfileId());
 		deleteCustomerProfile($response->getCustomerProfileId());
 
 		return $profileResponse;

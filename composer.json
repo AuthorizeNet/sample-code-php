@@ -3,7 +3,7 @@
   "php": ">=5.5",
   "ext-curl": "*",
   "phpunit/phpunit": "~4.0",
-  "authorizenet/authorizenet": "1.9.0",
+  "authorizenet/authorizenet": "1.9.1",
   "jms/serializer": "serializer-master-dev as 1.0"
   },
   "repositories": [{

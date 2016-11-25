@@ -42,5 +42,5 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      getHostedProfilePage();    
+      getAcceptCustomerProfilePage();    
 ?>

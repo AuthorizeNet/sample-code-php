@@ -128,7 +128,7 @@ class TestRunner extends PHPUnit_Framework_TestCase
 	
 	public static function runDebitBankAccount()
 	{
-		return debitBankAccount(self::getAmount());
+		return debitBankAccount(self::getAmount()%98+1); //cannot debit more than 100
 	}
 	
 	public static function runChargeTokenizedCreditCard()

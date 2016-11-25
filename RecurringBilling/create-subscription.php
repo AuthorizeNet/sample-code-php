@@ -39,13 +39,9 @@
 
     $payment = new AnetAPI\PaymentType();
     $payment->setCreditCard($creditCard);
+
     $subscription->setPayment($payment);
 
-    $order = new AnetAPI\OrderType();
-    $order->setInvoiceNumber("1234354");        
-    $order->setDescription("Description of the subscription"); 
-    $subscription->setOrder($order); 
-    
     $billTo = new AnetAPI\NameAndAddressType();
     $billTo->setFirstName("John");
     $billTo->setLastName("Smith");

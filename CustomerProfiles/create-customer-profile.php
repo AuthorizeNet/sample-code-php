@@ -7,8 +7,8 @@
 
   function createCustomerProfile($email){
 	  
-	  // Common setup for API credentials
-	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+      // Common setup for API credentials
+      $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
       $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
       $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
       $refId = 'ref' . time();

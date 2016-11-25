@@ -6,6 +6,7 @@
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
   function getMerchantDetails() {
+
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
@@ -22,17 +23,22 @@
 
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
     {
-      echo "Merchant Name: " . $response->getMerchantName() . "\n";
-      echo "Gateway ID: " . $response->getGatewayId() . "\n";
-      echo "Processors: ";
-      foreach ($response->getProcessors() as $processor)
-      {
-        echo $processor->getName() . "; ";
-      }
-    }
+        echo "SUCCESS: Merchant Name:" . $response->getMerchantName() . "\n";
+        echo "                Gateway Id:" . $response->getGatewayId(). "\n";
+
+	  foreach ($response->getProcessors() as $processor) {
+	  	echo "		->Name	: " . $processor->getName() . "\n"; 
+	  }
+
+	  foreach ($response->getCurrencies() as $currency) {
+	  	echo "		->Currency	: " . $currency . "\n"; 
+	  }
+     }
     else
     {
-      echo  "No response returned \n";
+        echo "ERROR :  Invalid response\n";
+        $errorMessages = $response->getMessages()->getMessage();
+        echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
     }
 
     return $response;

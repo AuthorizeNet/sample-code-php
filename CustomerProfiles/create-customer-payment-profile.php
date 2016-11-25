@@ -8,7 +8,7 @@
   function createCustomerPaymentProfile($existingcustomerprofileid, $phoneNumber){
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+      $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
       $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
       $refId = 'ref' . time();
 
@@ -37,6 +37,7 @@
 	  $paymentprofile->setCustomerType('individual');
 	  $paymentprofile->setBillTo($billto);
 	  $paymentprofile->setPayment($paymentCreditCard);
+	  $paymentprofile->setDefaultPaymentProfile(true);
 
 	  $paymentprofiles[] = $paymentprofile;
 
@@ -63,5 +64,5 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      createCustomerPaymentProfile("36152127","000-000-0009");
+      createCustomerPaymentProfile("1807545561","000-000-0009");
 ?>

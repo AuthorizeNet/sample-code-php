@@ -5,7 +5,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function GetAcceptCustomerProfilePage($customerprofileid = "123212")
+  function getAcceptCustomerProfilePage($customerprofileid = "123212")
   {
 	  // Common setup for API credentials
 	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -42,5 +42,5 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      getHostedProfilePage();    
+      getAcceptCustomerProfilePage();    
 ?>

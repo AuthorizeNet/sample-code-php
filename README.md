@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/AuthorizeNet/sample-code-php.png?branch=master)]
 (https://travis-ci.org/AuthorizeNet/sample-code-php)
 
-This repository contains working code samples which demonstrate PHP integration with the Authorize.Net PHP SDK.
+This repository contains working code samples which demonstrate PHP integration with the [Authorize.Net PHP SDK](https://github.com/AuthorizeNet/sdk-php).
 The samples are organized just like our API, which you can also try out directly here: http://developer.authorize.net/api/reference
 
 

@@ -5,7 +5,7 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function getHeldTransactions() {
+  function getHeldTransactionList() {
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);

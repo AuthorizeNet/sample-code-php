@@ -12,21 +12,10 @@
       $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
       $refId = 'ref' . time();
 
-      // Create the payment data for a credit card
-      $creditCard = new AnetAPI\CreditCardType();
-      $creditCard->setCardNumber("4111111111111111");
-      $creditCard->setExpirationDate("1226");
-      $creditCard->setCardCode("123");
-      $paymentOne = new AnetAPI\PaymentType();
-      $paymentOne->setCreditCard($creditCard);
-
-      $order = new AnetAPI\OrderType();
-      $order->setDescription("New Item");
-
       //create a transaction
       $transactionRequestType = new AnetAPI\HeldTransactionRequestType();
       $transactionRequestType->setAction("approve"); //other possible value: decline
-      $transactionRequestType->setRefTransId("412121");
+      $transactionRequestType->setRefTransId("60012148205");
       
 
       $request = new AnetAPI\UpdateHeldTransactionRequest();

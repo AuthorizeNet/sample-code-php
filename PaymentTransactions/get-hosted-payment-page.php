@@ -5,49 +5,41 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function getHostedPaymentPage($customerprofileid = "123212")
+  function getHostedPaymentPage()
   {
 	  // Common setup for API credentials
       $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
       $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
       $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
-      $refId = 'ref' . time();
-    
-      // Create the payment data for a credit card
-      $creditCard = new AnetAPI\CreditCardType();
-      $creditCard->setCardNumber("4111111111111111");
-      $creditCard->setExpirationDate("1226");
-      $creditCard->setCardCode("123");
-      $paymentOne = new AnetAPI\PaymentType();
-      $paymentOne->setCreditCard($creditCard);
-
-      $order = new AnetAPI\OrderType();
-      $order->setDescription("New Item");
 
       //create a transaction
       $transactionRequestType = new AnetAPI\TransactionRequestType();
       $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
       $transactionRequestType->setAmount("12.23");
 
-	  // Use an existing payment profile ID for this Merchant name and Transaction key
-	  
-	  $setting = new AnetAPI\SettingType();
-	  $setting->setSettingName("hostedPaymentButtonOptions");
-	  $setting->setSettingValue("{\"text\": \"Pay\"}");
+	  // Set Hosted Form options	  
+	  $setting1 = new AnetAPI\SettingType();
+	  $setting1->setSettingName("hostedPaymentButtonOptions");
+	  $setting1->setSettingValue("{\"text\": \"Pay\"}");
+
 	  $setting2 = new AnetAPI\SettingType();
 	  $setting2->setSettingName("hostedPaymentOrderOptions");
 	  $setting2->setSettingValue("{\"show\": false}");
-	  
-	  //$alist = new AnetAPI\ArrayOfSettingType();
-	  //$alist->addToSetting($setting);
-	  
+
+	  $setting3 = new AnetAPI\SettingType();
+	  $setting3->setSettingName("hostedPaymentReturnOptions");
+	  $setting3->setSettingValue("{\"url\": \"https://mysite.com/receipt\", \"cancelUrl\": \"https://mysite.com/cancel\", \"showReceipt\": true}");
+
+	  // Build transaction request	  
 	  $request = new AnetAPI\GetHostedPaymentPageRequest();
 	  $request->setMerchantAuthentication($merchantAuthentication);
 	  $request->setTransactionRequest($transactionRequestType);
 
-	  $request->addToHostedPaymentSettings($setting);
+	  $request->addToHostedPaymentSettings($setting1);
 	  $request->addToHostedPaymentSettings($setting2);
+	  $request->addToHostedPaymentSettings($setting3);
 	  
+	  //execute request
 	  $controller = new AnetController\GetHostedPaymentPageController($request);
 	  $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
 	  
@@ -57,7 +49,7 @@
 	   }
 	  else
 	  {
-		  echo "ERROR :  Failed to get hosted profile page\n";
+		  echo "ERROR :  Failed to get hosted payment page token\n";
 		  $errorMessages = $response->getMessages()->getMessage();
 		  echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
 	  }

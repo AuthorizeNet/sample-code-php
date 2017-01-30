@@ -53,3 +53,5 @@ CreateCustomerProfile,1,1
 CreateCustomerPaymentProfile,1,1
 ValidateCustomerPaymentProfile,1,0
 GetMerchantDetails,0,1
+UpdateHeldTransaction,1,0
+GetAnAcceptPaymentPage,0,1

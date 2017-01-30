@@ -5,8 +5,7 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function getMerchantDetails() {
-
+  function getHeldTransactionList() {
     // Common Set Up for API Credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
@@ -14,26 +13,29 @@
 
     $refId = 'ref' . time();
 
-    $request = new AnetAPI\GetMerchantDetailsRequest();
-    $request->setMerchantAuthentication($merchantAuthentication);
 
-    $controller = new AnetController\GetMerchantDetailsController($request);
+    $request = new AnetAPI\GetUnsettledTransactionListRequest();
+    $request->setMerchantAuthentication($merchantAuthentication);
+    $request->setStatus("pendingApproval");
+
+
+    $controller = new AnetController\GetUnsettledTransactionListController($request);
 
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
     {
-        echo "SUCCESS: Merchant Name:" . $response->getMerchantName() . "\n";
-        echo "                Gateway Id:" . $response->getGatewayId(). "\n";
-
-	  foreach ($response->getProcessors() as $processor) {
-	  	echo "		->Name	: " . $processor->getName() . "\n"; 
-	  }
-
-	  foreach ($response->getCurrencies() as $currency) {
-	  	echo "		->Currency	: " . $currency . "\n"; 
-	  }
-     }
+		if(null != $response->getTransactions())
+		{
+			foreach($response->getTransactions() as $tx)
+			{
+			  echo "SUCCESS: TransactionID: " . $tx->getTransId() . "\n";
+			}
+        }
+		else{
+			echo "No suspicious transactions for the merchant." . "\n";
+		}
+    }
     else
     {
         echo "ERROR :  Invalid response\n";
@@ -45,5 +47,6 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    getMerchantDetails();
+    getHeldTransactions();
+
 ?>

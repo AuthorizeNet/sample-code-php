@@ -3,13 +3,8 @@
   "php": ">=5.5",
   "ext-curl": "*",
   "phpunit/phpunit": "~4.0",
-  "authorizenet/authorizenet": "1.9.1",
-  "jms/serializer": "serializer-master-dev as 1.0"
+  "authorizenet/authorizenet": "1.9.2"
   },
-  "repositories": [{
-       "type": "vcs",
-       "url": "https://github.com/goetas/serializer.git"
-  }],
   "autoload": {
     "classmap": ["constants"]
   }

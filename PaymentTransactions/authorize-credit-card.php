@@ -37,7 +37,7 @@
 
     // Create a TransactionRequestType object
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
+    $transactionRequestType->setTransactionType( "authOnlyTransaction"); 
     $transactionRequestType->setAmount($amount);
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);

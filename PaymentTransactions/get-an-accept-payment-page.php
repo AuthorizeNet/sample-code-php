@@ -5,7 +5,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function getHostedPaymentPage()
+  function getAnAcceptPaymentPage()
   {
 	  // Common setup for API credentials
       $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -56,5 +56,5 @@
 	  return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      getHostedPaymentPage();    
+      getAnAcceptPaymentPage();    
 ?>

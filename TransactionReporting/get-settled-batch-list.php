@@ -39,7 +39,7 @@
   		echo "\n\n";
           echo "Batch ID: " . $batch->getBatchId() . "\n";
   		echo "Batch settled on (UTC): " . $batch->getSettlementTimeUTC()->format('r') . "\n";
-  		echo "Batch settled on (Local): " . $batch->getSettlementTimeLocal()->format('r') . "\n";
+  		echo "Batch settled on (Local): " . $batch->getSettlementTimeLocal()->format('D, d M Y H:i:s') . "\n";
   		echo "Batch settlement state: " . $batch->getSettlementState() . "\n";
   		echo "Batch market type: " . $batch->getMarketType() . "\n";
   		echo "Batch product: " . $batch->getProduct() . "\n";

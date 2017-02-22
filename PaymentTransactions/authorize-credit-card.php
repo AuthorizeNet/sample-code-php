@@ -21,11 +21,27 @@
     $paymentOne = new AnetAPI\PaymentType();
     $paymentOne->setCreditCard($creditCard);
 
-    //create a transaction
+    $order = new AnetAPI\OrderType();
+    $order->setDescription("New Item");
+
+    // Set the customer's Bill To address
+    $customerAddress = new AnetAPI\CustomerAddressType();
+    $customerAddress->setFirstName("Ellen");
+    $customerAddress->setLastName("Johnson");
+    $customerAddress->setCompany("Souveniropolis");
+    $customerAddress->setAddress("14 Main Street");
+    $customerAddress->setCity("Pecan Springs");
+    $customerAddress->setState("TX");
+    $customerAddress->setZip("44628");
+    $customerAddress->setCountry("USA");
+
+    // Create a TransactionRequestType object
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType( "authOnlyTransaction"); 
     $transactionRequestType->setAmount($amount);
+    $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);
+    $transactionRequestType->setBillTo($customerAddress);
 
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
@@ -34,6 +50,7 @@
 
     $controller = new AnetController\CreateTransactionController($request);
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+
 
     if ($response != null)
     {
@@ -84,5 +101,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    authorizeCreditCard( 23.32);
+    authorizeCreditCard(\SampleCode\Constants::SAMPLE_AMOUNT);
 ?>

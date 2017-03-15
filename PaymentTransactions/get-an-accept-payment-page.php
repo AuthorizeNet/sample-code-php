@@ -51,7 +51,7 @@
 	  {
 		  echo "ERROR :  Failed to get hosted payment page token\n";
 		  $errorMessages = $response->getMessages()->getMessage();
-		  echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
+		  echo "RESPONSE : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
 	  }
 	  return $response;
   }

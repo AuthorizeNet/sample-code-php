@@ -60,9 +60,9 @@
         
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
-          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
-          echo " Successfully created a transaction with Auth code : " . $tresponse->getAuthCode() . "\n";
-          echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
+          echo " Transaction Response Code : " . $tresponse->getResponseCode() . "\n";
+          echo " Successfully created an authOnly transaction with Auth Code : " . $tresponse->getAuthCode() . "\n";
+          echo " Transaction ID : " . $tresponse->getTransId() . "\n";
           echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
 	        echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }

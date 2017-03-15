@@ -60,9 +60,9 @@
         
         if ($tresponse != null && $tresponse->getMessages() != null)   
         {
-          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
-          echo "Charge Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-          echo "Charge Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";
+          echo " Transaction Response Code : " . $tresponse->getResponseCode() . "\n";
+          echo " Successfully created an authCapture transaction with Auth Code : " . $tresponse->getAuthCode() . "\n";
+          echo " Transaction ID : " . $tresponse->getTransId() . "\n";
           echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
           echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }

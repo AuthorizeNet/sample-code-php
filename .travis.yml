@@ -9,7 +9,7 @@ php:
 sudo: false
 
 before_script:
-    - composer install --prefer-dist --ignore-platform-reqs
+    - composer install --prefer-dist
 
 script:
     - phpunit test-runner.php .

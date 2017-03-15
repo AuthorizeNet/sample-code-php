@@ -35,6 +35,12 @@
     $customerAddress->setZip("44628");
     $customerAddress->setCountry("USA");
 
+    // Set the customer's identifying information
+    $CustomerData = new AnetAPI\CustomerDataType();
+    $CustomerData->setType("individual");
+    $CustomerData->setId("99999456654");
+    $CustomerData->setEmail("EllenJohnson@example.com");
+
     // Create a TransactionRequestType object
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
@@ -42,6 +48,7 @@
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);
     $transactionRequestType->setBillTo($customerAddress);
+    $transactionRequestType->setCustomer($CustomerData);
 
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);

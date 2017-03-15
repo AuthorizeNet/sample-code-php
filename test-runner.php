@@ -2,8 +2,6 @@
 define("DONT_RUN_SAMPLES", "true");
 define("SAMPLE_CODE_NAME_HEADING", "SampleCodeName");
 require 'vendor/autoload.php';
-echo ("starting");
-print_r ( $_SERVER );
 
 if ( $_SERVER['argc'] != 3 ) { 
   die('\n Usage: phpunit test-runner.php <SampleCodeDirectoryPath>');

@@ -2,6 +2,8 @@
 define("DONT_RUN_SAMPLES", "true");
 define("SAMPLE_CODE_NAME_HEADING", "SampleCodeName");
 require 'vendor/autoload.php';
+echo ("starting");
+print_r ( $_SERVER );
 
 if ( $_SERVER['argc'] != 3 ) { 
   die('\n Usage: phpunit test-runner.php <SampleCodeDirectoryPath>');
@@ -31,7 +33,7 @@ foreach ($directories as $directory) {
 }
 
 error_reporting($errorlevel);
-class TestRunner extends PHPUnit_Framework_TestCase
+class TestRunner extends PHPUnit\Framework\TestCase
 {
 	public static $apiLoginId = "5KP3u95bQpv";
 	public static $transactionKey = "346HZ32z3fP4hTG2";

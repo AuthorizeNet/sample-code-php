@@ -47,6 +47,6 @@
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    getHeldTransactions();
+    getHeldTransactionList();
 
 ?>

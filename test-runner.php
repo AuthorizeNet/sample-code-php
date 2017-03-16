@@ -31,7 +31,7 @@ foreach ($directories as $directory) {
 }
 
 error_reporting($errorlevel);
-class TestRunner extends PHPUnit_Framework_TestCase
+class TestRunner extends PHPUnit\Framework\TestCase
 {
 	public static $apiLoginId = "5KP3u95bQpv";
 	public static $transactionKey = "346HZ32z3fP4hTG2";

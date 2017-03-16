@@ -35,6 +35,12 @@
     $customerAddress->setZip("44628");
     $customerAddress->setCountry("USA");
 
+    // Set the customer's identifying information
+    $CustomerData = new AnetAPI\CustomerDataType();
+    $CustomerData->setType("individual");
+    $CustomerData->setId("99999456654");
+    $CustomerData->setEmail("EllenJohnson@example.com");
+
     // Create a TransactionRequestType object
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType( "authOnlyTransaction"); 
@@ -42,6 +48,7 @@
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);
     $transactionRequestType->setBillTo($customerAddress);
+    $transactionRequestType->setCustomer($CustomerData);
 
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
@@ -60,9 +67,9 @@
         
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
-          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
-          echo " Successfully created a transaction with Auth code : " . $tresponse->getAuthCode() . "\n";
-          echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
+          echo " Transaction Response Code : " . $tresponse->getResponseCode() . "\n";
+          echo " Successfully created an authOnly transaction with Auth Code : " . $tresponse->getAuthCode() . "\n";
+          echo " Transaction ID : " . $tresponse->getTransId() . "\n";
           echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
 	        echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }

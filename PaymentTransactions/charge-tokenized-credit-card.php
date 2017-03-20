@@ -16,7 +16,8 @@
     $creditCard = new AnetAPI\CreditCardType();
     $creditCard->setCardNumber("4111111111111111" );
     $creditCard->setExpirationDate("2038-12");
-    //Set the cryptogram 
+    //Set the token specific info
+    $creditCard->setIsPaymentToken(true);
     $creditCard->setCryptogram("EjRWeJASNFZ4kBI0VniQEjRWeJA=");
     
     $paymentOne = new AnetAPI\PaymentType();

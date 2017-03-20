@@ -14,9 +14,10 @@
 
     // Create the payment data for a credit card
     $creditCard = new AnetAPI\CreditCardType();
-    $creditCard->setCardNumber("4111111111111111" );
+    $creditCard->setCardNumber("4111111111111111");
     $creditCard->setExpirationDate("2038-12");
-    //Set the cryptogram 
+    //Set the token specific info
+    $creditCard->setIsPaymentToken(true);
     $creditCard->setCryptogram("EjRWeJASNFZ4kBI0VniQEjRWeJA=");
     
     $paymentOne = new AnetAPI\PaymentType();
@@ -42,13 +43,13 @@
       {
         $tresponse = $response->getTransactionResponse();
         
-	      if ($tresponse != null && $tresponse->getMessages() != null)   
+        if ($tresponse != null && $tresponse->getMessages() != null)   
         {
           echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
           echo "Charge Tokenized Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
           echo "Charge Tokenized Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";
           echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
-	        echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
+          echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }
         else
         {
@@ -67,7 +68,7 @@
         if($tresponse != null && $tresponse->getErrors() != null)
         {
           echo " Error code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
-          echo " Error message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";                      
+          echo " Error message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";
         }
         else
         {

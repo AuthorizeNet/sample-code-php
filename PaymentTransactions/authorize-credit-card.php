@@ -36,10 +36,15 @@
     $customerAddress->setCountry("USA");
 
     // Set the customer's identifying information
-    $CustomerData = new AnetAPI\CustomerDataType();
-    $CustomerData->setType("individual");
-    $CustomerData->setId("99999456654");
-    $CustomerData->setEmail("EllenJohnson@example.com");
+    $customerData = new AnetAPI\CustomerDataType();
+    $customerData->setType("individual");
+    $customerData->setId("99999456654");
+    $customerData->setEmail("EllenJohnson@example.com");
+
+    //Add values for transaction settings
+    $duplicateWindowSetting = new AnetAPI\SettingType();
+    $duplicateWindowSetting->setSettingName("duplicateWindow");
+    $duplicateWindowSetting->setSettingValue("600");
 
     // Create a TransactionRequestType object
     $transactionRequestType = new AnetAPI\TransactionRequestType();
@@ -48,7 +53,8 @@
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);
     $transactionRequestType->setBillTo($customerAddress);
-    $transactionRequestType->setCustomer($CustomerData);
+    $transactionRequestType->setCustomer($customerData);
+    $transactionRequestType->addToTransactionSettings($duplicateWindowSetting);
 
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);

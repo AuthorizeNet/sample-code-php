@@ -135,6 +135,11 @@ class TestRunner extends PHPUnit\Framework\TestCase
 	{
 		return chargeTokenizedCreditCard(self::getAmount());
 	}
+	
+	public static function runCreateAnAcceptPaymentTransaction()
+	{
+		return createAnAcceptPaymentTransaction(self::getAmount());
+	}
 
 	public static function runChargeCreditCard()
 	{

@@ -55,3 +55,4 @@ ValidateCustomerPaymentProfile,1,0
 GetMerchantDetails,0,1
 UpdateHeldTransaction,1,0
 GetAnAcceptPaymentPage,0,1
+CreateAnAcceptPaymentTransaction,0,0

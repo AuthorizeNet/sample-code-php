@@ -113,5 +113,5 @@
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      chargeCreditCard(\SampleCode\Constants::SAMPLE_AMOUNT);
+      CreateAnAcceptPaymentTransaction(\SampleCode\Constants::SAMPLE_AMOUNT);
 ?>

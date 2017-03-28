@@ -12,6 +12,8 @@
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
     $refId = 'ref' . time();
 
     // Create the payment object for a payment nonce
@@ -63,8 +65,8 @@
     // Assemble the complete transaction request
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
-    $request->setRefId( $refId);
-    $request->setTransactionRequest( $transactionRequestType);
+    $request->setRefId($refId);
+    $request->setTransactionRequest($transactionRequestType);
 
     // Create the controller and get response
     $controller = new AnetController\CreateTransactionController($request);
@@ -82,19 +84,19 @@
         
         if ($tresponse != null && $tresponse->getMessages() != null)   
         {
-          echo " Transaction Response Code : " . $tresponse->getResponseCode() . "\n";
-          echo " Successfully created an authCapture transaction with Auth Code : " . $tresponse->getAuthCode() . "\n";
-          echo " Transaction ID : " . $tresponse->getTransId() . "\n";
-          echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
-          echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
+          echo " Successfully created transaction with Transaction ID: " . $tresponse->getTransId() . "\n";
+          echo " Transaction Response Code: " . $tresponse->getResponseCode() . "\n";
+          echo " Message Code: " . $tresponse->getMessages()[0]->getCode() . "\n"; 
+          echo " Auth Code: " . $tresponse->getAuthCode() . "\n";
+          echo " Description: " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }
         else
         {
           echo "Transaction Failed \n";
           if($tresponse->getErrors() != null)
           {
-            echo " Error code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
-            echo " Error message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";            
+            echo " Error Code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
+            echo " Error Message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";            
           }
         }
       }
@@ -106,13 +108,13 @@
         
         if($tresponse != null && $tresponse->getErrors() != null)
         {
-          echo " Error code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
-          echo " Error message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";                      
+          echo " Error Code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
+          echo " Error Message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";                      
         }
         else
         {
-          echo " Error code  : " . $response->getMessages()->getMessage()[0]->getCode() . "\n";
-          echo " Error message : " . $response->getMessages()->getMessage()[0]->getText() . "\n";
+          echo " Error Code  : " . $response->getMessages()->getMessage()[0]->getCode() . "\n";
+          echo " Error Message : " . $response->getMessages()->getMessage()[0]->getText() . "\n";
         }
       }      
     }
@@ -123,6 +125,7 @@
 
     return $response;
   }
+
   if(!defined('DONT_RUN_SAMPLES'))
       CreateAnAcceptPaymentTransaction(\SampleCode\Constants::SAMPLE_AMOUNT);
 ?>

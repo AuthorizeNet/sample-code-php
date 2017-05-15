@@ -6,7 +6,8 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-function createCustomerPaymentProfile($existingcustomerprofileid, $phoneNumber){
+function createCustomerPaymentProfile($existingcustomerprofileid, $phoneNumber)
+{
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -58,8 +59,8 @@ function createCustomerPaymentProfile($existingcustomerprofileid, $phoneNumber){
     $paymentprofilerequest->setMerchantAuthentication($merchantAuthentication);
 
     // Add an existing profile id to the request
-    $paymentprofilerequest->setCustomerProfileId( $existingcustomerprofileid );
-    $paymentprofilerequest->setPaymentProfile( $paymentprofile );
+    $paymentprofilerequest->setCustomerProfileId($existingcustomerprofileid);
+    $paymentprofilerequest->setPaymentProfile($paymentprofile);
     $paymentprofilerequest->setValidationMode("liveMode");
 
     // Create the controller and get the response
@@ -78,6 +79,6 @@ function createCustomerPaymentProfile($existingcustomerprofileid, $phoneNumber){
 }
 
 if (!defined('DONT_RUN_SAMPLES')) {
-      createCustomerPaymentProfile("1807545561","000-000-0009");
+      createCustomerPaymentProfile("1807545561", "000-000-0009");
 }
 ?>

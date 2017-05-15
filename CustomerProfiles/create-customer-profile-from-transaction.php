@@ -18,8 +18,8 @@ function createCustomerProfileFromTransaction($transId= "2249066517")
 
     $customerProfile = new AnetAPI\CustomerProfileBaseType();
     $customerProfile->setMerchantCustomerId("123212");
-    $customerProfile->setEmail(rand(0,10000) . "@test" .".com");
-    $customerProfile->setDescription(rand(0,10000) ."sample description");
+    $customerProfile->setEmail(rand(0, 10000) . "@test" .".com");
+    $customerProfile->setDescription(rand(0, 10000) ."sample description");
       
     $request = new AnetAPI\CreateCustomerProfileFromTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);

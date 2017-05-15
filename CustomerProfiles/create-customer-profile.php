@@ -6,7 +6,8 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function createCustomerProfile($email){
+function createCustomerProfile($email)
+{
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -41,7 +42,7 @@ function createCustomerProfile($email){
     $billto->setState("TX");
     $billto->setZip("44628");
     $billto->setCountry("USA");
-    $billto->setPhoneNumber($phoneNumber);
+    $billto->setPhoneNumber("888-888-8888");
     $billto->setfaxNumber("999-999-9999");
 
     // Create a new Customer Payment Profile object

@@ -6,7 +6,8 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function createCustomerProfileWithAcceptNonce($email){
+function createCustomerProfileWithAcceptNonce($email)
+{
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();

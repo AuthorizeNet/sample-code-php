@@ -16,12 +16,12 @@ function payPalAuthorizeCapture($amount)
     // Set the transaction's refId
     $refId = 'ref' . time();
 
-		$paymentOne = new AnetAPI\PaymentType();
-		$paymentOne->setPayPal($payPalType);
+    $payPalType=new AnetAPI\PayPalType();
+    $payPalType->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
+    $payPalType->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
 
-		$payPalType=new AnetAPI\PayPalType();
-		$payPalType->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
-		$payPalType->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
+    $paymentOne = new AnetAPI\PaymentType();
+    $paymentOne->setPayPal($payPalType);
 
 		// Create an authorize and capture transaction
 		$transactionRequestType = new AnetAPI\TransactionRequestType();

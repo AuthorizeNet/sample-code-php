@@ -49,7 +49,7 @@ function createCustomerProfile($email)
     $paymentprofile = new AnetAPI\CustomerPaymentProfileType();
     $paymentprofile->setCustomerType('individual');
     $paymentprofile->setBillTo($billto);
-    $paymentprofile->setPayment($paymentOne);
+    $paymentprofile->setPayment($paymentCreditCard);
     $paymentprofile->setDefaultPaymentProfile(true);
 
     $paymentprofiles[] = $paymentprofile;

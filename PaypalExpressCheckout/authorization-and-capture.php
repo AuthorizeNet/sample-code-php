@@ -1,7 +1,7 @@
 <?php
-	require 'vendor/autoload.php';
-	use net\authorize\api\contract\v1 as AnetAPI;
-	use net\authorize\api\controller as AnetController;
+  require 'vendor/autoload.php';
+  use net\authorize\api\contract\v1 as AnetAPI;
+  use net\authorize\api\controller as AnetController;
 
     define("AUTHORIZENET_LOG_FILE", "phplog");
 
@@ -15,10 +15,6 @@ function payPalAuthorizeCapture($amount)
     
     // Set the transaction's refId
     $refId = 'ref' . time();
-
-    // Set PayPal compatible merchant credentials
-    $payPalType=new AnetAPI\PayPalType();
-    $payPalType->setPayerID($payerID);
 
 		$paymentOne = new AnetAPI\PaymentType();
 		$paymentOne->setPayPal($payPalType);

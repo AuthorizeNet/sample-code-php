@@ -5,19 +5,27 @@
 
     define("AUTHORIZENET_LOG_FILE", "phplog");
 
-	function payPalAuthorizeCapture($amount) {
+function payPalAuthorizeCapture($amount)
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
+    $refId = 'ref' . time();
 
-		// Common setup for API credentials (with PayPal compatible merchant credentials)
-		$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-        $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-        $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    // Set PayPal compatible merchant credentials
+    $payPalType=new AnetAPI\PayPalType();
+    $payPalType->setPayerID($payerID);
+
+		$paymentOne = new AnetAPI\PaymentType();
+		$paymentOne->setPayPal($payPalType);
 
 		$payPalType=new AnetAPI\PayPalType();
 		$payPalType->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
 		$payPalType->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
-
-		$paymentOne = new AnetAPI\PaymentType();
-		$paymentOne->setPayPal($payPalType);
 
 		// Create an authorize and capture transaction
 		$transactionRequestType = new AnetAPI\TransactionRequestType();

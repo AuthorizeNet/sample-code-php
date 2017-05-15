@@ -6,17 +6,24 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function payPalAuthorizeOnlyContinue($transactionId, $payerId) {
-    echo "PayPal Authorize Only Continue Transaction\n";
+function payPalAuthorizeOnlyContinue($transactionId, $payerId)
+{
+
+ echo "PayPal Authorize Only Continue Transaction\n";
     
-    // Common setup for API credentials
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
     $refId = 'ref' . time();
 
-    $paypal_type = new AnetAPI\PayPalType();
-    $paypal_type->setPayerID($payerId);
+    // Set PayPal compatible merchant credentials
+    $payPalType=new AnetAPI\PayPalType();
+    $payPalType->setPayerID($payerID);
+
     $paypal_type->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");  
     $paypal_type->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
     

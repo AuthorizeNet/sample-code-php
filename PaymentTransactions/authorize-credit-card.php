@@ -6,7 +6,8 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function authorizeCreditCard($amount){
+function authorizeCreditCard($amount)
+{
     // Common setup for API credentials
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);

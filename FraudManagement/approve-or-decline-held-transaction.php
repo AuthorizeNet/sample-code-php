@@ -5,12 +5,16 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function approveOrDeclineHeldTransaction(){
-      // Common setup for API credentials
-      $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-      $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
-      $refId = 'ref' . time();
+function approveOrDeclineHeldTransaction()
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
+    $refId = 'ref' . time();
 
       //create a transaction
       $transactionRequestType = new AnetAPI\HeldTransactionRequestType();

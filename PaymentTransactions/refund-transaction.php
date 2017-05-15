@@ -5,7 +5,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function refundTransaction($amount){
+function refundTransaction($amount)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */

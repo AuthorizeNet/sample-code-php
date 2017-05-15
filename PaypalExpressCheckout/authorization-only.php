@@ -6,7 +6,7 @@ use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function payPalAuthorizeOnly($amount) {
+function payPalAuthorizeOnly($amount)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -16,10 +16,6 @@ function payPalAuthorizeOnly($amount) {
     
     // Set the transaction's refId
     $refId = 'ref' . time();
-
-    // Set PayPal compatible merchant credentials
-    $payPalType=new AnetAPI\PayPalType();
-    $payPalType->setPayerID($payerID);
 
     // Create the payment data for a paypal account
     $payPalType = new AnetAPI\PayPalType();

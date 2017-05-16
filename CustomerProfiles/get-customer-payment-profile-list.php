@@ -6,13 +6,16 @@
 	
     define("AUTHORIZENET_LOG_FILE", "phplog");
   
-	function getCustomerPaymentProfileList()
-	{
-		// Common setup for API credentials (merchant)
-		$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-		$merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-		$merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
-		$refId = 'ref' . time();
+function getCustomerPaymentProfileList()
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
+    $refId = 'ref' . time();
 		
 		//Setting the paging
 		$paging = new AnetAPI\PagingType();

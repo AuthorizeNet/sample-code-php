@@ -6,13 +6,15 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function createSubscription($intervalLength) {
-
-    // Common Set Up for API Credentials
+function createSubscription($intervalLength)
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     
+    // Set the transaction's refId
     $refId = 'ref' . time();
 
     // Subscription Type Info

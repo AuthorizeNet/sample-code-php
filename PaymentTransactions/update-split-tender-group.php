@@ -5,12 +5,16 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function updateSplitTenderGroup(){
-    // Common Set Up for API Credentials
+function updateSplitTenderGroup()
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName( \SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
-	$refId = 'ref' . time();
+    
+    // Set the transaction's refId
+    $refId = 'ref' . time();
 
     $request = new AnetAPI\UpdateSplitTenderGroupRequest();
     $request->setMerchantAuthentication($merchantAuthentication);

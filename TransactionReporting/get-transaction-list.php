@@ -13,7 +13,7 @@ function getTransactionList()
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     
-    // Set the transaction's refId
+    // Set the request's refId
     $refId = 'ref' . time();
 
     //Setting a valid batch Id for the Merchant
@@ -31,7 +31,7 @@ function getTransactionList()
     {
     		echo "SUCCESS: Get Transaction List for BatchID : " . $batchId  . "\n\n";
   	  if ($response->getTransactions() == null) {
-  	  	echo "No Transaction to dispaly in this Batch.";
+  	  	echo "No Transaction to display in this Batch.";
   	  	return ;
   	  }
   	  //Displaying the details of each transaction in the list

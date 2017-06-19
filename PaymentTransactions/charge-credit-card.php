@@ -25,7 +25,7 @@ function chargeCreditCard($amount)
  
     // Add the payment data to a paymentType object
     $paymentOne = new AnetAPI\PaymentType();
-    $paymentOne->setOpaqueData($opaqueData);
+    $paymentOne->setCreditCard($creditCard);
 
     // Create order information
     $order = new AnetAPI\OrderType();
@@ -54,7 +54,7 @@ function chargeCreditCard($amount)
     $duplicateWindowSetting->setSettingName("duplicateWindow");
     $duplicateWindowSetting->setSettingValue("600");
 
-    // Create a transactionRequestType object and add the previous objects to it
+    // Create a TransactionRequestType object and add the previous objects to it
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType("authCaptureTransaction"); 
     $transactionRequestType->setAmount($amount);

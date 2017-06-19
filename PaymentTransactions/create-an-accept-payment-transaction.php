@@ -21,7 +21,8 @@ function createAnAcceptPaymentTransaction($amount)
     $opaqueData = new AnetAPI\OpaqueDataType();
     $opaqueData->setDataDescriptor("COMMON.ACCEPT.INAPP.PAYMENT");
     $opaqueData->setDataValue("119eyJjb2RlIjoiNTBfMl8wNjAwMDUyN0JEODE4RjQxOUEyRjhGQkIxMkY0MzdGQjAxQUIwRTY2NjhFNEFCN0VENzE4NTUwMjlGRUU0M0JFMENERUIwQzM2M0ExOUEwMDAzNzlGRDNFMjBCODJEMDFCQjkyNEJDIiwidG9rZW4iOiI5NDkwMjMyMTAyOTQwOTk5NDA0NjAzIiwidiI6IjEuMSJ9");
-    
+
+
     // Add the payment data to a paymentType object
     $paymentOne = new AnetAPI\PaymentType();
     $paymentOne->setOpaqueData($opaqueData);
@@ -55,7 +56,7 @@ function createAnAcceptPaymentTransaction($amount)
 
     // Create a transactionRequestType object and add the previous objects to it
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
+    $transactionRequestType->setTransactionType("authCaptureTransaction"); 
     $transactionRequestType->setAmount($amount);
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);

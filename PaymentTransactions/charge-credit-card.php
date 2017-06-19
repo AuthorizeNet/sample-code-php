@@ -22,11 +22,15 @@ function chargeCreditCard($amount)
     $creditCard->setCardNumber("4111111111111111");
     $creditCard->setExpirationDate("1226");
     $creditCard->setCardCode("123");
+ 
+    // Add the payment data to a paymentType object
     $paymentOne = new AnetAPI\PaymentType();
-    $paymentOne->setCreditCard($creditCard);
+    $paymentOne->setOpaqueData($opaqueData);
 
+    // Create order information
     $order = new AnetAPI\OrderType();
-    $order->setDescription("New Item");
+    $order->invoiceNumber("10101");
+    $order->setDescription("Golf Shirts");
 
     // Set the customer's Bill To address
     $customerAddress = new AnetAPI\CustomerAddressType();
@@ -50,9 +54,9 @@ function chargeCreditCard($amount)
     $duplicateWindowSetting->setSettingName("duplicateWindow");
     $duplicateWindowSetting->setSettingValue("600");
 
-    // Create a TransactionRequestType object
+    // Create a transactionRequestType object and add the previous objects to it
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
+    $transactionRequestType->setTransactionType("authCaptureTransaction"); 
     $transactionRequestType->setAmount($amount);
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);
@@ -60,63 +64,58 @@ function chargeCreditCard($amount)
     $transactionRequestType->setCustomer($customerData);
     $transactionRequestType->addToTransactionSettings($duplicateWindowSetting);
 
+    // Assemble the complete transaction request
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
-    $request->setRefId( $refId);
-    $request->setTransactionRequest( $transactionRequestType);
+    $request->setRefId($refId);
+    $request->setTransactionRequest($transactionRequestType);
 
+    // Create the controller and get the response
     $controller = new AnetController\CreateTransactionController($request);
-    $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+    $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
     
 
-    if ($response != null)
-    {
-      if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
-      {
-        $tresponse = $response->getTransactionResponse();
+    if ($response != null) {
+        // Check to see if the API request was successfully received and acted upon
+        if ($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK) {
+            // Since the API request was successful, look for a transaction response
+            // and parse it to display the results of authorizing the card
+            $tresponse = $response->getTransactionResponse();
         
-        if ($tresponse != null && $tresponse->getMessages() != null)   
-        {
-          echo " Transaction Response Code : " . $tresponse->getResponseCode() . "\n";
-          echo " Successfully created an authCapture transaction with Auth Code : " . $tresponse->getAuthCode() . "\n";
-          echo " Transaction ID : " . $tresponse->getTransId() . "\n";
-          echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
-          echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
-        }
-        else
-        {
-          echo "Transaction Failed \n";
-          if($tresponse->getErrors() != null)
-          {
-            echo " Error code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
-            echo " Error message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";            
-          }
-        }
-      }
-      else
-      {
-        echo "Transaction Failed \n";
-        $tresponse = $response->getTransactionResponse();
+            if ($tresponse != null && $tresponse->getMessages() != null) {
+                echo " Successfully created transaction with Transaction ID: " . $tresponse->getTransId() . "\n";
+                echo " Transaction Response Code: " . $tresponse->getResponseCode() . "\n";
+                echo " Message Code: " . $tresponse->getMessages()[0]->getCode() . "\n";
+                echo " Auth Code: " . $tresponse->getAuthCode() . "\n";
+                echo " Description: " . $tresponse->getMessages()[0]->getDescription() . "\n";
+            } else {
+                echo "Transaction Failed \n";
+                if ($tresponse->getErrors() != null) {
+                    echo " Error Code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
+                    echo " Error Message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";
+                }
+            }
+            // Or, print errors if the API request wasn't successful
+        } else {
+            echo "Transaction Failed \n";
+            $tresponse = $response->getTransactionResponse();
         
-        if($tresponse != null && $tresponse->getErrors() != null)
-        {
-          echo " Error code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
-          echo " Error message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";                      
-        }
-        else
-        {
-          echo " Error code  : " . $response->getMessages()->getMessage()[0]->getCode() . "\n";
-          echo " Error message : " . $response->getMessages()->getMessage()[0]->getText() . "\n";
-        }
-      }      
-    }
-    else
-    {
-      echo  "No response returned \n";
+            if ($tresponse != null && $tresponse->getErrors() != null) {
+                echo " Error Code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
+                echo " Error Message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";
+            } else {
+                echo " Error Code  : " . $response->getMessages()->getMessage()[0]->getCode() . "\n";
+                echo " Error Message : " . $response->getMessages()->getMessage()[0]->getText() . "\n";
+            }
+        }      
+    } else {
+        echo  "No response returned \n";
     }
 
     return $response;
-  }
-  if(!defined('DONT_RUN_SAMPLES'))
+}
+
+if (!defined('DONT_RUN_SAMPLES')) {
       chargeCreditCard(\SampleCode\Constants::SAMPLE_AMOUNT);
+}
 ?>

@@ -29,7 +29,7 @@ function chargeCreditCard($amount)
 
     // Create order information
     $order = new AnetAPI\OrderType();
-    $order->invoiceNumber("10101");
+    $order->setInvoiceNumber("10101");
     $order->setDescription("Golf Shirts");
 
     // Set the customer's Bill To address

@@ -11,7 +11,7 @@ The samples are all completely independent and self-contained. You can analyze t
 
 You can also run each sample directly from the command line.
 
-## Running the Samples
+## Running the Samples From the Command Line
 Clone this repository.
 ```
     $ git clone https://github.com/AuthorizeNet/sample-code-php.git

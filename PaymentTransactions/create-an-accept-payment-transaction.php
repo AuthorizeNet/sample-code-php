@@ -49,12 +49,22 @@ function createAnAcceptPaymentTransaction($amount)
     $customerData->setId("99999456654");
     $customerData->setEmail("EllenJohnson@example.com");
 
-    //Add values for transaction settings
+    // Add values for transaction settings
     $duplicateWindowSetting = new AnetAPI\SettingType();
     $duplicateWindowSetting->setSettingName("duplicateWindow");
-    $duplicateWindowSetting->setSettingValue("600");
+    $duplicateWindowSetting->setSettingValue("60");
 
-    // Create a transactionRequestType object and add the previous objects to it
+    // Add some merchant defined fields. These fields won't be stored with the transaction,
+    // but will be echoed back in the response.
+    $merchantDefinedField1 = new AnetAPI\UserFieldType();
+    $merchantDefinedField1->setName("customerLoyaltyNum");
+    $merchantDefinedField1->setValue("1128836273");
+
+    $merchantDefinedField2 = new AnetAPI\UserFieldType();
+    $merchantDefinedField2->setName("favoriteColor");
+    $merchantDefinedField2->setValue("blue");
+
+    // Create a TransactionRequestType object and add the previous objects to it
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType("authCaptureTransaction"); 
     $transactionRequestType->setAmount($amount);
@@ -63,6 +73,8 @@ function createAnAcceptPaymentTransaction($amount)
     $transactionRequestType->setBillTo($customerAddress);
     $transactionRequestType->setCustomer($customerData);
     $transactionRequestType->addToTransactionSettings($duplicateWindowSetting);
+    $transactionRequestType->addToUserFields($merchantDefinedField1);
+    $transactionRequestType->addToUserFields($merchantDefinedField2);
 
     // Assemble the complete transaction request
     $request = new AnetAPI\CreateTransactionRequest();

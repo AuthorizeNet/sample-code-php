@@ -22,7 +22,7 @@ function chargeCreditCard($amount)
     $creditCard->setCardNumber("4111111111111111");
     $creditCard->setExpirationDate("1226");
     $creditCard->setCardCode("123");
- 
+
     // Add the payment data to a paymentType object
     $paymentOne = new AnetAPI\PaymentType();
     $paymentOne->setCreditCard($creditCard);
@@ -49,10 +49,20 @@ function chargeCreditCard($amount)
     $customerData->setId("99999456654");
     $customerData->setEmail("EllenJohnson@example.com");
 
-    //Add values for transaction settings
+    // Add values for transaction settings
     $duplicateWindowSetting = new AnetAPI\SettingType();
     $duplicateWindowSetting->setSettingName("duplicateWindow");
-    $duplicateWindowSetting->setSettingValue("600");
+    $duplicateWindowSetting->setSettingValue("60");
+
+    // Add some merchant defined fields. These fields won't be stored with the transaction,
+    // but will be echoed back in the response.
+    $merchantDefinedField1 = new AnetAPI\UserFieldType();
+    $merchantDefinedField1->setName("customerLoyaltyNum");
+    $merchantDefinedField1->setValue("1128836273");
+
+    $merchantDefinedField2 = new AnetAPI\UserFieldType();
+    $merchantDefinedField2->setName("favoriteColor");
+    $merchantDefinedField2->setValue("blue");
 
     // Create a TransactionRequestType object and add the previous objects to it
     $transactionRequestType = new AnetAPI\TransactionRequestType();
@@ -63,6 +73,8 @@ function chargeCreditCard($amount)
     $transactionRequestType->setBillTo($customerAddress);
     $transactionRequestType->setCustomer($customerData);
     $transactionRequestType->addToTransactionSettings($duplicateWindowSetting);
+    $transactionRequestType->addToUserFields($merchantDefinedField1);
+    $transactionRequestType->addToUserFields($merchantDefinedField2);
 
     // Assemble the complete transaction request
     $request = new AnetAPI\CreateTransactionRequest();
@@ -116,6 +128,6 @@ function chargeCreditCard($amount)
 }
 
 if (!defined('DONT_RUN_SAMPLES')) {
-      chargeCreditCard(\SampleCode\Constants::SAMPLE_AMOUNT);
+    chargeCreditCard(\SampleCode\Constants::SAMPLE_AMOUNT);
 }
 ?>

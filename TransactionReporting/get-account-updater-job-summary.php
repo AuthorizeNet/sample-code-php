@@ -40,7 +40,7 @@ function getAccountUpdaterJobSummary()
         foreach ($response->getAuSummary() as $result) {
             echo "		Reason Code	: " . $result->getAuReasonCode() . "\n";
             echo "		Reason Description : " . $result->getReasonDescription() . "\n";
-            echo "		Profiles updated for this reason : " . $result->getProfileCount() . "\n";
+            echo "		# of Profiles updated for this reason : " . $result->getProfileCount() . "\n";
         }
     } else {
         echo "ERROR :  Invalid response\n";

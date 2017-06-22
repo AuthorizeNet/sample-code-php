@@ -58,7 +58,7 @@ function getAccountUpdaterJobDetails()
             echo "		Profile ID / Payment Profile ID	: " . $update->getCustomerProfileID() . " / " . $update->getCustomerPaymentProfileID() . "\n";
             echo "		Update Time (UTC) : " . date_format($update->getUpdateTimeUTC(), 'Y-m-d H:i:s') . "\n";
             echo "		Reason Code	: " . $update->getAuReasonCode() . "\n";
-            echo "		Reason Description : " . number_format($update->getReasonDescription(), 2, '.', '') . "\n";
+            echo "		Reason Description : " . $update->getReasonDescription() . "\n";
             echo "\n";
         }
         echo "\nDeletes:\n";
@@ -66,7 +66,7 @@ function getAccountUpdaterJobDetails()
             echo "		Profile ID / Payment Profile ID	: " . $delete->getCustomerProfileID() . " / " . $update->getCustomerPaymentProfileID() . "\n";
             echo "		Update Time (UTC) : " . date_format($delete->getUpdateTimeUTC(), 'Y-m-d H:i:s') . "\n";
             echo "		Reason Code	: " . $delete->getAuReasonCode() . "\n";
-            echo "		Reason Description : " . number_format($delete->getReasonDescription(), 2, '.', '') . "\n";
+            echo "		Reason Description : " . ($delete->getReasonDescription() . "\n";
             echo "\n";
         }
     } else {

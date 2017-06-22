@@ -1,7 +1,7 @@
 <?php
-require 'vendor/autoload.php';
-use net\authorize\api\contract\v1 as AnetAPI;
-use net\authorize\api\controller as AnetController;
+    require 'vendor/autoload.php';
+    use net\authorize\api\contract\v1 as AnetAPI;
+    use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
@@ -19,16 +19,10 @@ function getAccountUpdaterJobSummary()
     // Set a valid month for the request
     $month = "2017-06";
 
-
-
-
-
     // Build tbe request object
     $request = new AnetAPI\GetAUJobSummaryRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
     $request->setMonth($month);
-
-
 
     $controller = new AnetController\GetAUJobSummaryController($request);
 
@@ -41,8 +35,8 @@ function getAccountUpdaterJobSummary()
             echo "No Account Updater summary for this month.\n";
             return ;
         }
-        // Displaying the summary of each response in the list
 
+        // Displaying the summary of each response in the list
         foreach ($response->getAuSummary() as $result) {
             echo "		Reason Code	: " . $result->getAuReasonCode() . "\n";
             echo "		Reason Description : " . $result->getReasonDescription() . "\n";

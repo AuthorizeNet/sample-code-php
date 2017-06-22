@@ -1,7 +1,7 @@
 <?php
-require 'vendor/autoload.php';
-use net\authorize\api\contract\v1 as AnetAPI;
-use net\authorize\api\controller as AnetController;
+    require 'vendor/autoload.php';
+    use net\authorize\api\contract\v1 as AnetAPI;
+    use net\authorize\api\controller as AnetController;
   
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
@@ -48,6 +48,7 @@ function getAccountUpdaterJobDetails()
                 return ;
             }
         }
+
         // Displaying the details of each response in the list
         echo "Total Num in Result Set : " . $response->getTotalNumInResultSet() . "\n\n";
         $details = new AnetAPI\ListOfAUDetailsType;

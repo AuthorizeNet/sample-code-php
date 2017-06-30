@@ -17,7 +17,7 @@ function getAccountUpdaterJobSummary()
     $refId = 'ref' . time();
 
     // Set a valid month for the request
-    $month = "2017-06";
+    $month = "2017-05";
 
     // Build tbe request object
     $request = new AnetAPI\GetAUJobSummaryRequest();

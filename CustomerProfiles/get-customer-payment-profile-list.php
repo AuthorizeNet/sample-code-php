@@ -25,7 +25,7 @@ function getCustomerPaymentProfileList()
 		//Setting the sorting
 		$sorting = new AnetAPI\CustomerPaymentProfileSortingType();
 		$sorting->setOrderBy("id");
-		$sorting->setOrderDescending("false");
+		$sorting->setOrderDescending(false);
 		
 		//Creating the request with the required parameters
 		$request = new AnetAPI\GetCustomerPaymentProfileListRequest();

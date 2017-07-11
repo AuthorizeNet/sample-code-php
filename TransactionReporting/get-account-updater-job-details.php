@@ -56,9 +56,9 @@ function getAccountUpdaterJobDetails()
         echo "Updates:\n";
         foreach ($details->getAuUpdate() as $update) {
             echo "		Profile ID / Payment Profile ID	: " . $update->getCustomerProfileID() . " / " . $update->getCustomerPaymentProfileID() . "\n";
-            echo "		Update Time (UTC) : " . date_format($update->getUpdateTimeUTC(), 'Y-m-d H:i:s') . "\n";
+            echo "		Update Time (UTC) : " . $update->getUpdateTimeUTC() . "\n";
             echo "		Reason Code	: " . $update->getAuReasonCode() . "\n";
-            echo "		Reason Description : " . number_format($update->getReasonDescription(), 2, '.', '') . "\n";
+            echo "		Reason Description : " . $update->getReasonDescription() . "\n";
             echo "\n";
         }
         echo "\nDeletes:\n";

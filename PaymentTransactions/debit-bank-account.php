@@ -18,11 +18,11 @@ function debitBankAccount($amount)
 
     // Create the payment data for a Bank Account
     $bankAccount = new AnetAPI\BankAccountType();
-    //$bankAccount->setAccountType('CHECKING');
+    $bankAccount->setAccountType('checking');
     $bankAccount->setEcheckType('WEB');
     $bankAccount->setRoutingNumber('121042882');
-    $bankAccount->setAccountNumber('123456789123');
-    $bankAccount->setNameOnAccount('Jane Doe');
+    $bankAccount->setAccountNumber('12345678');
+    $bankAccount->setNameOnAccount('John Doe');
     $bankAccount->setBankName('Bank of the Earth');
 
     $paymentBank= new AnetAPI\PaymentType();
@@ -54,7 +54,7 @@ function debitBankAccount($amount)
           echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
           echo  "Debit Bank Account APPROVED  :" . "\n";
           echo " Debit Bank Account AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-          echo " Debit Banlk Account TRANS ID  : " . $tresponse->getTransId() . "\n";
+          echo " Debit Bank Account TRANS ID  : " . $tresponse->getTransId() . "\n";
           echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
 	        echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }
@@ -92,5 +92,4 @@ function debitBankAccount($amount)
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-    debitBankAccount(12.23);
-?>
+    debitBankAccount(5.29);

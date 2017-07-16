@@ -33,46 +33,64 @@ function createCustomerProfile($email)
     $paymentCreditCard->setCreditCard($creditCard);
 
     // Create the Bill To info for new payment type
-    $billto = new AnetAPI\CustomerAddressType();
-    $billto->setFirstName("Ellen");
-    $billto->setLastName("Johnson");
-    $billto->setCompany("Souveniropolis");
-    $billto->setAddress("14 Main Street");
-    $billto->setCity("Pecan Springs");
-    $billto->setState("TX");
-    $billto->setZip("44628");
-    $billto->setCountry("USA");
-    $billto->setPhoneNumber("888-888-8888");
-    $billto->setfaxNumber("999-999-9999");
+    $billTo = new AnetAPI\CustomerAddressType();
+    $billTo->setFirstName("Ellen");
+    $billTo->setLastName("Johnson");
+    $billTo->setCompany("Souveniropolis");
+    $billTo->setAddress("14 Main Street");
+    $billTo->setCity("Pecan Springs");
+    $billTo->setState("TX");
+    $billTo->setZip("44628");
+    $billTo->setCountry("USA");
+    $billTo->setPhoneNumber("888-888-8888");
+    $billTo->setfaxNumber("999-999-9999");
 
-    // Create a new Customer Payment Profile object
-    $paymentprofile = new AnetAPI\CustomerPaymentProfileType();
-    $paymentprofile->setCustomerType('individual');
-    $paymentprofile->setBillTo($billto);
-    $paymentprofile->setPayment($paymentCreditCard);
-    $paymentprofile->setDefaultPaymentProfile(true);
+    // Create a customer shipping address
+    $customerShippingAddress = new AnetAPI\CustomerAddressType();
+    $customerShippingAddress->setFirstName("James");
+    $customerShippingAddress->setLastName("White");
+    $customerShippingAddress->setCompany("Addresses R Us");
+    $customerShippingAddress->setAddress(rand() . " North Spring Street");
+    $customerShippingAddress->setCity("Toms River");
+    $customerShippingAddress->setState("NJ");
+    $customerShippingAddress->setZip("08753");
+    $customerShippingAddress->setCountry("USA");
+    $customerShippingAddress->setPhoneNumber("888-888-8888");
+    $customerShippingAddress->setFaxNumber("999-999-9999");
 
-    $paymentprofiles[] = $paymentprofile;
+    // Create an array of any shipping addresses
+    $shippingProfiles[] = $customerShippingAddress;
+
+
+    // Create a new CustomerPaymentProfile object
+    $paymentProfile = new AnetAPI\CustomerPaymentProfileType();
+    $paymentProfile->setCustomerType('individual');
+    $paymentProfile->setBillTo($billTo);
+    $paymentProfile->setPayment($paymentCreditCard);
+    $paymentProfile->setDefaultpaymentProfile(true);
+    $paymentProfiles[] = $paymentProfile;
+
 
     // Create a new CustomerProfileType and add the payment profile object
-    $customerprofile = new AnetAPI\CustomerProfileType();
-    $customerprofile->setDescription("Customer 2 Test PHP");
+    $customerProfile = new AnetAPI\CustomerProfileType();
+    $customerProfile->setDescription("Customer 2 Test PHP");
+    $customerProfile->setMerchantCustomerId("M_" . time());
+    $customerProfile->setEmail($email);
+    $customerProfile->setpaymentProfiles($paymentProfiles);
+    $customerProfile->setShipToList($shippingProfiles);
 
-    $customerprofile->setMerchantCustomerId("M_".$email);
-    $customerprofile->setEmail($email);
-    $customerprofile->setPaymentProfiles($paymentprofiles);
 
     // Assemble the complete transaction request
     $request = new AnetAPI\CreateCustomerProfileRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
     $request->setRefId($refId);
-    $request->setProfile($customerprofile);
+    $request->setProfile($customerProfile);
 
     // Create the controller and get the response
     $controller = new AnetController\CreateCustomerProfileController($request);
     $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
   
-    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") ) {
+    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok")) {
         echo "Succesfully created customer profile : " . $response->getCustomerProfileId() . "\n";
         $paymentProfiles = $response->getCustomerPaymentProfileIdList();
         echo "SUCCESS: PAYMENT PROFILE ID : " . $paymentProfiles[0] . "\n";
@@ -87,4 +105,3 @@ function createCustomerProfile($email)
 if (!defined('DONT_RUN_SAMPLES')) {
     createCustomerProfile("test123@test.com");
 }
-?>

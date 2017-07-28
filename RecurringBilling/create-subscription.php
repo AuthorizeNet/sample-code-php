@@ -37,7 +37,7 @@ function createSubscription($intervalLength)
     
     $creditCard = new AnetAPI\CreditCardType();
     $creditCard->setCardNumber("4111111111111111");
-    $creditCard->setExpirationDate("2020-12");
+    $creditCard->setExpirationDate("2038-12");
 
     $payment = new AnetAPI\PaymentType();
     $payment->setCreditCard($creditCard);

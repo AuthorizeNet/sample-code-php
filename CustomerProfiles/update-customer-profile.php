@@ -19,7 +19,7 @@ function updateCustomerProfile()
       // Create the payment data for a credit card
     $creditCard = new AnetAPI\CreditCardType();
     $creditCard->setCardNumber( "4111111111111111" );
-    $creditCard->setExpirationDate( "2038-12");
+    $creditCard->setExpirationDate("2038-12");
     $paymentCreditCard = new AnetAPI\PaymentType();
     $paymentCreditCard->setCreditCard($creditCard);
 

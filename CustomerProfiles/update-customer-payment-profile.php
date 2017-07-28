@@ -29,7 +29,7 @@ function updateCustomerPaymentProfile($customerProfileId = "36731856",
 	  // if you don't need to update that info
 	  $creditCard = new AnetAPI\CreditCardType();
 	  $creditCard->setCardNumber( "4111111111111111" );
-	  $creditCard->setExpirationDate( "0718");
+	  $creditCard->setExpirationDate("2038-12");
 	  $paymentCreditCard = new AnetAPI\PaymentType();
 	  $paymentCreditCard->setCreditCard($creditCard);
 

@@ -20,7 +20,7 @@ function authorizeCreditCard($amount)
     // Create the payment data for a credit card
     $creditCard = new AnetAPI\CreditCardType();
     $creditCard->setCardNumber("4111111111111111");
-    $creditCard->setExpirationDate("1226");
+    $creditCard->setExpirationDate("2038-12");
     $creditCard->setCardCode("123");
 
     // Add the payment data to a paymentType object

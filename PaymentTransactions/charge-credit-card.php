@@ -20,7 +20,7 @@ function chargeCreditCard($amount)
     // Create the payment data for a credit card
     $creditCard = new AnetAPI\CreditCardType();
     $creditCard->setCardNumber("4111111111111111");
-    $creditCard->setExpirationDate("1226");
+    $creditCard->setExpirationDate("2038-12");
     $creditCard->setCardCode("123");
 
     // Add the payment data to a paymentType object
@@ -66,7 +66,7 @@ function chargeCreditCard($amount)
 
     // Create a TransactionRequestType object and add the previous objects to it
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType("authCaptureTransaction"); 
+    $transactionRequestType->setTransactionType("authCaptureTransaction");
     $transactionRequestType->setAmount($amount);
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);
@@ -119,7 +119,7 @@ function chargeCreditCard($amount)
                 echo " Error Code  : " . $response->getMessages()->getMessage()[0]->getCode() . "\n";
                 echo " Error Message : " . $response->getMessages()->getMessage()[0]->getText() . "\n";
             }
-        }      
+        }
     } else {
         echo  "No response returned \n";
     }
@@ -130,4 +130,3 @@ function chargeCreditCard($amount)
 if (!defined('DONT_RUN_SAMPLES')) {
     chargeCreditCard(\SampleCode\Constants::SAMPLE_AMOUNT);
 }
-?>

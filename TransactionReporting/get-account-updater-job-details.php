@@ -17,7 +17,7 @@ function getAccountUpdaterJobDetails()
     $refId = 'ref' . time();
 
     // Set a valid month (and other parameters) for the request
-    $month = "2017-05";
+    $month = "2017-07";
     $modifedTypeFilter = "all";
     $paging = new AnetAPI\PagingType;
     $paging->setLimit("1000");
@@ -63,7 +63,7 @@ function getAccountUpdaterJobDetails()
         }
         echo "\nDeletes:\n";
         foreach ($details->getAuDelete() as $delete) {
-            echo "		Profile ID / Payment Profile ID	: " . $delete->getCustomerProfileID() . " / " . $update->getCustomerPaymentProfileID() . "\n";
+            echo "		Profile ID / Payment Profile ID	: " . $delete->getCustomerProfileID() . " / " . $delete->getCustomerPaymentProfileID() . "\n";
             echo "		Update Time (UTC) : " . $delete->getUpdateTimeUTC() . "\n";
             echo "		Reason Code	: " . $delete->getAuReasonCode() . "\n";
             echo "		Reason Description : " . $delete->getReasonDescription() . "\n";

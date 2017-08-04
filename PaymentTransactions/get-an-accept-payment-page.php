@@ -18,10 +18,10 @@ function getAnAcceptPaymentPage()
 
     //create a transaction
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType("authCaptureTransaction"); 
+    $transactionRequestType->setTransactionType("authCaptureTransaction");
     $transactionRequestType->setAmount("12.23");
 
-    // Set Hosted Form options    
+    // Set Hosted Form options
     $setting1 = new AnetAPI\SettingType();
     $setting1->setSettingName("hostedPaymentButtonOptions");
     $setting1->setSettingValue("{\"text\": \"Pay\"}");
@@ -34,9 +34,10 @@ function getAnAcceptPaymentPage()
     $setting3->setSettingName("hostedPaymentReturnOptions");
     $setting3->setSettingValue("{\"url\": \"https://mysite.com/receipt\", \"cancelUrl\": \"https://mysite.com/cancel\", \"showReceipt\": true}");
 
-    // Build transaction request    
+    // Build transaction request
     $request = new AnetAPI\GetHostedPaymentPageRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
+    $request->setRefId($refId);
     $request->setTransactionRequest($transactionRequestType);
 
     $request->addToHostedPaymentSettings($setting1);
@@ -45,20 +46,17 @@ function getAnAcceptPaymentPage()
     
     //execute request
     $controller = new AnetController\GetHostedPaymentPageController($request);
-    $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+    $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
     
-    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
-    {
-      echo $response->getToken()."\n";
-     }
-    else
-    {
-      echo "ERROR :  Failed to get hosted payment page token\n";
-      $errorMessages = $response->getMessages()->getMessage();
-      echo "RESPONSE : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
+    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok")) {
+        echo $response->getToken()."\n";
+    } else {
+        echo "ERROR :  Failed to get hosted payment page token\n";
+        $errorMessages = $response->getMessages()->getMessage();
+        echo "RESPONSE : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
     }
     return $response;
-  }
-  if(!defined('DONT_RUN_SAMPLES'))
-      getAnAcceptPaymentPage();
-?>
+}
+if (!defined('DONT_RUN_SAMPLES')) {
+    getAnAcceptPaymentPage();
+}

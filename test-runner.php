@@ -14,7 +14,7 @@ if(substr($dirPath, -1) != "/")
 $directories = array(
             'CustomerProfiles/',
             'RecurringBilling/',
-            'PaypalExpressCheckout/',
+            'PayPalExpressCheckout/',
             'PaymentTransactions/',
             'TransactionReporting/',
             'MobileInappTransactions/',

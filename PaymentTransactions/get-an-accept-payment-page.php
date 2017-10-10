@@ -32,7 +32,9 @@ function getAnAcceptPaymentPage()
 
     $setting3 = new AnetAPI\SettingType();
     $setting3->setSettingName("hostedPaymentReturnOptions");
-    $setting3->setSettingValue("{\"url\": \"https://mysite.com/receipt\", \"cancelUrl\": \"https://mysite.com/cancel\", \"showReceipt\": true}");
+    $setting3->setSettingValue(
+        "{\"url\": \"https://mysite.com/receipt\", \"cancelUrl\": \"https://mysite.com/cancel\", \"showReceipt\": true}"
+    );
 
     // Build transaction request
     $request = new AnetAPI\GetHostedPaymentPageRequest();

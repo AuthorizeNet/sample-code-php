@@ -26,7 +26,7 @@ function getAccountUpdaterJobSummary()
 
     $controller = new AnetController\GetAUJobSummaryController($request);
 
-    // Retrieving summary for the given month
+    // Get the response from the service (errors contained if any)
     $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok")) {

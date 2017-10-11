@@ -19,11 +19,12 @@ function creditBankAccount($amount)
     // Create the payment data for a Bank Account
     $bankAccount = new AnetAPI\BankAccountType();
     $bankAccount->setAccountType('checking');
-    // $bankAccount->setEcheckType('WEB');
+    // see eCheck documentation for proper echeck type to use for each situation
+    $bankAccount->setEcheckType('PPD');
     $bankAccount->setRoutingNumber('121042882');
-    $bankAccount->setAccountNumber('12345678');
+    $bankAccount->setAccountNumber('123456789');
     $bankAccount->setNameOnAccount('John Doe');
-    $bankAccount->setBankName('Bank of the Earth');
+    $bankAccount->setBankName('Wells Fargo Bank NA');
     
     $paymentBank= new AnetAPI\PaymentType();
     $paymentBank->setBankAccount($bankAccount);

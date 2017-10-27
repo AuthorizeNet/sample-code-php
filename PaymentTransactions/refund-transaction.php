@@ -5,7 +5,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function refundTransaction($amount)
+function refundTransaction($refTransId, $amount)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -27,6 +27,7 @@ function refundTransaction($amount)
     $transactionRequest->setTransactionType( "refundTransaction"); 
     $transactionRequest->setAmount($amount);
     $transactionRequest->setPayment($paymentOne);
+    $transactionRequest->setRefTransId($refTransId);
  
 
     $request = new AnetAPI\CreateTransactionRequest();

@@ -190,10 +190,10 @@ class TestRunner extends PHPUnit\Framework\TestCase
 		return payPalAuthorizeCapture(self::getAmount());
    }
 
-   private static function runPayPalAuthorizeCaptureContinue() 
+   private static function runPayPalAuthorizeCaptureContinued() 
    {
 		$response = payPalAuthorizeCapture(self::getAmount());
-        return payPalAuthorizeCaptureContinue($response->getTransactionResponse()->getTransId(), self::$payerID);
+        return payPalAuthorizeCaptureContinued($response->getTransactionResponse()->getTransId(), self::$payerID);
    }
 
    public static function runPayPalAuthorizeOnlyContinue() 

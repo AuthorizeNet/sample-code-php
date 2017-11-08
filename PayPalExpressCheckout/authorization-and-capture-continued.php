@@ -5,7 +5,7 @@
 
     define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function payPalAuthorizeCaptureContinue($refTransId, $payerID)
+function payPalAuthorizeCaptureContinued($refTransId, $payerID)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -86,5 +86,5 @@ function payPalAuthorizeCaptureContinue($refTransId, $payerID)
 	}
 
   	if(!defined('DONT_RUN_SAMPLES'))
-    	payPalAuthorizeCaptureContinue("2241708986","6ZSCSYG33VP8Q");
+    	payPalAuthorizeCaptureContinued("2241708986","6ZSCSYG33VP8Q");
 ?>

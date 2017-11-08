@@ -40,8 +40,8 @@ CreditBankAccount,1,0
 ChargeCustomerProfile,1,1
 PayPalVoid,1,0
 PayPalAuthorizeCapture,1,1
-PayPalAuthorizeCaptureContinue,1,1
-PayPalAuthorizeOnlyContinue,1,0
+PayPalAuthorizeCaptureContinued,1,1
+PayPalAuthorizeOnlyContinued,1,0
 PayPalCredit,1,0
 PayPalGetDetails,1,1
 PayPalPriorAuthorizationCapture,1,0

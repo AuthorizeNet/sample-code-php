@@ -22,7 +22,7 @@ function creditBankAccount($amount)
     // see eCheck documentation for proper echeck type to use for each situation
     $bankAccount->setEcheckType('PPD');
     $bankAccount->setRoutingNumber('121042882');
-    $bankAccount->setAccountNumber('123456789');
+    $bankAccount->setAccountNumber('1234567890');
     $bankAccount->setNameOnAccount('John Doe');
     $bankAccount->setBankName('Wells Fargo Bank NA');
     

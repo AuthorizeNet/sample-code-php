@@ -34,7 +34,7 @@ function createCustomerPaymentProfile($existingcustomerprofileid, $phoneNumber)
 
     // Create the Bill To info for new payment type
     $billto = new AnetAPI\CustomerAddressType();
-    $billto->setFirstName("Ellen".$phoneNumber);
+    $billto->setFirstName("Ellen");
     $billto->setLastName("Johnson");
     $billto->setCompany("Souveniropolis");
     $billto->setAddress("14 Main Street");

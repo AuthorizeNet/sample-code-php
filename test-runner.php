@@ -454,7 +454,7 @@ class TestRunner extends PHPUnit\Framework\TestCase
     
     public static function runGetBatchStatistics()
     {
-        $response = getBatchStatistics(runGetSettledBatchList()->getBatchList()[0]->getBatchId());
+        $response = getBatchStatistics(self::runGetSettledBatchList()->getBatchList()[0]->getBatchId());
         return $response;
     }
 }

@@ -5,7 +5,7 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function getBatchStatistics()
+function getBatchStatistics($batchId = "7927817") //only shows results for batches not older than 6 months
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -15,9 +15,6 @@ function getBatchStatistics()
     
     // Set the transaction's refId
     $refId = 'ref' . time();
-
-    //Setting a valid batch Id for the Merchant
-    $batchId = "4532808";
     
     // Creating a request 
     $request = new AnetAPI\GetBatchStatisticsRequest();

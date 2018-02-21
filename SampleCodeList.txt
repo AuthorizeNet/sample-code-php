@@ -16,8 +16,8 @@ ChargeTokenizedCreditCard,0,0
 PayPalAuthorizeOnly,1,1
 GetListOfSubscriptions,0,1
 GetUnsettledTransactionList,0,1
-GetBatchStatistics,0,1
-GetSettledBatchList,0,1
+GetBatchStatistics,1,1
+GetSettledBatchList,1,1
 UpdateSplitTenderGroup,0,1
 UpdateCustomerShippingAddress,1,1
 UpdateCustomerProfile,0,1

@@ -226,13 +226,8 @@ class TestRunner extends PHPUnit\Framework\TestCase
             return payPalPriorAuthorizationCapture($response->getTransactionResponse()->getTransId());
     }
 
-    public static function runGetTransactionDetails()
-    {
-            $response = authorizeCreditCard(self::getAmount());
-            return getTransactionDetails($response->getTransactionResponse()->getTransId());
-    }
 
-
+    // ****ARB Subscription methods******
     public static function runCreateSubscription()
     {
             $response = createSubscription(self::getDay());
@@ -299,7 +294,7 @@ class TestRunner extends PHPUnit\Framework\TestCase
             return $update_response;
     }
 
-       //customer profiles methods
+       //*****Customer Profiles methods********
     public static function runCreateCustomerProfile()
     {
 
@@ -324,15 +319,7 @@ class TestRunner extends PHPUnit\Framework\TestCase
         return $response;
     }
 
-    // public static function runUpdateCustomerProfile()
-    // {
-    // 	$responseCustomerProfile = createCustomerProfile(self::getEmail());
-    // 	$customerProfileId = $responseCustomerProfile->getCustomerProfileId();
-    // 	$response = updateCustomerProfileById($customerProfileId);
-    // 	deleteCustomerProfile($customerProfileId);
-    // 	return $response;
-    // }
-    //customer profiles - payment profiles methods
+    // *******Customer Profiles - Payment Profiles methods******
 
     public static function runCreateCustomerPaymentProfile()
     {
@@ -393,7 +380,7 @@ class TestRunner extends PHPUnit\Framework\TestCase
         return $response;
     }
 
-    //customer profiles - shipping address
+    // ****Customer Profiles - Shipping Address*****
     public static function runCreateCustomerShippingAddress()
     {
         $customerProfileId = createCustomerProfile(self::getEmail())->getCustomerProfileId();
@@ -438,7 +425,7 @@ class TestRunner extends PHPUnit\Framework\TestCase
 
         return $getResponse;
     }
-
+    //*****Accept - Accept Customer Profile Page********
     public static function runGetAcceptCustomerProfilePage()
     {
         $response = createCustomerProfile(self::getEmail());
@@ -446,5 +433,32 @@ class TestRunner extends PHPUnit\Framework\TestCase
         deleteCustomerProfile($response->getCustomerProfileId());
 
         return $profileResponse;
+    }
+    
+    // *****Transaction Reporting methods********
+    public static function runGetTransactionDetails()
+    {
+            $response = authorizeCreditCard(self::getAmount());
+            return getTransactionDetails($response->getTransactionResponse()->getTransId());
+    }
+    
+    public static function runGetSettledBatchList()
+    {
+        $lastSettlementDate=new DateTime();  // current time
+        $lastSettlementDate->format("Y-m-d\TH:i:s\Z");
+        $lastSettlementDate->setTimezone(new DateTimeZone('UTC'));
+        
+        $firstSettlementDate=new DateTime();
+        $firstSettlementDate->format("Y-m-d\TH:i:s\Z");
+        $firstSettlementDate->setTimezone(new DateTimeZone('UTC'));
+        $firstSettlementDate->sub(new DateInterval('P28D'));
+        
+        return getSettledBatchList($firstSettlementDate, $lastSettlementDate);
+    }
+    
+    public static function runGetBatchStatistics()
+    {
+        $response = getBatchStatistics(self::runGetSettledBatchList()->getBatchList()[0]->getBatchId());
+        return $response;
     }
 }

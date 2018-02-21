@@ -5,7 +5,7 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function getSettledBatchList()
+function getSettledBatchList($firstSettlementDate, $lastSettlementDate)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -21,15 +21,7 @@ function getSettledBatchList()
     $request->setIncludeStatistics(true);
     
     // both the first and last dates must be in the same time zone
-    $firstSettlementDate=new DateTime("2015-08-25T06:00:00Z");
-    // a date constructed from an ISO8601 format date string
     $request->setFirstSettlementDate($firstSettlementDate);
-    
-    // a date constructed manually
-    $lastSettlementDate=new DateTime();
-    $lastSettlementDate->setDate(2015,9,20);
-    $lastSettlementDate->setTime(13,33,59);
-    $lastSettlementDate->setTimezone(new DateTimeZone('UTC'));
     $request->setLastSettlementDate($lastSettlementDate);
 
     $controller = new AnetController\GetSettledBatchListController ($request);
@@ -69,8 +61,17 @@ function getSettledBatchList()
 
     return $response;
   }
-
+  
+  // both the first and last dates must be in the same time zone
+  // a date constructed from an ISO8601 format date string
+  $firstSettlementDate=new DateTime("2018-01-23T06:00:00Z");
+  // a date constructed manually
+  $lastSettlementDate=new DateTime();
+  $lastSettlementDate->setDate(2018,2,19);
+  $lastSettlementDate->setTime(13,33,59);
+  $lastSettlementDate->setTimezone(new DateTimeZone('UTC'));
+      
   if(!defined('DONT_RUN_SAMPLES'))
-    getSettledBatchList();
+    getSettledBatchList($firstSettlementDate, $lastSettlementDate);
 
 ?>

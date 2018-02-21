@@ -444,11 +444,15 @@ class TestRunner extends PHPUnit\Framework\TestCase
     
     public static function runGetSettledBatchList()
     {
-        $lastSettlementDate=gmdate("Y-m-d\TH:i:s\Z"); // UTC time now
-        $firstSettlementDate=new DateTime();  // use DateTime object
+        $lastSettlementDate=new DateTime();  // current time
+        $lastSettlementDate->format("Y-m-d\TH:i:s\Z");
+        $lastSettlementDate->setTimezone(new DateTimeZone('UTC'));
+        
+        $firstSettlementDate=new DateTime();
         $firstSettlementDate->format("Y-m-d\TH:i:s\Z");
         $firstSettlementDate->setTimezone(new DateTimeZone('UTC'));
         $firstSettlementDate->sub(new DateInterval('P28D'));
+        
         return getSettledBatchList($firstSettlementDate->format("Y-m-d\TH:i:s\Z"), $lastSettlementDate);
     }
     

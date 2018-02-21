@@ -20,7 +20,8 @@ function getSettledBatchList($firstSettlementDate, $lastSettlementDate)
     $request->setMerchantAuthentication($merchantAuthentication);
     $request->setIncludeStatistics(true);
     
-    // both the first and last dates must be in the same time zone
+    // Both the first and last dates must be in the same time zone
+    // The time between first and last dates, inclusively, cannot exceed 31 days.
     $request->setFirstSettlementDate($firstSettlementDate);
     $request->setLastSettlementDate($lastSettlementDate);
 

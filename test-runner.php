@@ -453,7 +453,7 @@ class TestRunner extends PHPUnit\Framework\TestCase
         $firstSettlementDate->setTimezone(new DateTimeZone('UTC'));
         $firstSettlementDate->sub(new DateInterval('P28D'));
         
-        return getSettledBatchList($firstSettlementDate->format("Y-m-d\TH:i:s\Z"), $lastSettlementDate);
+        return getSettledBatchList($firstSettlementDate, $lastSettlementDate);
     }
     
     public static function runGetBatchStatistics()

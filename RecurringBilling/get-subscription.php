@@ -21,7 +21,7 @@
     $request->setMerchantAuthentication($merchantAuthentication);
     $request->setRefId($refId);
     $request->setSubscriptionId($subscriptionId);
-    $request->setIncludeTransactions(true);
+    $request->setIncludeTransactions(true);
 	    
     // Controller
     $controller = new AnetController\ARBGetSubscriptionController($request);

@@ -42,6 +42,10 @@
         	echo "Subscription Description: " . $response->getSubscription()->getProfile()->getDescription(). "\n";
         	echo "Customer Profile ID: " .  $response->getSubscription()->getProfile()->getCustomerProfileId() . "\n";
         	echo "Customer payment Profile ID: ". $response->getSubscription()->getProfile()->getPaymentProfile()->getCustomerPaymentProfileId() . "\n";
+                $transactions = $response->getSubscription()->getArbTransactions();
+                foreach ($transactions as $transaction) {
+                    echo "Transaction ID : ".$transaction->getTransId()." -- ".$transaction->getResponse()." -- Pay Number : ".$transaction->getPayNum()."\n";
+                }
         }
         else
         {
@@ -61,5 +65,5 @@
 	}
 
 	if(!defined('DONT_RUN_SAMPLES'))
-		getSubscription("2930242");
+		getSubscription("2942461");
  ?>

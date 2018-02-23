@@ -50,7 +50,7 @@
         	$errorMessages = $response->getMessages()->getMessage();
           echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
         }
-	  }
+    }
     else
     {
         // Failed to get response
@@ -58,8 +58,8 @@
     }
 
     return $response;
-	}
+  }
 
-	if(!defined('DONT_RUN_SAMPLES'))
+  if(!defined('DONT_RUN_SAMPLES'))
 		getSubscription("2930242");
  ?>

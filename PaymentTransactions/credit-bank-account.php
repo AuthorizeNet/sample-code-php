@@ -20,8 +20,8 @@ function creditBankAccount($amount)
     $bankAccount = new AnetAPI\BankAccountType();
     $bankAccount->setAccountType('checking');
     // see eCheck documentation for proper echeck type to use for each situation
-    $bankAccount->setEcheckType('PPD');
-    $bankAccount->setRoutingNumber('125000105');
+    $bankAccount->setEcheckType('WEB');
+    $bankAccount->setRoutingNumber('122235821');
     $bankAccount->setAccountNumber('1234567890');
     $bankAccount->setNameOnAccount('John Doe');
     $bankAccount->setBankName('Wells Fargo Bank NA');

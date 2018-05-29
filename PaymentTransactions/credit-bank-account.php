@@ -84,6 +84,7 @@ function creditBankAccount($amount)
     return $response;
 }
 
-
-
+if (!defined('DONT_RUN_SAMPLES')) {
+    creditBankAccount(5.29);
+}
 

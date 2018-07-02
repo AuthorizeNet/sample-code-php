@@ -21,7 +21,7 @@ function debitBankAccount($amount)
     $bankAccount->setAccountType('checking');
     // see eCheck documentation for proper echeck type to use for each situation
     $bankAccount->setEcheckType('WEB');
-    $bankAccount->setRoutingNumber('125008547');
+    $bankAccount->setRoutingNumber('122000661');
     $bankAccount->setAccountNumber('1234567890');
     $bankAccount->setNameOnAccount('John Doe');
     $bankAccount->setBankName('Wells Fargo Bank NA');

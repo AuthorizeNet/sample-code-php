@@ -5,12 +5,16 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function updateCustomerShippingAddress($customerprofileid, $customeraddressid)
-  {
-  // Common setup for API credentials
-  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-  $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+function updateCustomerShippingAddress($customerprofileid, $customeraddressid)
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
+    $refId = 'ref' . time();
 
   // An existing customer profile id for this merchant name and transaction key
   $existingcustomerprofileid = $customerprofileid;

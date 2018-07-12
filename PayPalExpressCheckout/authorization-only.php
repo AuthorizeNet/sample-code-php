@@ -6,16 +6,16 @@ use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function payPalCredit($transactionId) {
-
-    // Common setup for API credentials (Paypal compatible merchant)
+function payPalAuthorizeOnly($amount)
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
-
+    
+    // Set the transaction's refId
     $refId = 'ref' . time();
-	//use transaction of already settled paypal checkout transaction
-    $refTransId = $transactionId;
 
     // Create the payment data for a paypal account
     $payPalType = new AnetAPI\PayPalType();
@@ -24,13 +24,11 @@ function payPalCredit($transactionId) {
     $paymentOne = new AnetAPI\PaymentType();
     $paymentOne->setPayPal($payPalType);
 
-    //create a refund transaction
+    //create a auth-only transaction
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType( "refundTransaction");
-    $transactionRequestType->setAmount(181);
+    $transactionRequestType->setTransactionType( "authOnlyTransaction");
+    $transactionRequestType->setAmount($amount);
     $transactionRequestType->setPayment($paymentOne);
-    ///refTransId of successfully settled transaction
-    $transactionRequestType->setRefTransId($refTransId);
 
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
@@ -49,8 +47,9 @@ function payPalCredit($transactionId) {
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
             echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
-            echo "Credit SUCCESS AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-            echo "Credit TRANS ID  : " . $tresponse->getTransId() . "\n";
+            echo "Received response code: ".$tresponse->getResponseCode()."\n";
+            //Valid response codes: 1=Approved, 2=Declined, 3=Error, 5=Need Payer Consent\n";
+            echo "Secure acceptance URL: ".$tresponse->getSecureAcceptance()->getSecureAcceptanceUrl()."\n";
             echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
 	          echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }
@@ -82,14 +81,13 @@ function payPalCredit($transactionId) {
     }
     else
     {
-      echo "No response returned \n";
+      echo  "No response returned \n";
     }
 
     return $response;
 }
 
-if(!defined('DONT_RUN_SAMPLES')){
-	//use transaction id of already settled transaction
-  payPalCredit("2241762126");
-}
+if(!defined('DONT_RUN_SAMPLES'))
+    payPalAuthorizeOnly(23.34);
+
 ?>

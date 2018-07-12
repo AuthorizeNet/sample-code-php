@@ -5,18 +5,20 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function getListOfSubscriptions() {
-
-    // Common Set Up for API Credentials
+function getListOfSubscriptions()
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     
+    // Set the transaction's refId
     $refId = 'ref' . time();
 
     $sorting = new AnetAPI\ARBGetSubscriptionListSortingType();
     $sorting->setOrderBy("id");
-    $sorting->setOrderDescending("false");
+    $sorting->setOrderDescending(false);
 
     $paging = new AnetAPI\PagingType();
     $paging->setLimit("1000");
@@ -32,23 +34,23 @@
 
     $controller = new AnetController\ARBGetSubscriptionListController($request);
 
-    $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+    $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
-    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
-    {
-        //echo "SUCCESS: Subscription Details:" . $response->getSubscriptionDetails() . "\n";
+    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok")) {
+        echo "SUCCESS: Subscription Details:" . "\n";
+        foreach ($response->getSubscriptionDetails() as $subscriptionDetails) {
+            echo "Subscription ID: " . $subscriptionDetails->getId() . "\n";
+        }
         echo "Total Number In Results:" . $response->getTotalNumInResultSet() . "\n";
-     }
-    else
-    {
+    } else {
         echo "ERROR :  Invalid response\n";
         $errorMessages = $response->getMessages()->getMessage();
         echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
     }
 
     return $response;
-  }
+}
 
-  if(!defined('DONT_RUN_SAMPLES'))
+if (!defined('DONT_RUN_SAMPLES')) {
     getListOfSubscriptions();
-?>
+}

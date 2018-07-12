@@ -1,12 +1,16 @@
- <?php
-  require 'vendor/autoload.php';
-  use net\authorize\api\contract\v1 as AnetAPI;
-  use net\authorize\api\controller as AnetController;
+<?php
+    require 'vendor/autoload.php';
 
-  define("AUTHORIZENET_LOG_FILE", "phplog");
+    use net\authorize\api\contract\v1 as AnetAPI;
+    use net\authorize\api\controller as AnetController;
 
-function debitBankAccount($amount)
+    define("AUTHORIZENET_LOG_FILE", "phplog");
+
+function payPalAuthorizeOnlyContinued($transactionId, $payerId)
 {
+
+    echo "PayPal Authorize Only Continued Transaction\n";
+    
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -16,36 +20,30 @@ function debitBankAccount($amount)
     // Set the transaction's refId
     $refId = 'ref' . time();
 
-    // Create the payment data for a Bank Account
-    $bankAccount = new AnetAPI\BankAccountType();
-    $bankAccount->setAccountType('checking');
-    // see eCheck documentation for proper echeck type to use for each situation
-    $bankAccount->setEcheckType('WEB');
-    $bankAccount->setRoutingNumber('122000661');
-    $bankAccount->setAccountNumber('1234567890');
-    $bankAccount->setNameOnAccount('John Doe');
-    $bankAccount->setBankName('Wells Fargo Bank NA');
+    // Set PayPal compatible merchant credentials
+    $payPalType=new AnetAPI\PayPalType();
+    $payPalType->setPayerID($payerID);
 
-    $paymentBank= new AnetAPI\PaymentType();
-    $paymentBank->setBankAccount($bankAccount);
-
-    // Order info
-    $order = new AnetAPI\OrderType();
-    $order->setInvoiceNumber("101");
-    $order->setDescription("Golf Shirts");
-
-    //create a bank debit transaction
+    $paypal_type->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
+    $paypal_type->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
     
+    $payment_type = new AnetAPI\PaymentType();
+    $payment_type->setPayPal($paypal_type);
+
+    //create a transaction
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType("authCaptureTransaction");
-    $transactionRequestType->setAmount($amount);
-    $transactionRequestType->setPayment($paymentBank);
-    $transactionRequestType->setOrder($order);
+    $transactionRequestType->setTransactionType("authOnlyContinueTransaction");
+    $transactionRequestType->setRefTransId($transactionId);
+    $transactionRequestType->setAmount(125.34);
+    $transactionRequestType->setPayment($payment_type);
+
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
     $request->setRefId($refId);
     $request->setTransactionRequest($transactionRequestType);
+
     $controller = new AnetController\CreateTransactionController($request);
+
     $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
     if ($response != null) {
@@ -54,11 +52,9 @@ function debitBankAccount($amount)
         
             if ($tresponse != null && $tresponse->getMessages() != null) {
                 echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
-                echo " Debit Bank Account APPROVED  :" . "\n";
-                echo " Debit Bank Account AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-                echo " Debit Bank Account TRANS ID  : " . $tresponse->getTransId() . "\n";
-                echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n";
-                echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
+                echo "TRANS ID  : " . $tresponse->getTransId() . "\n";
+                echo "Payer ID : " . $tresponse->getSecureAcceptance()->getPayerID();
+                echo "Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
             } else {
                 echo "Transaction Failed \n";
                 if ($tresponse->getErrors() != null) {
@@ -83,7 +79,7 @@ function debitBankAccount($amount)
 
     return $response;
 }
-
+  
 if (!defined('DONT_RUN_SAMPLES')) {
-    debitBankAccount(5.29);
+    payPalAuthorizeOnlyContinued("2241711631", "JJLRRB29QC7RU");
 }

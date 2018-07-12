@@ -6,13 +6,15 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function createSubscription($intervalLength) {
-
-    // Common Set Up for API Credentials
+function createSubscription($intervalLength)
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
     
+    // Set the transaction's refId
     $refId = 'ref' . time();
 
     // Subscription Type Info
@@ -35,13 +37,17 @@
     
     $creditCard = new AnetAPI\CreditCardType();
     $creditCard->setCardNumber("4111111111111111");
-    $creditCard->setExpirationDate("2020-12");
+    $creditCard->setExpirationDate("2038-12");
 
     $payment = new AnetAPI\PaymentType();
     $payment->setCreditCard($creditCard);
-
     $subscription->setPayment($payment);
 
+    $order = new AnetAPI\OrderType();
+    $order->setInvoiceNumber("1234354");        
+    $order->setDescription("Description of the subscription"); 
+    $subscription->setOrder($order); 
+    
     $billTo = new AnetAPI\NameAndAddressType();
     $billTo->setFirstName("John");
     $billTo->setLastName("Smith");

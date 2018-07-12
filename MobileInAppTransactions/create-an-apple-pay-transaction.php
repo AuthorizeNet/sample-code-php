@@ -6,10 +6,15 @@ use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function createAnApplePayTransaction(){
+function createAnApplePayTransaction()
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
     $refId = 'ref' . time();
 
     $op = new AnetAPI\OpaqueDataType();

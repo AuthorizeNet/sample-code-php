@@ -1,11 +1,11 @@
- <?php
-  require 'vendor/autoload.php';
-  use net\authorize\api\contract\v1 as AnetAPI;
-  use net\authorize\api\controller as AnetController;
+<?php
+    require 'vendor/autoload.php';
+    use net\authorize\api\contract\v1 as AnetAPI;
+    use net\authorize\api\controller as AnetController;
 
-  define("AUTHORIZENET_LOG_FILE", "phplog");
+    define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function debitBankAccount($amount)
+function payPalAuthorizeCaptureContinued($refTransId, $payerID)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -16,34 +16,21 @@ function debitBankAccount($amount)
     // Set the transaction's refId
     $refId = 'ref' . time();
 
-    // Create the payment data for a Bank Account
-    $bankAccount = new AnetAPI\BankAccountType();
-    $bankAccount->setAccountType('checking');
-    // see eCheck documentation for proper echeck type to use for each situation
-    $bankAccount->setEcheckType('WEB');
-    $bankAccount->setRoutingNumber('122000661');
-    $bankAccount->setAccountNumber('1234567890');
-    $bankAccount->setNameOnAccount('John Doe');
-    $bankAccount->setBankName('Wells Fargo Bank NA');
+    // Set PayPal compatible merchant credentials
+    $payPalType=new AnetAPI\PayPalType();
+    $payPalType->setPayerID($payerID);
 
-    $paymentBank= new AnetAPI\PaymentType();
-    $paymentBank->setBankAccount($bankAccount);
+    $paymentOne = new AnetAPI\PaymentType();
+    $paymentOne->setPayPal($payPalType);
 
-    // Order info
-    $order = new AnetAPI\OrderType();
-    $order->setInvoiceNumber("101");
-    $order->setDescription("Golf Shirts");
-
-    //create a bank debit transaction
-    
+    // Create an authorize and capture continued transaction
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType("authCaptureTransaction");
-    $transactionRequestType->setAmount($amount);
-    $transactionRequestType->setPayment($paymentBank);
-    $transactionRequestType->setOrder($order);
+    $transactionRequestType->setTransactionType("authCaptureContinueTransaction");
+    $transactionRequestType->setPayment($paymentOne);
+    $transactionRequestType->setRefTransId($refTransId);
+
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
-    $request->setRefId($refId);
     $request->setTransactionRequest($transactionRequestType);
     $controller = new AnetController\CreateTransactionController($request);
     $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
@@ -51,12 +38,13 @@ function debitBankAccount($amount)
     if ($response != null) {
         if ($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK) {
             $tresponse = $response->getTransactionResponse();
-        
+          
             if ($tresponse != null && $tresponse->getMessages() != null) {
+                echo "Transaction Response...\n";
                 echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
-                echo " Debit Bank Account APPROVED  :" . "\n";
-                echo " Debit Bank Account AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-                echo " Debit Bank Account TRANS ID  : " . $tresponse->getTransId() . "\n";
+                //Valid response codes: 1=Approved, 2=Declined, 3=Error, 5=Need Payer Consent
+                echo "Secure acceptance URL: ".$tresponse->getSecureAcceptance()->getSecureAcceptanceUrl()."\n";
+                echo "Transaction ID: ".$tresponse->getTransId()."\n";
                 echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n";
                 echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
             } else {
@@ -85,5 +73,5 @@ function debitBankAccount($amount)
 }
 
 if (!defined('DONT_RUN_SAMPLES')) {
-    debitBankAccount(5.29);
+    payPalAuthorizeCaptureContinued("2241708986", "6ZSCSYG33VP8Q");
 }

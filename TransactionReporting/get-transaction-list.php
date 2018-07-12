@@ -5,12 +5,15 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function getTransactionList() {
-    // Common Set Up for API Credentials
+function getTransactionList()
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
-
+    
+    // Set the request's refId
     $refId = 'ref' . time();
 
     //Setting a valid batch Id for the Merchant
@@ -28,7 +31,7 @@
     {
     		echo "SUCCESS: Get Transaction List for BatchID : " . $batchId  . "\n\n";
   	  if ($response->getTransactions() == null) {
-  	  	echo "No Transaction to dispaly in this Batch.";
+  	  	echo "No Transaction to display in this Batch.";
   	  	return ;
   	  }
   	  //Displaying the details of each transaction in the list

@@ -6,7 +6,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function chargeCreditCard($amount)
+function createAnAcceptPaymentTransaction($amount)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -17,15 +17,15 @@ function chargeCreditCard($amount)
     // Set the transaction's refId
     $refId = 'ref' . time();
 
-    // Create the payment data for a credit card
-    $creditCard = new AnetAPI\CreditCardType();
-    $creditCard->setCardNumber("4111111111111111");
-    $creditCard->setExpirationDate("2038-12");
-    $creditCard->setCardCode("123");
+    // Create the payment object for a payment nonce
+    $opaqueData = new AnetAPI\OpaqueDataType();
+    $opaqueData->setDataDescriptor("COMMON.ACCEPT.INAPP.PAYMENT");
+    $opaqueData->setDataValue("119eyJjb2RlIjoiNTBfMl8wNjAwMDUyN0JEODE4RjQxOUEyRjhGQkIxMkY0MzdGQjAxQUIwRTY2NjhFNEFCN0VENzE4NTUwMjlGRUU0M0JFMENERUIwQzM2M0ExOUEwMDAzNzlGRDNFMjBCODJEMDFCQjkyNEJDIiwidG9rZW4iOiI5NDkwMjMyMTAyOTQwOTk5NDA0NjAzIiwidiI6IjEuMSJ9");
+
 
     // Add the payment data to a paymentType object
     $paymentOne = new AnetAPI\PaymentType();
-    $paymentOne->setCreditCard($creditCard);
+    $paymentOne->setOpaqueData($opaqueData);
 
     // Create order information
     $order = new AnetAPI\OrderType();
@@ -66,7 +66,7 @@ function chargeCreditCard($amount)
 
     // Create a TransactionRequestType object and add the previous objects to it
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType("authCaptureTransaction");
+    $transactionRequestType->setTransactionType("authCaptureTransaction"); 
     $transactionRequestType->setAmount($amount);
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);
@@ -119,7 +119,7 @@ function chargeCreditCard($amount)
                 echo " Error Code  : " . $response->getMessages()->getMessage()[0]->getCode() . "\n";
                 echo " Error Message : " . $response->getMessages()->getMessage()[0]->getText() . "\n";
             }
-        }
+        }      
     } else {
         echo  "No response returned \n";
     }
@@ -128,5 +128,6 @@ function chargeCreditCard($amount)
 }
 
 if (!defined('DONT_RUN_SAMPLES')) {
-    chargeCreditCard(\SampleCode\Constants::SAMPLE_AMOUNT);
+      CreateAnAcceptTransaction(\SampleCode\Constants::SAMPLE_AMOUNT);
 }
+?>

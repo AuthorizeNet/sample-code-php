@@ -2,10 +2,10 @@
   require 'vendor/autoload.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
-
+  
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function updateSplitTenderGroup()
+function getTransactionListForCustomerRequest($customerProfileId)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -16,20 +16,26 @@ function updateSplitTenderGroup()
     // Set the transaction's refId
     $refId = 'ref' . time();
 
-    $request = new AnetAPI\UpdateSplitTenderGroupRequest();
+    $request = new AnetAPI\GetTransactionListForCustomerRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
-	$request->setRefId($refId);
-    $request->setSplitTenderId("115901");
-    $request->setSplitTenderStatus("voided");
+    $request->setCustomerProfileId($customerProfileId);
 
-    $controller = new AnetController\UpdateSplitTenderGroupController($request);
+    $controller = new AnetController\GetTransactionListForCustomerController($request);
 
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
     
-    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
-    { 
-        $errorMessages = $response->getMessages()->getMessage();
-        echo "SUCCESS  Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
+	if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
+    {
+        if(null != $response->getTransactions())
+		{
+			foreach($response->getTransactions() as $tx)
+			{
+			  echo "SUCCESS: TransactionID: " . $tx->getTransId() . "\n";
+			}
+        }
+		else{
+			echo "No transactions associated with given customer profile" . "\n";
+		}
      }
     else
     {
@@ -37,9 +43,10 @@ function updateSplitTenderGroup()
         $errorMessages = $response->getMessages()->getMessage();
         echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
     }
+	
     return $response;
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    updateSplitTenderGroup();
-  ?>
+    getTransactionListForCustomerRequest("36152127");
+?>

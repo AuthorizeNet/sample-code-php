@@ -1,35 +1,50 @@
 <?php
-require 'vendor/autoload.php';
+  require 'vendor/autoload.php';
 
-use net\authorize\api\contract\v1 as AnetAPI;
-use net\authorize\api\controller as AnetController;
+  use net\authorize\api\contract\v1 as AnetAPI;
+  use net\authorize\api\controller as AnetController;
 
-define("AUTHORIZENET_LOG_FILE", "phplog");
+  define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function createAnAcceptTransaction(){
+function payPalGetDetails($transactionId)
+{
+
+    echo "PayPal Get Details Transaction\n";
+    
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
     $refId = 'ref' . time();
 
-    $op = new AnetAPI\OpaqueDataType();
-    $op->setDataDescriptor("COMMON.ACCEPT.INAPP.PAYMENT");
-    $op->setDataValue("9471471570959063005001");
-    $paymentOne = new AnetAPI\PaymentType();
-    $paymentOne->setOpaqueData($op);
-
-    //create a transaction
+    //create a transaction of type get details
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType( "authCaptureTransaction");
-    $transactionRequestType->setAmount(151);
+    $transactionRequestType->setTransactionType( "getDetailsTransaction"); 
+    
+    //replace following transaction ID with your transaction ID for which the details are required
+    $transactionRequestType->setRefTransId($transactionId);
+
+    // Create the payment data for a paypal account
+    $payPalType = new AnetAPI\PayPalType();
+    $payPalType->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
+    $payPalType->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
+    $paymentOne = new AnetAPI\PaymentType();
+    $paymentOne->setPayPal($payPalType);
+
     $transactionRequestType->setPayment($paymentOne);
 
+    //create a transaction request
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
     $request->setRefId( $refId);
     $request->setTransactionRequest( $transactionRequestType);
 
     $controller = new AnetController\CreateTransactionController($request);
+
+    //execute the api call to get transaction details
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
     if ($response != null)
@@ -41,8 +56,23 @@ function createAnAcceptTransaction(){
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
           echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
-          echo " AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-          echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
+          echo "Transaction Response...\n";
+          echo "Received response code: ".$tresponse->getResponseCode()."\n";
+          echo "Transaction ID: ".$tresponse->getTransId()."\n";
+          //Valid response codes: 1=Approved, 2=Declined, 3=Error, 5=Need Payer Consent
+          if(null != $tresponse->getSecureAcceptance())
+          {
+            echo "Payer ID : " . $tresponse->getSecureAcceptance()->getPayerID() . "\n";
+          }
+          
+          //parse the shipping information from response
+          $shipping_response = $tresponse->getShipTo();
+          if(null != $shipping_response)
+          {
+            echo "Shipping address : " . $shipping_response->getAddress() . ", " . $shipping_response->getCity()
+              . ", " . $shipping_response->getState() . ", " . $shipping_response->getCountry() . "\n";
+          }          
+
           echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
 	        echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }
@@ -78,8 +108,9 @@ function createAnAcceptTransaction(){
     }
 
     return $response;
-}
+  }
 
 if(!defined('DONT_RUN_SAMPLES'))
-    createAnAcceptTransaction();
+  payPalGetDetails("60007107304");
+
 ?>

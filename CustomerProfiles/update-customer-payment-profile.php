@@ -5,14 +5,17 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function updateCustomerPaymentProfile($customerProfileId = "36731856",
-      $customerPaymentProfileId = "33211899")
-  {
-	  // Common setup for API credentials
-	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-      $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
-      $refId = 'ref' . time();
+function updateCustomerPaymentProfile($customerProfileId = "36731856",
+    $customerPaymentProfileId = "33211899"
+) {
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
+    $refId = 'ref' . time();
 
 	  //Set profile ids of profile to be updated
 	  $request = new AnetAPI\UpdateCustomerPaymentProfileRequest();
@@ -26,7 +29,7 @@
 	  // if you don't need to update that info
 	  $creditCard = new AnetAPI\CreditCardType();
 	  $creditCard->setCardNumber( "4111111111111111" );
-	  $creditCard->setExpirationDate( "0718");
+	  $creditCard->setExpirationDate("2038-12");
 	  $paymentCreditCard = new AnetAPI\PaymentType();
 	  $paymentCreditCard->setCreditCard($creditCard);
 

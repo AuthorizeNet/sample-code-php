@@ -43,9 +43,11 @@
         	echo "Customer Profile ID: " .  $response->getSubscription()->getProfile()->getCustomerProfileId() . "\n";
         	echo "Customer payment Profile ID: ". $response->getSubscription()->getProfile()->getPaymentProfile()->getCustomerPaymentProfileId() . "\n";
                 $transactions = $response->getSubscription()->getArbTransactions();
-                foreach ($transactions as $transaction) {
-                    echo "Transaction ID : ".$transaction->getTransId()." -- ".$transaction->getResponse()." -- Pay Number : ".$transaction->getPayNum()."\n";
-                }
+                if($transactions != null){
+			foreach ($transactions as $transaction) {
+                    		echo "Transaction ID : ".$transaction->getTransId()." -- ".$transaction->getResponse()." -- Pay Number : ".$transaction->getPayNum()."\n";
+                	}
+		}
         }
         else
         {

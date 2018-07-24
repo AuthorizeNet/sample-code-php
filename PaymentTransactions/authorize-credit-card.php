@@ -1,6 +1,6 @@
 <?php
   require 'vendor/autoload.php';
-
+  require_once 'constants/SampleCodeConstants.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
 
@@ -11,8 +11,8 @@ function authorizeCreditCard($amount)
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
     
     // Set the transaction's refId
     $refId = 'ref' . time();
@@ -89,7 +89,7 @@ function authorizeCreditCard($amount)
 
     if ($response != null) {
         // Check to see if the API request was successfully received and acted upon
-        if ($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK) {
+        if ($response->getMessages()->getResultCode() == "Ok") {
             // Since the API request was successful, look for a transaction response
             // and parse it to display the results of authorizing the card
             $tresponse = $response->getTransactionResponse();
@@ -128,6 +128,6 @@ function authorizeCreditCard($amount)
 }
 
 if (!defined('DONT_RUN_SAMPLES')) {
-    authorizeCreditCard(\SampleCode\Constants::SAMPLE_AMOUNT);
+    authorizeCreditCard("2.23");
 }
 ?>

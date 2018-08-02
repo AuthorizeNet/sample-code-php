@@ -17,13 +17,16 @@ function debitBankAccount($amount)
     // Set the transaction's refId
     $refId = 'ref' . time();
 
+    //Generate random bank account number
+    $randomAccountNumber= rand(100000000,9999999999);
+
     // Create the payment data for a Bank Account
     $bankAccount = new AnetAPI\BankAccountType();
     $bankAccount->setAccountType('checking');
     // see eCheck documentation for proper echeck type to use for each situation
     $bankAccount->setEcheckType('WEB');
     $bankAccount->setRoutingNumber('122000661');
-    $bankAccount->setAccountNumber('1234567890');
+    $bankAccount->setAccountNumber($randomAccountNumber);
     $bankAccount->setNameOnAccount('John Doe');
     $bankAccount->setBankName('Wells Fargo Bank NA');
 

@@ -1,7 +1,7 @@
 <?php
 
 require 'vendor/autoload.php';
-
+require_once 'constants/SampleCodeConstants.php';
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
 
@@ -13,8 +13,8 @@ function getCustomerPaymentProfile($customerProfileId="36731856",
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
     
     // Set the transaction's refId
     $refId = 'ref' . time();

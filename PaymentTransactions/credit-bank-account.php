@@ -1,5 +1,6 @@
 <?php
   require 'vendor/autoload.php';
+  require_once 'constants/SampleCodeConstants.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
 
@@ -10,11 +11,14 @@ function creditBankAccount($amount)
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
     
     // Set the transaction's refId
     $refId = 'ref' . time();
+
+    //Generate random bank account number
+    $randomAccountNumber= rand(100000000,9999999999);
 
     // Create the payment data for a Bank Account
     $bankAccount = new AnetAPI\BankAccountType();
@@ -22,7 +26,7 @@ function creditBankAccount($amount)
     // see eCheck documentation for proper echeck type to use for each situation
     //$bankAccount->setEcheckType('WEB');
     $bankAccount->setRoutingNumber('122000661'); //('122235821'); //('125008547');
-    $bankAccount->setAccountNumber('1234567890');
+    $bankAccount->setAccountNumber($randomAccountNumber);
     $bankAccount->setNameOnAccount('John Doe');
     $bankAccount->setBankName('Wells Fargo Bank NA');
     
@@ -49,7 +53,7 @@ function creditBankAccount($amount)
     $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
     if ($response != null) {
-        if ($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK) {
+        if ($response->getMessages()->getResultCode() == "Ok") {
             $tresponse = $response->getTransactionResponse();
         
             if ($tresponse != null && $tresponse->getMessages() != null) {

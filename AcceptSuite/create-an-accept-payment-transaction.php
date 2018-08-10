@@ -1,18 +1,18 @@
 <?php
   require 'vendor/autoload.php';
-
+  require_once 'constants/SampleCodeConstants.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function createAnAcceptTransaction($amount)
+function createAnAcceptPaymentTransaction($amount)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
     
     // Set the transaction's refId
     $refId = 'ref' . time();
@@ -21,14 +21,15 @@ function createAnAcceptTransaction($amount)
     $opaqueData = new AnetAPI\OpaqueDataType();
     $opaqueData->setDataDescriptor("COMMON.ACCEPT.INAPP.PAYMENT");
     $opaqueData->setDataValue("119eyJjb2RlIjoiNTBfMl8wNjAwMDUyN0JEODE4RjQxOUEyRjhGQkIxMkY0MzdGQjAxQUIwRTY2NjhFNEFCN0VENzE4NTUwMjlGRUU0M0JFMENERUIwQzM2M0ExOUEwMDAzNzlGRDNFMjBCODJEMDFCQjkyNEJDIiwidG9rZW4iOiI5NDkwMjMyMTAyOTQwOTk5NDA0NjAzIiwidiI6IjEuMSJ9");
-    
+
+
     // Add the payment data to a paymentType object
     $paymentOne = new AnetAPI\PaymentType();
     $paymentOne->setOpaqueData($opaqueData);
 
     // Create order information
     $order = new AnetAPI\OrderType();
-    $order->invoiceNumber("10101");
+    $order->setInvoiceNumber("10101");
     $order->setDescription("Golf Shirts");
 
     // Set the customer's Bill To address
@@ -48,20 +49,32 @@ function createAnAcceptTransaction($amount)
     $customerData->setId("99999456654");
     $customerData->setEmail("EllenJohnson@example.com");
 
-    //Add values for transaction settings
+    // Add values for transaction settings
     $duplicateWindowSetting = new AnetAPI\SettingType();
     $duplicateWindowSetting->setSettingName("duplicateWindow");
-    $duplicateWindowSetting->setSettingValue("600");
+    $duplicateWindowSetting->setSettingValue("60");
 
-    // Create a transactionRequestType object and add the previous objects to it
+    // Add some merchant defined fields. These fields won't be stored with the transaction,
+    // but will be echoed back in the response.
+    $merchantDefinedField1 = new AnetAPI\UserFieldType();
+    $merchantDefinedField1->setName("customerLoyaltyNum");
+    $merchantDefinedField1->setValue("1128836273");
+
+    $merchantDefinedField2 = new AnetAPI\UserFieldType();
+    $merchantDefinedField2->setName("favoriteColor");
+    $merchantDefinedField2->setValue("blue");
+
+    // Create a TransactionRequestType object and add the previous objects to it
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
+    $transactionRequestType->setTransactionType("authCaptureTransaction"); 
     $transactionRequestType->setAmount($amount);
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);
     $transactionRequestType->setBillTo($customerAddress);
     $transactionRequestType->setCustomer($customerData);
     $transactionRequestType->addToTransactionSettings($duplicateWindowSetting);
+    $transactionRequestType->addToUserFields($merchantDefinedField1);
+    $transactionRequestType->addToUserFields($merchantDefinedField2);
 
     // Assemble the complete transaction request
     $request = new AnetAPI\CreateTransactionRequest();
@@ -76,7 +89,7 @@ function createAnAcceptTransaction($amount)
 
     if ($response != null) {
         // Check to see if the API request was successfully received and acted upon
-        if ($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK) {
+        if ($response->getMessages()->getResultCode() == "Ok") {
             // Since the API request was successful, look for a transaction response
             // and parse it to display the results of authorizing the card
             $tresponse = $response->getTransactionResponse();
@@ -115,6 +128,6 @@ function createAnAcceptTransaction($amount)
 }
 
 if (!defined('DONT_RUN_SAMPLES')) {
-      CreateAnAcceptTransaction(\SampleCode\Constants::SAMPLE_AMOUNT);
+      CreateAnAcceptTransaction("2.23");
 }
 ?>

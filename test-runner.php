@@ -2,7 +2,7 @@
 define("DONT_RUN_SAMPLES", "true");
 define("SAMPLE_CODE_NAME_HEADING", "SampleCodeName");
 require 'vendor/autoload.php';
-require_once 'constants/Constants.php';
+require_once 'constants/SampleCodeConstants.php';
 
 if ($_SERVER['argc'] != 3) {
     die('\n Usage: phpunit test-runner.php <SampleCodeDirectoryPath>');
@@ -14,6 +14,7 @@ if (substr($dirPath, -1) != "/") {
 }
 
 $directories = array(
+            'AcceptSuite/',
             'CustomerProfiles/',
             'RecurringBilling/',
             'PayPalExpressCheckout/',
@@ -42,7 +43,7 @@ class TestRunner extends PHPUnit\Framework\TestCase
     //random amount for transactions/subscriptions
     public static function getAmount()
     {
-        return 12 + (rand(1, 900000)/12);
+        return 12 + (rand(1, 9000)/10);
     }
     //random email for a new customer profile
     public static function getEmail()
@@ -70,12 +71,14 @@ class TestRunner extends PHPUnit\Framework\TestCase
                 list($apiName, $isDependent, $shouldRun)=explode(",", $line);
                 $apiName = trim($apiName);
                 echo "\nApi name: " . $apiName."\n";
+                fwrite(STDOUT, print_r("\nStarting Test: " . $apiName."\n", TRUE));
             }
             if ($apiName && (false === strpos($apiName, SAMPLE_CODE_NAME_HEADING))) {
                 echo "should run:".$shouldRun."\n";
                 if ("0" === $shouldRun) {
-                    echo ":Skipping " . $sampleMethodName . "\n";
+                    echo ":Skipping " . $apiName . "\n";
                 } else {
+                    //Try the request twice
                     for ($i=0; $i<=1; $i++) {
                         if ("0" === $isDependent) {
                             echo "not dependent\n";
@@ -89,7 +92,9 @@ class TestRunner extends PHPUnit\Framework\TestCase
                         //request the api
                         echo "Running sample: " . $sampleMethodName . "\n";
                         
+                        fwrite(STDOUT, print_r($apiName . "Start  Time: " . date("H:i:s."). gettimeofday()['usec'] . "\n", TRUE));
                         $response = call_user_func($sampleMethodName);
+                        fwrite(STDOUT, print_r($apiName . "Finish Time: " . date("H:i:s."). gettimeofday()['usec'] . "\n", TRUE));
 
                         if (($response != null) && ($response->getMessages()->getResultCode() == "Ok")) {
                             break;
@@ -99,6 +104,7 @@ class TestRunner extends PHPUnit\Framework\TestCase
                     //response must be successful
                     $this->assertNotNull($response);
                     $this->assertEquals($response->getMessages()->getResultCode(), "Ok");
+                    echo $sampleMethodName . " - OK \n";
                     $runTests++;
                 }
             }

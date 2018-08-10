@@ -6,7 +6,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function authorizeCreditCard($amount)
+function createAnAcceptTransaction($amount)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -17,19 +17,18 @@ function authorizeCreditCard($amount)
     // Set the transaction's refId
     $refId = 'ref' . time();
 
-    // Create the payment data for a credit card
-    $creditCard = new AnetAPI\CreditCardType();
-    $creditCard->setCardNumber("4111111111111111");
-    $creditCard->setExpirationDate("2038-12");
-    $creditCard->setCardCode("123");
-
+    // Create the payment object for a payment nonce
+    $opaqueData = new AnetAPI\OpaqueDataType();
+    $opaqueData->setDataDescriptor("COMMON.ACCEPT.INAPP.PAYMENT");
+    $opaqueData->setDataValue("119eyJjb2RlIjoiNTBfMl8wNjAwMDUyN0JEODE4RjQxOUEyRjhGQkIxMkY0MzdGQjAxQUIwRTY2NjhFNEFCN0VENzE4NTUwMjlGRUU0M0JFMENERUIwQzM2M0ExOUEwMDAzNzlGRDNFMjBCODJEMDFCQjkyNEJDIiwidG9rZW4iOiI5NDkwMjMyMTAyOTQwOTk5NDA0NjAzIiwidiI6IjEuMSJ9");
+    
     // Add the payment data to a paymentType object
     $paymentOne = new AnetAPI\PaymentType();
-    $paymentOne->setCreditCard($creditCard);
+    $paymentOne->setOpaqueData($opaqueData);
 
     // Create order information
     $order = new AnetAPI\OrderType();
-    $order->setInvoiceNumber("10101");
+    $order->invoiceNumber("10101");
     $order->setDescription("Golf Shirts");
 
     // Set the customer's Bill To address
@@ -49,32 +48,20 @@ function authorizeCreditCard($amount)
     $customerData->setId("99999456654");
     $customerData->setEmail("EllenJohnson@example.com");
 
-    // Add values for transaction settings
+    //Add values for transaction settings
     $duplicateWindowSetting = new AnetAPI\SettingType();
     $duplicateWindowSetting->setSettingName("duplicateWindow");
-    $duplicateWindowSetting->setSettingValue("60");
+    $duplicateWindowSetting->setSettingValue("600");
 
-    // Add some merchant defined fields. These fields won't be stored with the transaction,
-    // but will be echoed back in the response.
-    $merchantDefinedField1 = new AnetAPI\UserFieldType();
-    $merchantDefinedField1->setName("customerLoyaltyNum");
-    $merchantDefinedField1->setValue("1128836273");
-
-    $merchantDefinedField2 = new AnetAPI\UserFieldType();
-    $merchantDefinedField2->setName("favoriteColor");
-    $merchantDefinedField2->setValue("blue");
-
-    // Create a TransactionRequestType object and add the previous objects to it
+    // Create a transactionRequestType object and add the previous objects to it
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType("authOnlyTransaction"); 
+    $transactionRequestType->setTransactionType( "authCaptureTransaction"); 
     $transactionRequestType->setAmount($amount);
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);
     $transactionRequestType->setBillTo($customerAddress);
     $transactionRequestType->setCustomer($customerData);
     $transactionRequestType->addToTransactionSettings($duplicateWindowSetting);
-    $transactionRequestType->addToUserFields($merchantDefinedField1);
-    $transactionRequestType->addToUserFields($merchantDefinedField2);
 
     // Assemble the complete transaction request
     $request = new AnetAPI\CreateTransactionRequest();
@@ -85,7 +72,7 @@ function authorizeCreditCard($amount)
     // Create the controller and get the response
     $controller = new AnetController\CreateTransactionController($request);
     $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
-
+    
 
     if ($response != null) {
         // Check to see if the API request was successfully received and acted upon
@@ -128,6 +115,6 @@ function authorizeCreditCard($amount)
 }
 
 if (!defined('DONT_RUN_SAMPLES')) {
-    authorizeCreditCard("2.23");
+      CreateAnAcceptTransaction("2.23");
 }
 ?>

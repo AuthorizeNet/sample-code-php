@@ -16,8 +16,8 @@ ChargeTokenizedCreditCard,0,0
 PayPalAuthorizeOnly,1,1
 GetListOfSubscriptions,0,1
 GetUnsettledTransactionList,0,1
-GetBatchStatistics,0,1
-GetSettledBatchList,0,1
+GetBatchStatistics,1,1
+GetSettledBatchList,1,1
 UpdateSplitTenderGroup,0,1
 UpdateCustomerShippingAddress,1,1
 UpdateCustomerProfile,0,1
@@ -40,8 +40,8 @@ CreditBankAccount,1,0
 ChargeCustomerProfile,1,1
 PayPalVoid,1,0
 PayPalAuthorizeCapture,1,1
-PayPalAuthorizeCaptureContinue,1,1
-PayPalAuthorizeOnlyContinue,1,0
+PayPalAuthorizeCaptureContinued,1,1
+PayPalAuthorizeOnlyContinued,1,0
 PayPalCredit,1,0
 PayPalGetDetails,1,1
 PayPalPriorAuthorizationCapture,1,0
@@ -52,3 +52,7 @@ UpdateSubscription,1,1
 CreateCustomerProfile,1,1
 CreateCustomerPaymentProfile,1,1
 ValidateCustomerPaymentProfile,1,0
+GetMerchantDetails,0,1
+UpdateHeldTransaction,1,0
+GetAnAcceptPaymentPage,0,1
+CreateAnAcceptPaymentTransaction,0,0

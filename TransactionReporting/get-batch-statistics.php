@@ -1,20 +1,21 @@
 <?php
   require 'vendor/autoload.php';
+  require_once 'constants/SampleCodeConstants.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-  function getBatchStatistics() {
-
-    // Common Set Up for API Credentials
+function getBatchStatistics($batchId = "7927817") //only shows results for batches not older than 6 months
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
     $refId = 'ref' . time();
-
-    //Setting a valid batch Id for the Merchant
-    $batchId = "4532808";
     
     // Creating a request 
     $request = new AnetAPI\GetBatchStatisticsRequest();

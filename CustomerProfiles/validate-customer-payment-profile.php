@@ -1,17 +1,22 @@
 <?php
   require 'vendor/autoload.php';
+  require_once 'constants/SampleCodeConstants.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function validateCustomerPaymentProfile($customerProfileId= "36731856",
-    $customerPaymentProfileId= "33211899")
-  {
-  // Common setup for API credentials
-  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-  $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+function validateCustomerPaymentProfile($customerProfileId= "36731856",
+    $customerPaymentProfileId= "33211899"
+) {
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
+    $refId = 'ref' . time();
   
   // Use an existing payment profile ID for this Merchant name and Transaction key
   //validationmode tests , does not send an email receipt

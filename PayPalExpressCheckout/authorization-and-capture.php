@@ -1,23 +1,28 @@
 <?php
 	require 'vendor/autoload.php';
-	use net\authorize\api\contract\v1 as AnetAPI;
-	use net\authorize\api\controller as AnetController;
+	require_once 'constants/SampleCodeConstants.php';
+  use net\authorize\api\contract\v1 as AnetAPI;
+  use net\authorize\api\controller as AnetController;
 
     define("AUTHORIZENET_LOG_FILE", "phplog");
 
-	function payPalAuthorizeCapture($amount) {
+function payPalAuthorizeCapture($amount)
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
+    $refId = 'ref' . time();
 
-		// Common setup for API credentials (with PayPal compatible merchant credentials)
-		$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-        $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-        $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    $payPalType=new AnetAPI\PayPalType();
+    $payPalType->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
+    $payPalType->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
 
-		$payPalType=new AnetAPI\PayPalType();
-		$payPalType->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
-		$payPalType->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
-
-		$paymentOne = new AnetAPI\PaymentType();
-		$paymentOne->setPayPal($payPalType);
+    $paymentOne = new AnetAPI\PaymentType();
+    $paymentOne->setPayPal($payPalType);
 
 		// Create an authorize and capture transaction
 		$transactionRequestType = new AnetAPI\TransactionRequestType();
@@ -33,7 +38,7 @@
 
 	    if ($response != null)
 	    {
-	      if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
+	      if($response->getMessages()->getResultCode() == "Ok")
 	      {
 	        $tresponse = $response->getTransactionResponse();
 	        

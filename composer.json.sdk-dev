@@ -1,0 +1,11 @@
+{
+  "require": {
+  "php": ">=5.6",
+  "ext-curl": "*",
+  "phpunit/phpunit": "~4.8||~6.0",
+  "authorizenet/authorizenet": ">=1.9.6 || <2.0"
+  },
+  "autoload": {
+    "classmap": ["constants", "lib"]
+  }
+}

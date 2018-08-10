@@ -5,8 +5,8 @@
   use net\authorize\api\controller as AnetController;
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
-  
-function getCustomerProfileIds()
+
+function getTransactionListForCustomerRequest($customerProfileId)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -17,25 +17,37 @@ function getCustomerProfileIds()
     // Set the transaction's refId
     $refId = 'ref' . time();
 
-    // Get all existing customer profile ID's
-    $request = new AnetAPI\GetCustomerProfileIdsRequest();
+    $request = new AnetAPI\GetTransactionListForCustomerRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
-    $controller = new AnetController\GetCustomerProfileIdsController($request);
+    $request->setCustomerProfileId($customerProfileId);
+
+    $controller = new AnetController\GetTransactionListForCustomerController($request);
+
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
-    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
+    
+	if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
     {
-        echo "GetCustomerProfileId's SUCCESS: " . "\n";
-        $profileIds[] = $response->getIds();
-        echo "There are " . count($profileIds[0]) . " Customer Profile ID's for this Merchant Name and Transaction Key" . "\n";
+        if(null != $response->getTransactions())
+		{
+			foreach($response->getTransactions() as $tx)
+			{
+			  echo "SUCCESS: TransactionID: " . $tx->getTransId() . "\n";
+			}
+        }
+		else{
+			echo "No transactions associated with given customer profile" . "\n";
+		}
      }
     else
     {
-        echo "GetCustomerProfileId's ERROR :  Invalid response\n";
+        echo "ERROR :  Invalid response\n";
         $errorMessages = $response->getMessages()->getMessage();
         echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
     }
+	
     return $response;
   }
+
   if(!defined('DONT_RUN_SAMPLES'))
-      getCustomerProfileIds();
+    getTransactionListForCustomerRequest("36152127");
 ?>

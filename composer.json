@@ -1,16 +1,8 @@
 {
   "require": {
-  "php": ">=5.5",
+  "php": ">=5.6",
   "ext-curl": "*",
-  "phpunit/phpunit": "~4.0",
-  "authorizenet/authorizenet": "1.9.0",
-  "jms/serializer": "serializer-master-dev as 1.0"
-  },
-  "repositories": [{
-       "type": "vcs",
-       "url": "https://github.com/goetas/serializer.git"
-  }],
-  "autoload": {
-    "classmap": ["constants"]
+  "phpunit/phpunit": "~4.8||~6.0",
+  "authorizenet/authorizenet": ">=1.9.7 || <2.0" 
   }
 }

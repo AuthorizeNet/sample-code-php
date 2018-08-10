@@ -1,28 +1,39 @@
 <?php
 require 'vendor/autoload.php';
-
+require_once 'constants/SampleCodeConstants.php';
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function createAnAcceptTransaction(){
+function payPalCredit($transactionId)
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-    $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
     $refId = 'ref' . time();
 
-    $op = new AnetAPI\OpaqueDataType();
-    $op->setDataDescriptor("COMMON.ACCEPT.INAPP.PAYMENT");
-    $op->setDataValue("9471471570959063005001");
-    $paymentOne = new AnetAPI\PaymentType();
-    $paymentOne->setOpaqueData($op);
+    //use transaction of already settled paypal checkout transaction
+    $refTransId = $transactionId;
 
-    //create a transaction
+    // Create the payment data for a paypal account
+    $payPalType = new AnetAPI\PayPalType();
+    $payPalType->setCancelUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
+    $payPalType->setSuccessUrl("http://www.merchanteCommerceSite.com/Success/TC25262");
+    $paymentOne = new AnetAPI\PaymentType();
+    $paymentOne->setPayPal($payPalType);
+
+    //create a refund transaction
     $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType( "authCaptureTransaction");
-    $transactionRequestType->setAmount(151);
+    $transactionRequestType->setTransactionType( "refundTransaction");
+    $transactionRequestType->setAmount(181);
     $transactionRequestType->setPayment($paymentOne);
+    ///refTransId of successfully settled transaction
+    $transactionRequestType->setRefTransId($refTransId);
 
     $request = new AnetAPI\CreateTransactionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
@@ -34,17 +45,17 @@ function createAnAcceptTransaction(){
 
     if ($response != null)
     {
-      if($response->getMessages()->getResultCode() == \SampleCode\Constants::RESPONSE_OK)
+      if($response->getMessages()->getResultCode() == "Ok")
       {
         $tresponse = $response->getTransactionResponse();
         
 	      if ($tresponse != null && $tresponse->getMessages() != null)   
         {
-          echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
-          echo " AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-          echo " TRANS ID  : " . $tresponse->getTransId() . "\n";
-          echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
-	        echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
+            echo " Transaction Response code : " . $tresponse->getResponseCode() . "\n";
+            echo "Credit SUCCESS AUTH CODE : " . $tresponse->getAuthCode() . "\n";
+            echo "Credit TRANS ID  : " . $tresponse->getTransId() . "\n";
+            echo " Code : " . $tresponse->getMessages()[0]->getCode() . "\n"; 
+	          echo " Description : " . $tresponse->getMessages()[0]->getDescription() . "\n";
         }
         else
         {
@@ -74,12 +85,14 @@ function createAnAcceptTransaction(){
     }
     else
     {
-      echo  "No response returned \n";
+      echo "No response returned \n";
     }
 
     return $response;
 }
 
-if(!defined('DONT_RUN_SAMPLES'))
-    createAnAcceptTransaction();
+if(!defined('DONT_RUN_SAMPLES')){
+	//use transaction id of already settled transaction
+  payPalCredit("2241762126");
+}
 ?>

@@ -1,22 +1,26 @@
 <?php
   require 'vendor/autoload.php';
+  require_once 'constants/SampleCodeConstants.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-  function getCustomerProfile(){
-	// Common setup for API credentials
+function getCustomerProfile()
+{
+    /* Create a merchantAuthenticationType object with authentication details
+       retrieved from the constants file */
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
     
-	  $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-	  $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
-	  $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
-	  $refId = 'ref' . time();
+    // Set the transaction's refId
+    $refId = 'ref' . time();
 
 		// Create the payment data for a credit card
 	  $creditCard = new AnetAPI\CreditCardType();
 	  $creditCard->setCardNumber( "4111111111111111" );
-	  $creditCard->setExpirationDate( "2038-12");
+	  $creditCard->setExpirationDate("2038-12");
 	  $paymentCreditCard = new AnetAPI\PaymentType();
 	  $paymentCreditCard->setCreditCard($creditCard);
 

@@ -5,8 +5,8 @@
   use net\authorize\api\controller as AnetController;
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
-  
-function getCustomerProfileIds()
+
+function getMerchantDetails()
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -17,25 +17,36 @@ function getCustomerProfileIds()
     // Set the transaction's refId
     $refId = 'ref' . time();
 
-    // Get all existing customer profile ID's
-    $request = new AnetAPI\GetCustomerProfileIdsRequest();
+    $request = new AnetAPI\GetMerchantDetailsRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
-    $controller = new AnetController\GetCustomerProfileIdsController($request);
+
+    $controller = new AnetController\GetMerchantDetailsController($request);
+
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
-    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
+
+    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
     {
-        echo "GetCustomerProfileId's SUCCESS: " . "\n";
-        $profileIds[] = $response->getIds();
-        echo "There are " . count($profileIds[0]) . " Customer Profile ID's for this Merchant Name and Transaction Key" . "\n";
+        echo "SUCCESS: Merchant Name:" . $response->getMerchantName() . "\n";
+        echo "                Gateway Id:" . $response->getGatewayId(). "\n";
+
+	  foreach ($response->getProcessors() as $processor) {
+	  	echo "		->Name	: " . $processor->getName() . "\n"; 
+	  }
+
+	  foreach ($response->getCurrencies() as $currency) {
+	  	echo "		->Currency	: " . $currency . "\n"; 
+	  }
      }
     else
     {
-        echo "GetCustomerProfileId's ERROR :  Invalid response\n";
+        echo "ERROR :  Invalid response\n";
         $errorMessages = $response->getMessages()->getMessage();
         echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
     }
+
     return $response;
   }
+
   if(!defined('DONT_RUN_SAMPLES'))
-      getCustomerProfileIds();
+    getMerchantDetails();
 ?>

@@ -20,7 +20,8 @@ $directories = array(
             'PaymentTransactions/',
             'TransactionReporting/',
             'MobileInappTransactions/',
-            'VisaCheckout/'
+            'VisaCheckout/',
+			'AcceptSuite/'
 );
 
 $errorlevel=error_reporting();

@@ -128,6 +128,6 @@ function createAnAcceptPaymentTransaction($amount)
 }
 
 if (!defined('DONT_RUN_SAMPLES')) {
-      CreateAnAcceptTransaction("2.23");
+      createAnAcceptPaymentTransaction("2.23");
 }
 ?>

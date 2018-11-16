@@ -6,9 +6,9 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-function updateCustomerPaymentProfile($customerProfileId = "36731856",
-    $customerPaymentProfileId = "33211899"
-) {
+function updateCustomerPaymentProfile($customerProfileId = "1916322670",
+    $customerPaymentProfileId = "1829639667") 
+{
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -18,87 +18,77 @@ function updateCustomerPaymentProfile($customerProfileId = "36731856",
     // Set the transaction's refId
     $refId = 'ref' . time();
 
-	  //Set profile ids of profile to be updated
-	  $request = new AnetAPI\UpdateCustomerPaymentProfileRequest();
-	  $request->setMerchantAuthentication($merchantAuthentication);
-	  $request->setCustomerProfileId($customerProfileId);
-	  $controller = new AnetController\GetCustomerProfileController($request);
-
-
-	  // We're updating the billing address but everything has to be passed in an update
-	  // For card information you can pass exactly what comes back from an GetCustomerPaymentProfile
-	  // if you don't need to update that info
-	  $creditCard = new AnetAPI\CreditCardType();
-	  $creditCard->setCardNumber( "4111111111111111" );
-	  $creditCard->setExpirationDate("2038-12");
-	  $paymentCreditCard = new AnetAPI\PaymentType();
-	  $paymentCreditCard->setCreditCard($creditCard);
-
-	  // Create the Bill To info for new payment type
-	  $billto = new AnetAPI\CustomerAddressType();
-	  $billto->setFirstName("Mrs Mary");
-	  $billto->setLastName("Doe");
-	  $billto->setAddress("1 New St.");
-	  $billto->setCity("Brand New City");
-	  $billto->setState("WA");
-	  $billto->setZip("98004");
-	  $billto->setPhoneNumber("000-000-0000");
-	  $billto->setfaxNumber("999-999-9999");
-	  $billto->setCountry("USA");
+	$request = new AnetAPI\GetCustomerPaymentProfileRequest();
+	$request->setMerchantAuthentication($merchantAuthentication);
+	$request->setRefId( $refId);
+	$request->setCustomerProfileId($customerProfileId);
+	$request->setCustomerPaymentProfileId($customerPaymentProfileId);
 	  
+	$controller = new AnetController\GetCustomerPaymentProfileController($request);
+	$response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+	if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
+	{
+		$billto = new AnetAPI\CustomerAddressType();
+		$billto = $response->getPaymentProfile()->getbillTo();
+		
+		$creditCard = new AnetAPI\CreditCardType();
+		$creditCard->setCardNumber( "4111111111111111" );
+		$creditCard->setExpirationDate("2038-12");
+		
+		$paymentCreditCard = new AnetAPI\PaymentType();
+		$paymentCreditCard->setCreditCard($creditCard);
+		$paymentprofile = new AnetAPI\CustomerPaymentProfileExType();
+		$paymentprofile->setBillTo($billto);
+		$paymentprofile->setCustomerPaymentProfileId($customerPaymentProfileId);
+		$paymentprofile->setPayment($paymentCreditCard);	
 
-	  // Create the Customer Payment Profile object
-	  $paymentprofile = new AnetAPI\CustomerPaymentProfileExType();
-	  $paymentprofile->setCustomerPaymentProfileId($customerPaymentProfileId);
-	  $paymentprofile->setBillTo($billto);
-	  $paymentprofile->setPayment($paymentCreditCard);
-
-	  // Submit a UpdatePaymentProfileRequest
-	  $request->setPaymentProfile( $paymentprofile );
-
-	  $controller = new AnetController\UpdateCustomerPaymentProfileController($request);
-	  $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
-	  if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
-	  {
-		 echo "Update Customer Payment Profile SUCCESS: " . "\n";
+		// We're updating the billing address but everything has to be passed in an update
+		// For card information you can pass exactly what comes back from an GetCustomerPaymentProfile
+		// if you don't need to update that info
+		  
+		// Update the Bill To info for new payment type
+		$billto->setFirstName("Mrs Mary");
+		$billto->setLastName("Doe");
+		$billto->setAddress("9 New St.");
+		$billto->setCity("Brand New City");
+		$billto->setState("WA");
+		$billto->setZip("98004");
+		$billto->setPhoneNumber("000-000-0000");
+		$billto->setfaxNumber("999-999-9999");
+		$billto->setCountry("USA");
 		 
-		 // Update only returns success or fail, if success
-		 // confirm the update by doing a GetCustomerPaymentProfile
-		 $getRequest = new AnetAPI\GetCustomerPaymentProfileRequest();
-		 $getRequest->setMerchantAuthentication($merchantAuthentication);
-		 $getRequest->setRefId( $refId);
-		 $getRequest->setCustomerProfileId($customerProfileId);
-		 $getRequest->setCustomerPaymentProfileId($customerPaymentProfileId);
+		// Update the Customer Payment Profile object
+		$paymentprofile->setBillTo($billto);
 
-		 $controller = new AnetController\GetCustomerPaymentProfileController($getRequest);
-		 $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
-		 if(($response != null)){
-			  if ($response->getMessages()->getResultCode() == "Ok")
-			  {
-				  echo "GetCustomerPaymentProfile SUCCESS: " . "\n";
-				  echo "Customer Payment Profile Id: " . $response->getPaymentProfile()->getCustomerPaymentProfileId() . "\n";
-				  echo "Customer Payment Profile Billing Address: " . $response->getPaymentProfile()->getbillTo()->getAddress(). "\n";
-			  }
-			  else
-			  {
-				  echo "GetCustomerPaymentProfile ERROR :  Invalid response\n";
-				  $errorMessages = $response->getMessages()->getMessage();
-		          echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
-			  }
-		  }
-		  else{
-			  echo "NULL Response Error";
-		  }
+		// Submit a UpdatePaymentProfileRequest
+		$request = new AnetAPI\UpdateCustomerPaymentProfileRequest();
+		$request->setMerchantAuthentication($merchantAuthentication);
+		$request->setCustomerProfileId($customerProfileId);
+		$request->setPaymentProfile( $paymentprofile );
 
-	   }
-	  else
-	  {
-		  echo "Update Customer Payment Profile: ERROR Invalid response\n";
-		  $errorMessages = $response->getMessages()->getMessage();
-		  echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
-	  }
-	  return $response;
-  }
-  if(!defined('DONT_RUN_SAMPLES'))
-      updateCustomerPaymentProfile();
+		$controller = new AnetController\UpdateCustomerPaymentProfileController($request);
+		$response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
+		if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") )
+		{
+			$Message = $response->getMessages()->getMessage();
+			print_r($response);
+			echo "Update Customer Payment Profile SUCCESS: " . $Message[0]->getCode() . "  " .$Message[0]->getText() . "\n";
+		}
+		else
+		{
+			echo "Failed to Update Customer Payment Profile :  " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
+		}
+	
+		return $response;
+	}
+	else
+	{
+		echo "Failed to Get Customer Payment Profile :  " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
+	}
+
+	return $response;
+}
+
+if(!defined('DONT_RUN_SAMPLES'))
+    updateCustomerPaymentProfile();
 ?>

@@ -6,7 +6,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function createChasepayTransaction($amount)
+function createChasePayTransaction($amount)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -94,5 +94,5 @@ function createChasepayTransaction($amount)
     return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-  createChasepayTransaction(12.23);
+  createChasePayTransaction(12.23);
 ?>

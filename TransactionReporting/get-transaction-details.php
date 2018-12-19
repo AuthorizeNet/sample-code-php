@@ -15,6 +15,9 @@ function getTransactionDetails($transactionId)
     $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
     
     // Set the transaction's refId
+    // The refId is a Merchant-assigned reference ID for the request.
+    // If included in the request, this value is included in the response. 
+    // This feature might be especially useful for multi-threaded applications.
     $refId = 'ref' . time();
 
     $request = new AnetAPI\GetTransactionDetailsRequest();

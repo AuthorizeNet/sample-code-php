@@ -42,7 +42,7 @@ function createCustomerProfileWithAcceptNonce($email)
     $billto->setState("TX");
     $billto->setZip("44628");
     $billto->setCountry("USA");
-    $billto->setPhoneNumber($phoneNumber);
+    $billto->setPhoneNumber(123-123-1234);
     $billto->setfaxNumber("999-999-9999");
 
     // Create a new Customer Payment Profile object

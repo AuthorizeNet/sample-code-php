@@ -6,7 +6,7 @@
 
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function chargeCustomerProfile($profileid, $paymentprofileid, $amount)
+function chargeCustomerProfile($profileid, $paymentprofileid,$shippingProfileId, $amount)
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */
@@ -21,6 +21,8 @@ function chargeCustomerProfile($profileid, $paymentprofileid, $amount)
     $profileToCharge->setCustomerProfileId($profileid);
     $paymentProfile = new AnetAPI\PaymentProfileType();
     $paymentProfile->setPaymentProfileId($paymentprofileid);
+    // either ShipTO or ShippingProfileID can be used but not Both.
+    $profileToCharge->setShippingProfileId($shippingProfileId);
     $profileToCharge->setPaymentProfile($paymentProfile);
 
     $transactionRequestType = new AnetAPI\TransactionRequestType();
@@ -85,5 +87,5 @@ function chargeCustomerProfile($profileid, $paymentprofileid, $amount)
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    chargeCustomerProfile("36731856","32689274",12.23);
+    chargeCustomerProfile("1917854275","1831010763","1875117981",12.23);
 ?>

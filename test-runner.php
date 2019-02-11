@@ -182,6 +182,7 @@ class TestRunner extends PHPUnit\Framework\TestCase
         $chargeResponse = chargeCustomerProfile(
             $response->getCustomerProfileId(),
             $paymentProfileResponse->getCustomerPaymentProfileId(),
+            $response->getCustomerShippingAddressIdList()[0],
             self::getAmount()
         );
         deleteCustomerProfile($response->getCustomerProfileId());

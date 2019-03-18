@@ -48,7 +48,3 @@ We provide a custom `SPL` autoloader. Just [download the SDK](https://github.com
 ```php
 require 'path/to/anet_php_sdk/autoload.php';
 ```
-
-
-### Transaction Hash Upgrade
-Authorize.Net is phasing out the MD5 based `transHash` element in favor of the SHA-512 based `transHashSHA2`. The setting in the Merchant Interface which controlled the MD5 Hash option is no longer available, and the `transHash` element will stop returning values at a later date to be determined. For information on how to use `transHashSHA2`, see the [Transaction Hash Upgrade Guide] (https://developer.authorize.net/support/hash_upgrade/).

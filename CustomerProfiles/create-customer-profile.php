@@ -67,7 +67,6 @@ function createCustomerProfile($email)
     $paymentProfile->setCustomerType('individual');
     $paymentProfile->setBillTo($billTo);
     $paymentProfile->setPayment($paymentCreditCard);
-    $paymentProfile->setDefaultpaymentProfile(true);
     $paymentProfiles[] = $paymentProfile;
 
 

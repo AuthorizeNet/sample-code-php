@@ -74,7 +74,7 @@ function updateCustomerPaymentProfile($customerProfileId = "1916322670",
 			print_r($response);
 			echo "Update Customer Payment Profile SUCCESS: " . $Message[0]->getCode() . "  " .$Message[0]->getText() . "\n";
 		}
-		else
+		else if ($response != null)
 		{
 			$errorMessages = $response->getMessages()->getMessage();
 			echo "Failed to Update Customer Payment Profile :  " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";

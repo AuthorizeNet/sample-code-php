@@ -20,8 +20,7 @@ $directories = array(
             'PaymentTransactions/',
             'TransactionReporting/',
             'MobileInappTransactions/',
-            'VisaCheckout/',
-			'AcceptSuite/'
+            'VisaCheckout/'
 );
 
 $errorlevel=error_reporting();
@@ -468,4 +467,9 @@ class TestRunner extends PHPUnit\Framework\TestCase
         $response = getBatchStatistics(self::runGetSettledBatchList()->getBatchList()[0]->getBatchId());
         return $response;
     }
+	public static function runGetAccountUpdaterJobDetails()
+	{
+		$response = getAccountUpdaterJobDetails(self::MERCHANT_LOGIN_ID,self::MERCHANT_TRANSACTION_KEY);
+		return $response;
+	}
 }

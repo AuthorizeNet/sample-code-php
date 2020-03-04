@@ -7,8 +7,8 @@ GetTransactionList,0,1
 CreateAnApplePayTransaction,0,0
 CreateAnAcceptTransaction,0,0
 CreateAnAndroidPayTransaction,0,0
-DecryptVisaCheckoutData,0,1
-CreateVisaCheckoutTransaction,0,0
+decryptVisaSrcData,0,1
+createVisaSrcTransaction,0,0
 CaptureFundsAuthorizedThroughAnotherChannel,1,1
 AuthorizeCreditCard,1,1
 DebitBankAccount,1,1
@@ -23,7 +23,7 @@ UpdateCustomerShippingAddress,1,1
 UpdateCustomerProfile,0,1
 UpdateCustomerPaymentProfile,1,1
 GetCustomerShippingAddress,1,1
-GetCustomerProfileIds,0,1
+GetCustomerProfileIds,0,0
 GetCustomerProfile,1,1
 GetAcceptCustomerProfilePage,1,1
 GetCustomerPaymentProfile,1,1

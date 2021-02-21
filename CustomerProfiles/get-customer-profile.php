@@ -39,7 +39,7 @@ function getCustomerProfile()
 	  //  1. create a Payment Profile
 	  //  2. create a Customer Profile   
 	  //  3. Submit a CreateCustomerProfile Request
-	  //  4. Validate Profiiel ID returned
+	  //  4. Validate Profile ID returned
 
 	  $paymentprofile = new AnetAPI\CustomerPaymentProfileType();
 

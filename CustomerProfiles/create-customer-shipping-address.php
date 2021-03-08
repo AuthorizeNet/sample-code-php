@@ -6,7 +6,7 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-function createCustomerShippingAddress($existingcustomerprofileid = "36152127", 
+function createCustomerShippingAddress($existingcustomerprofileid = "1929905607", 
     $phoneNumber="000-000-0000"
 ) {
     /* Create a merchantAuthenticationType object with authentication details

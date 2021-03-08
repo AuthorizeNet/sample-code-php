@@ -45,6 +45,6 @@ function cancelSubscription($subscriptionId)
   }
 
   if(!defined('DONT_RUN_SAMPLES'))
-    cancelSubscription("3056945");
+    cancelSubscription("7087965");
 
 ?>

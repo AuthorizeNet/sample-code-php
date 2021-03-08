@@ -30,19 +30,19 @@ function getTransactionList()
 
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
     {
-    		echo "SUCCESS: Get Transaction List for BatchID : " . $batchId  . "\n\n";
-  	  if ($response->getTransactions() == null) {
-  	  	echo "No Transaction to display in this Batch.";
-  	  	return ;
-  	  }
-  	  //Displaying the details of each transaction in the list
-  	  foreach ($response->getTransactions() as $transaction) {
-  	  	echo "		->Transaction Id	: " . $transaction->getTransId() . "\n"; 
-  	  	echo "		Submitted on (Local)	: " . date_format($transaction->getSubmitTimeLocal(), 'Y-m-d H:i:s') . "\n";
-  	  	echo "		Status			: " . $transaction->getTransactionStatus() . "\n";
-  	  	echo "		Settle amount		: " . number_format($transaction->getSettleAmount(), 2, '.', '') . "\n";
-  	  }
-     }
+        echo "SUCCESS: Get Transaction List for BatchID : " . $batchId  . "\n\n";
+        if ($response->getTransactions() == null) {
+            echo "No Transaction to display in this Batch.";
+            return $response;
+        }
+        //Displaying the details of each transaction in the list
+        foreach ($response->getTransactions() as $transaction) {
+            echo "      ->Transaction Id    : " . $transaction->getTransId() . "\n"; 
+            echo "      Submitted on (Local)    : " . date_format($transaction->getSubmitTimeLocal(), 'Y-m-d H:i:s') . "\n";
+            echo "      Status          : " . $transaction->getTransactionStatus() . "\n";
+            echo "      Settle amount      : " . number_format($transaction->getSettleAmount(), 2, '.', '') . "\n";
+        }
+    }
     else
     {
         echo "ERROR :  Invalid response\n";

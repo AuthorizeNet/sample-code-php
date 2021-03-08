@@ -6,8 +6,8 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-function deleteCustomerPaymentProfile($customerProfileId= "36152127", 
-    $customerpaymentprofileid = "32689274"
+function deleteCustomerPaymentProfile($customerProfileId= "1929905607", 
+    $customerpaymentprofileid = "1842074814"
 ) {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */

@@ -6,7 +6,7 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-function deleteCustomerShippingAddress($customerprofileid = "36731856", $customeraddressid = "36976434")
+function deleteCustomerShippingAddress($customerprofileid = "1929905607", $customeraddressid = "901116911")
 {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */

@@ -28,7 +28,7 @@ function createSubscription($intervalLength)
 
     $paymentSchedule = new AnetAPI\PaymentScheduleType();
     $paymentSchedule->setInterval($interval);
-    $paymentSchedule->setStartDate(new DateTime('2020-08-30'));
+    $paymentSchedule->setStartDate(new DateTime('2035-12-30'));
     $paymentSchedule->setTotalOccurrences("12");
     $paymentSchedule->setTrialOccurrences("1");
 

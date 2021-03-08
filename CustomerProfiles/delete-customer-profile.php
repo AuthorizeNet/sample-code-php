@@ -39,5 +39,5 @@ function deleteCustomerProfile($customerProfileId)
   }
   
   if(!defined('DONT_RUN_SAMPLES'))
-      deleteCustomerProfile("38958129");
+      deleteCustomerProfile("1929905651");
 ?>

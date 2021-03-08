@@ -6,8 +6,8 @@
   
   define("AUTHORIZENET_LOG_FILE", "phplog");
   
-function validateCustomerPaymentProfile($customerProfileId= "36731856",
-    $customerPaymentProfileId= "33211899"
+function validateCustomerPaymentProfile($customerProfileId= "1929905607",
+    $customerPaymentProfileId= "1842074814"
 ) {
     /* Create a merchantAuthenticationType object with authentication details
        retrieved from the constants file */

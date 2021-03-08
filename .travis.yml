@@ -6,6 +6,9 @@ php:
     - 5.6
     - 7.0
     - 7.1
+    - 7.3
+    - 7.4
+    - 8.0
     
 sudo: false
 
@@ -13,5 +16,5 @@ before_script:
     - composer install --prefer-dist
 
 script:
-    - phpunit test-runner.php .
+    - phpunit TestRunner.php .
 

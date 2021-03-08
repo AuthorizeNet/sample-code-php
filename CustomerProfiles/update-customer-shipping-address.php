@@ -54,5 +54,5 @@ function updateCustomerShippingAddress($customerprofileid, $customeraddressid)
   return $response;
   }
   if(!defined('DONT_RUN_SAMPLES'))
-      updateCustomerShippingAddress( "36152127","36976566");
+      updateCustomerShippingAddress( "1929905607","901116911");
 ?>

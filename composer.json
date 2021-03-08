@@ -2,7 +2,7 @@
   "require": {
   "php": ">=5.6",
   "ext-curl": "*",
-  "phpunit/phpunit": "~4.8||~6.0",
-  "authorizenet/authorizenet": ">=1.9.9 || <2.0" 
+  "phpunit/phpunit": "~9.0||~9.5",
+  "authorizenet/authorizenet": ">=2.0 || <2.1" 
   }
 }

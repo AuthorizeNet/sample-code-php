@@ -19,7 +19,7 @@ function updateSplitTenderGroup()
 
     $request = new AnetAPI\UpdateSplitTenderGroupRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
-	$request->setRefId($refId);
+	  $request->setRefId($refId);
     $request->setSplitTenderId("115901");
     $request->setSplitTenderStatus("voided");
 

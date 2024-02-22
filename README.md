@@ -27,7 +27,7 @@ You can also run each sample directly from the command line.
 ```
 e.g.
 ```
-    $ php PaymentTransactions/charge-credit-card.php
+    $ php PaymentTransactions/authorize-credit-card.php
 ```
 
 ### Installation Notes

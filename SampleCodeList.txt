@@ -7,7 +7,7 @@ GetTransactionList,0,1
 CreateAnApplePayTransaction,0,0
 CreateAnAcceptTransaction,0,0
 CreateAnAndroidPayTransaction,0,0
-decryptVisaSrcData,0,1
+decryptVisaSrcData,0,0
 createVisaSrcTransaction,0,0
 CaptureFundsAuthorizedThroughAnotherChannel,1,1
 AuthorizeCreditCard,1,1

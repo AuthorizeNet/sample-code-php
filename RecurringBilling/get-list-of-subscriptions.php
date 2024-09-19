@@ -22,7 +22,7 @@ function getListOfSubscriptions()
     $sorting->setOrderDescending(false);
 
     $paging = new AnetAPI\PagingType();
-    $paging->setLimit("1000");
+    $paging->setLimit("10");
     $paging->setOffset("1");
 
     $request = new AnetAPI\ARBGetSubscriptionListRequest();
@@ -39,10 +39,12 @@ function getListOfSubscriptions()
 
     if (($response != null) && ($response->getMessages()->getResultCode() == "Ok")) {
         echo "SUCCESS: Subscription Details:" . "\n";
-        foreach ($response->getSubscriptionDetails() as $subscriptionDetails) {
-            echo "Subscription ID: " . $subscriptionDetails->getId() . "\n";
-        }
         echo "Total Number In Results:" . $response->getTotalNumInResultSet() . "\n";
+        if ($response->getTotalNumInResultSet() > 0) {
+            foreach ($response->getSubscriptionDetails() as $subscriptionDetails) {
+                echo "Subscription ID: " . $subscriptionDetails->getId() . "\n";
+            }
+        }
     } else {
         echo "ERROR :  Invalid response\n";
         $errorMessages = $response->getMessages()->getMessage();

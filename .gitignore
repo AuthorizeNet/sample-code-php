@@ -45,3 +45,6 @@
 
 # Operating system files
 .DS_Store
+/lib
+/*.cache
+/testslog

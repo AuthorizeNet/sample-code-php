@@ -30,7 +30,7 @@ function getSettledBatchList($firstSettlementDate, $lastSettlementDate)
 
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
-    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok"))
+    if (($response != null) && ($response->getMessages()->getResultCode() == "Ok") && ($response->getBatchList() != NULL))
     {
         foreach($response->getBatchList() as $batch)
         {
